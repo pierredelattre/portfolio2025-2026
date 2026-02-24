@@ -43,7 +43,7 @@
         <h3>Email</h3>
         <LinkItem href="mailto:hello@pierredelattre.fr" label="hello@pierredelattre.fr" external />
       </div>
-      <p class="copyright text--secondary">Portfolio 2025</p>
+      <p class="copyright text--secondary">Portfolio 2026</p>
     </div>
   </footer>
 </template>
