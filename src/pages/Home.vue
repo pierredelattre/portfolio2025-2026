@@ -25,12 +25,15 @@ usePageLoaded()
 }
 
 @media screen and (min-width: 1280px) {
-  #works>.projet:last-child {
-    grid-column: 3 / 5;
+  #works>.projet:nth-child(4) {
+    & img {
+      object-position: right;
+    }
+  }
 
-    &>div,
-    &>a:has(div.link) {
-      max-width: calc(64%);
+  #works>.projet:last-child {
+    & video {
+      object-fit: cover;
     }
   }
 }

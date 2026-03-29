@@ -89,7 +89,7 @@ defineProps({
   }
 
   #works :deep(.projet:nth-child(5) .projet__image) {
-    height: 600px;
+    height: 230px;
   }
 }
 </style>

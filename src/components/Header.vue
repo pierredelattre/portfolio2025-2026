@@ -1,6 +1,6 @@
 <template>
   <header id="header">
-     <button
+     <!-- <button
       class="switch"
       type="button"
       :aria-pressed="theme === 'dark'"
@@ -9,7 +9,7 @@
       @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"
       @keydown.space.prevent="toggleTheme"
-    ></button>
+    ></button> -->
     <div class="header__title">
       <RouterLink to="/" class="header__home-link" aria-label="Retour à l’accueil">
         <h1 class="text--secondary">Pierre Delattre</h1>
@@ -49,17 +49,12 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 
-const THEME_KEY = 'theme-preference'
-const theme = ref('light')
+const theme = ref('dark')
 import resumePdf from '@/assets/CV Delattre Pierre.pdf'
-let prefersDarkMedia
-const themeLabel = computed(() =>
-  theme.value === 'dark' ? 'Basculer en thème clair' : 'Basculer en thème sombre'
-)
 
 const applyTheme = (value) => {
   if (typeof document === 'undefined') return
@@ -67,32 +62,8 @@ const applyTheme = (value) => {
   theme.value = value
 }
 
-const toggleTheme = () => {
-  const next = theme.value === 'dark' ? 'light' : 'dark'
-  localStorage.setItem(THEME_KEY, next)
-  applyTheme(next)
-}
-
-const handlePreferenceChange = (event) => {
-  if (localStorage.getItem(THEME_KEY)) return
-  applyTheme(event.matches ? 'dark' : 'light')
-}
-
 onMounted(() => {
-  prefersDarkMedia = window.matchMedia('(prefers-color-scheme: dark)')
-  const stored = localStorage.getItem(THEME_KEY)
-
-  if (stored) {
-    applyTheme(stored)
-  } else {
-    applyTheme(prefersDarkMedia.matches ? 'dark' : 'light')
-  }
-
-  prefersDarkMedia.addEventListener('change', handlePreferenceChange)
-})
-
-onUnmounted(() => {
-  prefersDarkMedia?.removeEventListener('change', handlePreferenceChange)
+  applyTheme('dark')
 })
 </script>
 

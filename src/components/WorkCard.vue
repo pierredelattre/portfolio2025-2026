@@ -1,8 +1,24 @@
 <template>
   <div class="projet">
-    <RouterLink :to="workLink" data-link>
+    <component :is="imageLinkComponent" v-bind="imageLinkProps" data-link>
       <div class="projet__image">
+        <template v-if="isVideo">
+          <video
+            class="projet__image-media"
+            :poster="work.cover.poster"
+            autoplay
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            preload="auto"
+          >
+            <source v-if="work.cover.mobile" :src="work.cover.mobile" media="(max-width: 768px)" />
+            <source :src="work.cover.src" />
+          </video>
+        </template>
         <OptimizedImage
+          v-else
           class="projet__image-media"
           img-class="projet__image-tag"
           :source="work.cover"
@@ -12,7 +28,7 @@
           :fetchpriority="priority ? 'high' : 'auto'"
         />
       </div>
-    </RouterLink>
+    </component>
     <div class="projet__content">
       <div class="projet__content__title">
         <h4>{{ work.title }}</h4>
@@ -22,7 +38,9 @@
       </div>
       <p class="text--secondary">{{ work.intro }}</p>
     </div>
-    <LinkItem :to="workLink" label="Découvrir" />
+    <LinkItem 
+      v-bind="linkProps" 
+    />
   </div>
 </template>
 
@@ -46,6 +64,51 @@ const props = defineProps({
 
 const work = toRef(props, 'work')
 const workLink = computed(() => work.value.route || '/')
+const isVideo = computed(() => work.value.cover && typeof work.value.cover === 'object' && work.value.cover.src)
+
+const imageLinkComponent = computed(() => {
+  // Si le projet a des liens externes et pas de route interne, utiliser un lien externe
+  if (work.value.links && work.value.links.length > 0 && !work.value.route) {
+    return 'a'
+  }
+  // Sinon, utiliser RouterLink pour les liens internes
+  return 'RouterLink'
+})
+
+const imageLinkProps = computed(() => {
+  // Si c'est un lien externe
+  if (imageLinkComponent.value === 'a') {
+    const firstLink = work.value.links[0]
+    return {
+      href: firstLink.href,
+      target: '_blank',
+      rel: 'noopener noreferrer'
+    }
+  }
+  // Si c'est un lien interne
+  return {
+    to: workLink.value
+  }
+})
+
+const linkProps = computed(() => {
+  // Si il y a des liens externes et pas de route interne, utiliser le premier lien externe
+  if (work.value.links && work.value.links.length > 0 && !work.value.route) {
+    const firstLink = work.value.links[0]
+    return {
+      href: firstLink.href,
+      label: firstLink.label || 'Découvrir',
+      external: firstLink.external || false,
+      secondary: firstLink.secondary || false
+    }
+  }
+  
+  // Sinon, utiliser le lien interne vers la page projet
+  return {
+    to: workLink.value,
+    label: 'Découvrir'
+  }
+})
 </script>
 
 <style scoped>
@@ -108,6 +171,13 @@ const workLink = computed(() => work.value.route || '/')
 
       @media screen and (min-width: 769px) and (max-width: 1280px) {
         height: 340px;
+      }
+    }
+
+    & video {
+      @media screen and (min-width: 769px) and (max-width: 1280px) {
+        height: 340px!important;
+        object-fit: cover;
       }
     }
   }

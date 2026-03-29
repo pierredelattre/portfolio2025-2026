@@ -1,6 +1,7 @@
 import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized&w=1600;1920;2560;3200&quality=96&lossless=true'
 import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
-import projetPlaceholder from '@/assets/placeholder.png?optimized'
+import liraVideo from '@/assets/lira/lira-demo-optimized.mp4'
+import liraPoster from '@/assets/lira/desk-lira.jpg?optimized'
 import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
 
 export const works = [
@@ -48,6 +49,23 @@ export const works = [
     cover: alpinePlaceholder,
     route: '/projet/alpine',
     type: 'school'
+  },
+  {
+    id: 'lira',
+    title: 'Lira',
+    intro:
+      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
+    description:
+      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
+    services: ['Product Design'],
+    team: [],
+    links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
+    tags: ['Product Design'],
+    cover: {
+      src: liraVideo,
+      poster: liraPoster
+    },
+    type: 'freelance'
   }
 ]
 
@@ -272,38 +290,38 @@ export const playgroundItems = [
       }
     ]
   },
-  {
-    title: 'Magazine',
-    image: mag,
-    color: 'dark',
-    modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
-    media: [
-      {
-        type: 'image',
-        src: mag,
-        mobileSrc: magMobile,
-        alt: 'Site RVRS'
-      },
-      {
-        type: 'image',
-        src: mag2,
-        mobileSrc: mag2Mobile,
-        alt: 'Site RVRS'
-      }
-    ]
-  },
-  {
-    title: 'Nehomia',
-    image: nehomia,
-    modalText: 'Homepage concept for Nehomia',
-    color: 'dark',
-    media: [
-      {
-        type: 'image',
-        src: nehomia,
-        mobileSrc: nehomiaMobile,
-        alt: 'Homepage Nehomia'
-      }
-    ]
-  }
+  // {
+  //   title: 'Magazine',
+  //   image: mag,
+  //   color: 'dark',
+  //   modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: mag,
+  //       mobileSrc: magMobile,
+  //       alt: 'Site RVRS'
+  //     },
+  //     {
+  //       type: 'image',
+  //       src: mag2,
+  //       mobileSrc: mag2Mobile,
+  //       alt: 'Site RVRS'
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: 'Nehomia',
+  //   image: nehomia,
+  //   modalText: 'Homepage concept for Nehomia',
+  //   color: 'dark',
+  //   media: [
+  //     {
+  //       type: 'image',
+  //       src: nehomia,
+  //       mobileSrc: nehomiaMobile,
+  //       alt: 'Homepage Nehomia'
+  //     }
+  //   ]
+  // }
 ]
