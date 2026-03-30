@@ -1,7 +1,22 @@
 <template>
   <section class="layout layout__column-text">
     <div class="col image">
+      <video
+        v-if="videoSrc"
+        class="layout__column-text-image-media"
+        :poster="resolvedPoster"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+      >
+        <source v-if="videoMobileSrc" :src="videoMobileSrc" media="(max-width: 768px)" />
+        <source :src="videoSrc" />
+      </video>
       <OptimizedImage
+        v-else
         class="layout__column-text-image"
         img-class="layout__column-text-image-media"
         :source="imageSrc"
@@ -18,9 +33,10 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
 
-defineProps({
+const props = defineProps({
   imageSrc: {
     type: [String, Object],
     required: true
@@ -33,6 +49,14 @@ defineProps({
     type: String,
     default: ''
   },
+  videoSrc: {
+    type: String,
+    default: ''
+  },
+  videoMobileSrc: {
+    type: String,
+    default: ''
+  },
   title: {
     type: String,
     required: true
@@ -41,6 +65,13 @@ defineProps({
     type: String,
     required: true
   }
+})
+
+const resolvedPoster = computed(() => {
+  const src = props.imageSrc
+  if (!src) return ''
+  if (typeof src === 'string') return src
+  return src?.img?.src || src?.src || ''
 })
 </script>
 
@@ -56,7 +87,8 @@ defineProps({
       display: block;
     }
 
-    & :deep(.layout__column-text-image-media) {
+    & :deep(.layout__column-text-image-media),
+    & video.layout__column-text-image-media {
       width: 100%;
       height: 100%;
       object-fit: cover;

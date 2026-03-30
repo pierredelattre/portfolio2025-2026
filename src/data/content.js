@@ -10,9 +10,9 @@ export const works = [
     id: 'lira',
     title: 'Lira',
     intro:
-      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
+      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés.',
     description:
-      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés',
+      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés.',
     services: ['Product Design'],
     team: [],
     links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
@@ -22,7 +22,8 @@ export const works = [
       mobile: liraVideoMobile,
       poster: liraPoster
     },
-    type: 'freelance'
+    route: '/projet/lira',
+    type: 'perso'
   },
   {
     id: 'septiemeseance',
