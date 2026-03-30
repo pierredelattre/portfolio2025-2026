@@ -16,7 +16,7 @@ export const works = [
     services: ['Product Design'],
     team: [],
     links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
-    tags: ['Product Design'],
+    tags: ['Product Design', 'Side Project'],
     cover: {
       src: liraVideo,
       mobile: liraVideoMobile,
