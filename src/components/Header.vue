@@ -23,9 +23,8 @@
 
     <div class="header__services">
       <p class="text--secondary">Services</p>
-      <p>UX Research</p>
-      <p>UI Design</p>
-      <p>Website Design</p>
+      <p>Product Design</p>
+      <p>Webdesign</p>
       <p>Framer, Webflow, Shopify &amp; Wordpress</p>
     </div>
 
