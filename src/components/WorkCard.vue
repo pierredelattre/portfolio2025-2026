@@ -27,16 +27,19 @@
           :loading="priority ? 'eager' : 'lazy'"
           :fetchpriority="priority ? 'high' : 'auto'"
         />
-        <div v-if="work.type === 'perso'" class="projet__type-label">
-          Projet perso
-        </div>
       </div>
     </component>
     <div class="projet__content">
       <div class="projet__content__title">
         <h4>{{ work.title }}</h4>
         <div class="tags">
-          <TagItem v-for="tag in work.tags" :key="tag" :label="tag" />
+          <TagItem
+            v-for="tag in work.tags"
+            :key="typeof tag === 'string' ? tag : tag.label"
+            :label="typeof tag === 'string' ? tag : tag.label"
+            :color="typeof tag === 'string' ? '' : (tag.color || '')"
+            :text-color="typeof tag === 'string' ? '' : (tag.textColor || '')"
+          />
         </div>
       </div>
       <p class="text--secondary">{{ work.intro }}</p>
@@ -154,19 +157,6 @@ const linkProps = computed(() => {
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
-  }
-
-  & .projet__type-label {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1;
-    background-color: var(--type-perso);
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 4px;
-    border-radius: 2px;
   }
 
   & .projet__image {
