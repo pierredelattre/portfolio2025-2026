@@ -3,6 +3,7 @@ import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
 import liraVideo from '@/assets/lira/lira-demo-optimized.mp4'
 import liraVideoMobile from '@/assets/lira/lira-demo-mobile.mp4'
 import liraPoster from '@/assets/lira/desk-lira.jpg?optimized'
+import liraBanner from '@/assets/lira/lira-banner.jpg?optimized'
 import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
 
 export const works = [
@@ -22,6 +23,7 @@ export const works = [
       mobile: liraVideoMobile,
       poster: liraPoster
     },
+    thumbnail: liraBanner,
     route: '/projet/lira',
     type: 'perso'
   },

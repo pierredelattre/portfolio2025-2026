@@ -8,7 +8,7 @@
             class="project-image"
             img-class="project-image__media"
             sizes="(min-width: 1024px) 50vw, 100vw"
-            :source="previousProject.cover"
+            :source="previousProject.thumbnail || previousProject.cover"
             :alt="`Visuel de ${previousProject.title}`"
           />
           <p>Projet précédent</p>
@@ -22,7 +22,7 @@
             class="project-image"
             img-class="project-image__media"
             sizes="(min-width: 1024px) 50vw, 100vw"
-            :source="nextProject.cover"
+            :source="nextProject.thumbnail || nextProject.cover"
             :alt="`Visuel de ${nextProject.title}`"
           />
           <p>Projet suivant</p>
