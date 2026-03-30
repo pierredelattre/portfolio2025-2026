@@ -8,18 +8,17 @@
       <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
     </section>
 
-    <ColumnTextLayout :image-src=contexte image-alt="Contexte & Enjeux" title="Contexte & Enjeux" text="Talkie naît du constat que les applications d’apprentissage souffrent souvent de répétitivité, faible profondeur et manque d’immersion. Nous avons cherché à concevoir une expérience qui combine gamification, mise en situation et flexibilité totale, en intégrant des modules solo, duels, quiz thématiques et un apprentissage guidé.
-    
-L’objectif : rendre l’apprentissage motivant, répétable, personnalisé et culturellement enrichissant." />
+    <ColumnTextLayout :image-src=contexte image-alt="Contexte & Enjeux" title="Contexte & Enjeux" text="Les apps d’apprentissage les plus populaires ont un problème que leurs métriques ne montrent pas : les utilisateurs les ouvrent tous les jours, mais n’apprennent pas vraiment. Duolingo s’est progressivement transformé en app de divertissement. Les streaks, les notifications, la pression sociale sont là pour la rétention, pas pour l’acquisition. C’est ce que les entretiens ont confirmé. On voulait partir d’une contrainte différente : est-ce qu’on peut concevoir une app où la progression est réellement visible, et où les situations d’entraînement ressemblent à quelque chose ?" />
 
-    <GridScrollLayout :images="rechercheUX" title="Recherche utilisateur" text="Entretiens qualitatifs, proto-personas et recherches secondaires ont mis en lumière des attentes clés :
-– variété dans les formats d’apprentissage,
-– scénarios réels pour pratiquer,
-– progression claire,
-– sessions courtes,
-– dimension sociale motivante.
+    <GridScrollLayout :images="rechercheUX" title="Recherche utilisateur" text="Trois entretiens semi-directifs de 30 minutes, avec des utilisateurs actifs d’apps concurrentes.
 
-Ces insights ont nourri l’arborescence et les parcours." />
+Maxime, 25 ans, utilise Duolingo pour apprendre l’espagnol avant un voyage. Il bute sur la progression : impossible de sauter les notions déjà maîtrisées, et il confond régulièrement des mots similaires d’une langue à l’autre. L’app n’en tient pas compte.
+
+Dorian, 27 ans, utilise MemRise dans un cadre pro. Ce qui l’a fait décrocher : les exercices sont trop simples pour son niveau, la répétition est mécanique, et il ne voit pas où il en est.
+
+Noa ne peut pas cibler son apprentissage selon son domaine métier. Tout le vocabulaire est généraliste, peu importe ses besoins.
+
+Les trois avaient la même situation de départ : ils voulaient apprendre. Le problème n’était pas la motivation. Aucune des apps ne leur donnait le sentiment de vraiment progresser." />
 
     <ImageFullWidthLayout :image-src=flows :image-mobile-src=flowsMobile secondary image-alt="Architecture & parcours"
       title="Architecture & parcours"
@@ -34,16 +33,17 @@ La hiérarchie d’information a été pensée pour être immédiate : titres cl
 Les feedbacks (réponses, progression, score) jouent un rôle central pour soutenir la dimension gamifiée et garder l’utilisateur engagé.
 L’ensemble vise, quant à elle, une interface prévisible et fluide, où chaque écran reprend les mêmes logiques pour réduire la charge cognitive." />
 
-    <ColumnTextLayout :image-src=designsystem image-alt="Design system" title="Design system" text="La première itération du produit abouti sur un device mobile néanmoins afin de se positionner en tant qu’acteurs dans ce marché, une présence tablettes & desktop est nécessaire. Un besoin cohérence a été identifié pour les futures version mais aussi une maintenance plus facile et des perspectives d’évolutions envisageables. De plus, face aux différentes fonctionnalités et services gérés par les différentes équipes, un design language est à mettre en place.
+    <ColumnTextLayout :image-src=designsystem image-alt="Design system" title="Design system" text="Le projet couvre cinq sections (Accueil, Apprendre, Quiz, Quêtes, Profil) développées en parallèle par deux designers. Sans référentiel commun, les sections auraient divergé. Et n’importe quel développeur qui aurait récupéré le fichier Figma s’y serait perdu.
 
-Cela résulterait en une meilleure communication entre les équipes et une meilleure efficience. 
+On a construit un design system complet : tokens, fondations, composants documentés par usage (Actions, Navigation, Formulaire, Contenu, Profil), templates et documentation publiée sur Zeroheight, synchronisée automatiquement depuis Figma." />
 
-Un design system complet a alors été créé : design tokens, fondations, composants, templates et documentation Zeroheight, synchronisée avec Figma." />
+<ColumnTextLayout :image-src=tests image-alt="Tests utilisateurs" title="Tests utilisateurs" text="Tests réalisés avec 3 participants sur deux parcours distincts.
 
-<ColumnTextLayout :image-src=tests image-alt="Tests utilisateurs" title="Tests utilisateurs" text="Les tests ont révélé des ajustements essentiels : clarifier certains éléments de progression (comme les “réponses connues”), ajouter un récapitulatif de fin de quiz plus valorisant, et améliorer la visibilité d’actions clés (inviter un ami, quitter ou reprendre un cours).
-Ils ont aussi mis en lumière le besoin de titres de page, de pictos plus lisibles et de feedbacks interactifs plus explicites.
+Les deux parcours ont été complétés à 100 %. La navigation était fluide, personne ne s’est perdu.
 
-Ces retours ont permis d’améliorer la hiérarchie visuelle, la compréhension immédiate des écrans et la cohérence des interactions, tout en confirmant la fluidité globale des parcours proposés." />
+Les tests ont quand même révélé des problèmes précis. Sur le parcours quizz : confusion devant les &quot;réponses connues&quot; affichées dès le premier écran alors que l’utilisateur n’avait pas encore joué (&quot;Pourquoi il y’a déjà des réponses connues ?&quot;), impossibilité d’inviter plusieurs amis. Sur le parcours Apprendre : boutons non cliquables dans le prototype, absence de titre de page (&quot;À quoi sert le drapeau ?&quot;), pas de moyen de quitter puis reprendre un cours.
+
+Ce qui a changé : clarification de l’écran initial du quizz, récapitulatif de fin de partie revu, états manquants ajoutés." />
   </section>
 </template>
 

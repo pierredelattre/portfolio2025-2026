@@ -56,7 +56,7 @@ h6 {
   --focus-ring: color-mix(in oklch, var(--focus) 40%, transparent);
 
   --type-school: oklab(73.187% -0.12951 0.13864);
-  --type-fictive: oklch(45.5% 0.2 291.5);
+  --type-perso: oklch(45.5% 0.2 291.5);
   --type-freelance: oklch(65% 0.1 223.5);
 }
 

@@ -11,7 +11,7 @@ import { computed } from 'vue'
 const LABELS = {
   school: { text: "Cas d'école", color: 'var(--type-school)' },
   freelance: { text: 'Freelance', color: 'var(--type-freelance)' },
-  fictive: { text: 'Cas fictif', color: 'var(--type-fictive)' }
+  perso: { text: 'Perso', color: 'var(--type-perso)' }
 }
 
 const props = defineProps({

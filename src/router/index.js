@@ -12,6 +12,14 @@ const routes = [
     }
   },
   {
+    path: '/projet/lira',
+    name: 'lira',
+    component: () => import('@/views/Lira.vue'),
+    meta: {
+      headerMode: 'project'
+    }
+  },
+  {
     path: '/projet/talkie',
     name: 'talkie',
     component: () => import('@/views/Talkie.vue'),
