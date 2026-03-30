@@ -1,6 +1,7 @@
 import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized&w=1600;1920;2560;3200&quality=96&lossless=true'
 import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
 import liraVideo from '@/assets/lira/lira-demo-optimized.mp4'
+import liraVideoMobile from '@/assets/lira/lira-demo-mobile.mp4'
 import liraPoster from '@/assets/lira/desk-lira.jpg?optimized'
 import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
 
@@ -63,6 +64,7 @@ export const works = [
     tags: ['Product Design'],
     cover: {
       src: liraVideo,
+      mobile: liraVideoMobile,
       poster: liraPoster
     },
     type: 'freelance'
