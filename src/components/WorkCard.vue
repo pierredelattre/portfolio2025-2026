@@ -27,6 +27,9 @@
           :loading="priority ? 'eager' : 'lazy'"
           :fetchpriority="priority ? 'high' : 'auto'"
         />
+        <div v-if="work.type === 'perso'" class="projet__type-label">
+          Projet perso
+        </div>
       </div>
     </component>
     <div class="projet__content">
@@ -153,7 +156,21 @@ const linkProps = computed(() => {
     gap: 0.5rem;
   }
 
+  & .projet__type-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    background-color: var(--type-perso);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px;
+    border-radius: 2px;
+  }
+
   & .projet__image {
+    position: relative;
     overflow: hidden;
     cursor: pointer;
 
