@@ -20,7 +20,7 @@ export default defineConfig({
         }
 
         if (!url.searchParams.has('format')) {
-          params.set('format', 'jpg')
+          params.set('format', 'webp')
         }
 
         if (!url.searchParams.has('quality')) {
