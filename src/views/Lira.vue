@@ -18,11 +18,11 @@ Lira a été construit pour répondre à un besoin : lire du vrai contenu, sauve
 Le projet est en production depuis mars 2026." />
 
     <GridScrollLayoutRows :images="rechercheUX" title="Recherche & Positionnement"
-      text="La recherche s'est faite en desk research avant le lancement : Reddit (r/languagelearning, r/Anki, r/duolingo), forums LingQ, reviews App Store, exports en batch de commentaires sur des vidéos YouTube. Pas d'interviews primaires à ce stade.
+      text="La recherche s'est faite en desk research avant le lancement : Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), forums LingQ, reviews App Store, exports en batch de commentaires sur des vidéos YouTube. Pas d'interviews primaires à ce stade.
 
 Ce type de source a un biais évident : les utilisateurs qui postent sont plus frustrés que la moyenne. J'en ai tenu compte.
 
-Ce qui ressort : le passage B1-B2 est la zone de blocage la plus décrite. Les utilisateurs avancés convergent naturellement vers la lecture, ce n'est pas un besoin à créer. Et la création manuelle de cartes Anki est souvent citée comme raison d'abandon.
+Ce qui ressort : le passage B1-B2 est la zone de blocage la plus décrite. Les utilisateurs avancés convergent naturellement vers la lecture, ce n'est pas un besoin à créer. Un besoin de vocabulaire ciblé par domaine ou contexte ressort aussi clairement. La création manuelle de cartes Anki est souvent citée comme raison d'abandon.
 
 J'ai construit trois proto-personas depuis ces données : le polyglotte qui connaît le FSRS et veut zéro friction, l'expatrié qui veut lire la presse locale sans perdre le fil de sa lecture, et celui qui a des mois de streak Duolingo mais ne sent plus de progression." />
 
