@@ -37,7 +37,7 @@
           <div class="links">
             <LinkItem :href=resumePdf label="CV" secondary external />
             <!-- <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external /> -->
-            <LinkItem href="#" label="Freelance" secondary external />
+            <!-- <LinkItem href="#" label="Freelance" secondary external /> -->
           </div>
         </div>
         <div class="footer__email">
