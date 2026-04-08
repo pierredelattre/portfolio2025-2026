@@ -406,7 +406,10 @@ const cloneWork = (work) => ({
 })
 
 export const getWorksByLocale = (locale = 'fr') => {
-  if (locale === 'fr') {
+  const normalizedLocale = typeof locale === 'string' ? locale.toLowerCase().trim() : 'fr'
+  const isFrench = normalizedLocale.startsWith('fr')
+
+  if (isFrench) {
     return works.map(cloneWork)
   }
 
@@ -426,12 +429,15 @@ export const getWorksByLocale = (locale = 'fr') => {
 }
 
 export const getPlaygroundItemsByLocale = (locale = 'fr') => {
+  const normalizedLocale = typeof locale === 'string' ? locale.toLowerCase().trim() : 'fr'
+  const isFrench = normalizedLocale.startsWith('fr')
+
   const base = playgroundItems.map((item) => ({
     ...item,
     media: Array.isArray(item.media) ? item.media.map((media) => ({ ...media })) : []
   }))
 
-  if (locale === 'fr') {
+  if (isFrench) {
     return base
   }
 
