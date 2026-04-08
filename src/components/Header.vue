@@ -18,7 +18,7 @@
     </div>
 
     <div class="header__cities">
-      <p class="text--secondary">Lille — Paris</p>
+      <p class="text--secondary">Lille</p>
     </div>
 
     <div class="header__services">
