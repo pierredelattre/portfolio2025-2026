@@ -1,6 +1,25 @@
 <template>
   <header id="header">
     <button
+      class="locale-switch"
+      type="button"
+      :aria-label="localeSwitchLabel"
+      :title="localeSwitchLabel"
+      @click="toggleLocale"
+    >
+      <svg class="locale-switch__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18Zm0 0c2.2 2.4 3.5 5.6 3.5 9s-1.3 6.6-3.5 9m0-18C9.8 5.4 8.5 8.6 8.5 12s1.3 6.6 3.5 9m-8.8-6h17.6M3.2 9h17.6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>{{ t(`header.localeButton.${nextLocale}`) }}</span>
+    </button>
+    <!-- <button
       class="switch"
       type="button"
       :aria-pressed="theme === 'dark'"
@@ -9,38 +28,37 @@
       @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"
       @keydown.space.prevent="toggleTheme"
-    ></button>
+    ></button> -->
     <div class="header__title">
-      <RouterLink to="/" class="header__home-link" aria-label="Retour à l’accueil">
+      <RouterLink to="/" class="header__home-link" :aria-label="t('header.homeAriaLabel')">
         <h1 class="text--secondary">Pierre Delattre</h1>
-        <h2>Product Designer</h2>
+        <h2>{{ t('header.role') }}</h2>
       </RouterLink>
     </div>
 
     <div class="header__cities">
-      <p class="text--secondary">Lille</p>
+      <p class="text--secondary">{{ t('header.cityLabel') }}</p>
+      <p>{{ t('header.city') }}</p>
     </div>
 
     <div class="header__services">
-      <p class="text--secondary">Services</p>
-      <p>Product Design</p>
-      <p>Webdesign</p>
-      <p>Framer, Webflow, Shopify &amp; Wordpress</p>
+      <p class="text--secondary">{{ t('header.servicesLabel') }}</p>
+      <p v-for="service in services" :key="service">{{ service }}</p>
     </div>
 
     <div class="header__email">
-      <p class="text--secondary">Email</p>
+      <p class="text--secondary">{{ t('header.emailLabel') }}</p>
       <LinkItem href="mailto:hello@pierredelattre.fr" label="hello@pierredelattre.fr" external />
     </div>
 
     <div class="header__intro">
       <p>
-        Designer UX/UI orienté produit, spécialisé dans la conception d’interfaces accessibles et la création de design systems cohérents. Expérience en e-commerce, intégration front-end et recherche utilisateur.
+        {{ t('header.intro') }}
       </p>
     </div>
 
     <div class="header__links">
-      <LinkItem :href=resumePdf label="CV" secondary external />
+      <LinkItem :href="resumePdf" :label="t('header.resume')" secondary external />
       <!-- <LinkItem href="https://www.cosmos.so/pierreddd" label="Cosmos" secondary external /> -->
       <!-- <LinkItem href="#" label="Freelance" secondary external /> -->
     </div>
@@ -51,12 +69,20 @@
 import { computed, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
+import { useLocale } from '@/i18n'
+
+import resumePdf from '@/assets/CV Delattre Pierre.pdf'
+const { locale, setLocale, t } = useLocale()
 
 const theme = ref('dark')
-import resumePdf from '@/assets/CV Delattre Pierre.pdf'
+const nextLocale = computed(() => (locale.value === 'fr' ? 'en' : 'fr'))
+const localeSwitchLabel = computed(() =>
+  nextLocale.value === 'en' ? 'Passer le site en anglais' : 'Switch site to French'
+)
+const services = computed(() => t('header.services'))
 
 const themeLabel = computed(() =>
-  theme.value === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre'
+  theme.value === 'dark' ? t('header.themeSwitch.darkToLight') : t('header.themeSwitch.lightToDark')
 )
 
 const applyTheme = (value) => {
@@ -69,6 +95,11 @@ const toggleTheme = () => {
   applyTheme(theme.value === 'dark' ? 'light' : 'dark')
 }
 
+const toggleLocale = () => {
+  setLocale(nextLocale.value)
+}
+
+// Keep explicit default in code: no auto system detection.
 onMounted(() => {
   applyTheme('dark')
 })
@@ -113,7 +144,7 @@ header {
     align-items: flex-start;
     align-content: flex-start;
 
-    &>*:not(.switch, .header__links, .header__intro) {
+    &>*:not(.switch, .locale-switch, .header__links, .header__intro) {
       width: calc((100% / 2) - 1rem);
     }
   }
@@ -121,7 +152,7 @@ header {
   & .switch {
     position: absolute;
     top: 2rem;
-    right: 2rem;
+    right: 4.75rem;
     width: 20px;
     height: 20px;
     border-radius: 999px;
@@ -138,12 +169,47 @@ header {
 
     @media screen and (max-width: 768px) {
       top: 1rem;
-      right: 1rem;
+      right: 3.75rem;
     }
 
     @media screen and (min-width: 769px) and (max-width: 1280px) {
       top: 2rem;
-      right: 2rem;
+      right: 4.75rem;
+    }
+  }
+
+  & .locale-switch {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: auto;
+    min-width: 52px;
+    height: 24px;
+    border-radius: 999px;
+    border: 0;
+    background: #282828;
+    color: var(--secondary);
+    font-size: .875rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  & .locale-switch__icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    & .locale-switch {
+      top: 1rem;
+      right: 1rem;
     }
   }
 

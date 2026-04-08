@@ -56,6 +56,7 @@ import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 import TagItem from './TagItem.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
+import { useLocale } from '@/i18n'
 
 const props = defineProps({
   work: {
@@ -69,6 +70,8 @@ const props = defineProps({
 })
 
 const work = toRef(props, 'work')
+const { locale } = useLocale()
+const discoverLabel = computed(() => (locale.value === 'fr' ? 'Découvrir' : 'Read more'))
 const workLink = computed(() => work.value.route || '/')
 const isVideo = computed(() => work.value.cover && typeof work.value.cover === 'object' && work.value.cover.src)
 
@@ -117,7 +120,7 @@ const linkProps = computed(() => {
     const firstLink = work.value.links[0]
     return {
       href: firstLink.href,
-      label: firstLink.label || 'Découvrir',
+      label: firstLink.label || discoverLabel.value,
       external: firstLink.external || false,
       secondary: firstLink.secondary || false
     }
@@ -126,7 +129,7 @@ const linkProps = computed(() => {
   // Sinon, utiliser le lien interne vers la page projet
   return {
     to: workLink.value,
-    label: 'Découvrir'
+    label: discoverLabel.value
   }
 })
 </script>
