@@ -4,46 +4,25 @@
       :description="projectData.description" :services="projectData.services" :team="projectData.team"
       :links="projectData.links" />
     <section v-else class="project__error">
-      <h2>Projet introuvable</h2>
-      <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
+      <h2>{{ pageContent.projectNotFound }}</h2>
+      <RouterLink to="/" data-link>{{ pageContent.backToHome }}</RouterLink>
     </section>
 
-    <ColumnTextLayout :image-src=contexte image-alt="Contexte & Enjeux" title="Contexte & Enjeux" text="Les apps d’apprentissage les plus populaires ont un problème que leurs métriques ne montrent pas : les utilisateurs les ouvrent tous les jours, mais n’apprennent pas vraiment. Duolingo s’est progressivement transformé en app de divertissement. Les streaks, les notifications, la pression sociale sont là pour la rétention, pas pour l’acquisition. C’est ce que les entretiens ont confirmé. On voulait partir d’une contrainte différente : est-ce qu’on peut concevoir une app où la progression est réellement visible, et où les situations d’entraînement ressemblent à quelque chose ?" />
+    <ColumnTextLayout :image-src=contexte :image-alt="pageContent.contextAlt" :title="pageContent.contextTitle"
+      :text="pageContent.contextText" />
 
-    <GridScrollLayout :images="rechercheUX" title="Recherche utilisateur" text="Trois entretiens semi-directifs de 30 minutes, avec des utilisateurs actifs d’apps concurrentes.
+    <GridScrollLayout :images="rechercheUX" :title="pageContent.researchTitle" :text="pageContent.researchText" />
 
-Maxime, 25 ans, utilise Duolingo pour apprendre l’espagnol avant un voyage. Il bute sur la progression : impossible de sauter les notions déjà maîtrisées, et il confond régulièrement des mots similaires d’une langue à l’autre. L’app n’en tient pas compte.
+    <ImageFullWidthLayout :image-src=flows :image-mobile-src=flowsMobile secondary :image-alt="pageContent.archAlt"
+      :title="pageContent.archTitle" :text="pageContent.archText" />
 
-Dorian, 27 ans, utilise MemRise dans un cadre pro. Ce qui l’a fait décrocher : les exercices sont trop simples pour son niveau, la répétition est mécanique, et il ne voit pas où il en est.
+    <GridScrollLayout :images=uiGridImages :title="pageContent.uiTitle" :text="pageContent.uiText" />
 
-Noa ne peut pas cibler son apprentissage selon son domaine métier. Tout le vocabulaire est généraliste, peu importe ses besoins.
+    <ColumnTextLayout :image-src=designsystem :image-alt="pageContent.dsAlt" :title="pageContent.dsTitle"
+      :text="pageContent.dsText" />
 
-Les trois avaient la même situation de départ : ils voulaient apprendre. Le problème n’était pas la motivation. Aucune des apps ne leur donnait le sentiment de vraiment progresser." />
-
-    <ImageFullWidthLayout :image-src=flows :image-mobile-src=flowsMobile secondary image-alt="Architecture & parcours"
-      title="Architecture & parcours"
-      text="L’expérience est structurée autour de cinq zones : Accueil, Apprendre, Quiz, Quêtes et Profil.
-Nous avons conçu des parcours fluides pour le duel, les quizz thématiques et l’apprentissage guidé, en garantissant une navigation claire." />
-
-    <GridScrollLayout :images=uiGridImages title="Conception UI"
-      text="L’UI a été conçue pour simplifier la diversité des formats (cours, quiz, duels, quêtes) grâce à des patterns réutilisables : cartes de contenus, blocs de progression, modules de quiz et header cohérent.
-
-La hiérarchie d’information a été pensée pour être immédiate : titres clairs, actions primaires visibles, actions secondaires accessibles sans distraire.
-
-Les feedbacks (réponses, progression, score) jouent un rôle central pour soutenir la dimension gamifiée et garder l’utilisateur engagé.
-L’ensemble vise, quant à elle, une interface prévisible et fluide, où chaque écran reprend les mêmes logiques pour réduire la charge cognitive." />
-
-    <ColumnTextLayout :image-src=designsystem image-alt="Design system" title="Design system" text="Le projet couvre cinq sections (Accueil, Apprendre, Quiz, Quêtes, Profil) développées en parallèle par deux designers. Sans référentiel commun, les sections auraient divergé. Et n’importe quel développeur qui aurait récupéré le fichier Figma s’y serait perdu.
-
-On a construit un design system complet : tokens, fondations, composants documentés par usage (Actions, Navigation, Formulaire, Contenu, Profil), templates et documentation publiée sur Zeroheight, synchronisée automatiquement depuis Figma." />
-
-<ColumnTextLayout :image-src=tests image-alt="Tests utilisateurs" title="Tests utilisateurs" text="Tests réalisés avec 3 participants sur deux parcours distincts.
-
-Les deux parcours ont été complétés à 100 %. La navigation était fluide, personne ne s’est perdu.
-
-Les tests ont quand même révélé des problèmes précis. Sur le parcours quizz : confusion devant les &quot;réponses connues&quot; affichées dès le premier écran alors que l’utilisateur n’avait pas encore joué (&quot;Pourquoi il y’a déjà des réponses connues ?&quot;), impossibilité d’inviter plusieurs amis. Sur le parcours Apprendre : boutons non cliquables dans le prototype, absence de titre de page (&quot;À quoi sert le drapeau ?&quot;), pas de moyen de quitter puis reprendre un cours.
-
-Ce qui a changé : clarification de l’écran initial du quizz, récapitulatif de fin de partie revu, états manquants ajoutés." />
+    <ColumnTextLayout :image-src=tests :image-alt="pageContent.testsAlt" :title="pageContent.testsTitle"
+      :text="pageContent.testsText" />
   </section>
 </template>
 
@@ -55,7 +34,8 @@ import ColumnTextLayout from '@/components/layouts/ColumnTextLayout.vue'
 import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
-import { works } from '@/data/content'
+import { getWorksByLocale } from '@/data/content'
+import { useLocale } from '@/i18n'
 import { resolveOptimizedImageSrc } from '@/utils/image'
 
 import projectBackground from '@/assets/talkie/banner.jpg?optimized'
@@ -75,27 +55,129 @@ import fonctions from '@/assets/talkie/fonctions.jpg?optimized'
 import fonctionsMobile from '@/assets/talkie/mobile-fonctions.jpg?optimized'
 
 const PROJECT_ROUTE = '/projet/talkie'
-const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
+const { locale } = useLocale()
 
-if (!projectData) {
+const PAGE_CONTENT = {
+  fr: {
+    projectNotFound: 'Projet introuvable',
+    backToHome: '← Retour à l’accueil',
+    contextAlt: 'Contexte et enjeux',
+    contextTitle: 'Contexte et enjeux',
+    contextText:
+      "Les apps d'apprentissage les plus populaires ont un problème que leurs métriques ne montrent pas : les utilisateurs les ouvrent tous les jours, mais n'apprennent pas vraiment. Duolingo s'est progressivement transformé en app de divertissement. Les streaks, les notifications, la pression sociale sont là pour la rétention, pas pour l'acquisition. C'est ce que les entretiens ont confirmé. On voulait partir d'une contrainte différente : est-ce qu'on peut concevoir une app où la progression est réellement visible, et où les situations d'entraînement ressemblent à quelque chose ?",
+    researchTitle: 'Recherche utilisateur',
+    researchText: `Trois entretiens semi-directifs de 30 minutes, avec des utilisateurs actifs d'apps concurrentes.
+
+Maxime, 25 ans, utilise Duolingo pour apprendre l'espagnol avant un voyage. Il bute sur la progression : impossible de sauter les notions déjà maîtrisées, et il confond régulièrement des mots similaires d'une langue à l'autre. L'app n'en tient pas compte.
+
+Dorian, 27 ans, utilise MemRise dans un cadre pro. Ce qui l'a fait décrocher : les exercices sont trop simples pour son niveau, la répétition est mécanique, et il ne voit pas où il en est.
+
+Noa ne peut pas cibler son apprentissage selon son domaine métier. Tout le vocabulaire est généraliste, peu importe ses besoins.
+
+Les trois avaient la même situation de départ : ils voulaient apprendre. Le problème n'était pas la motivation. Aucune des apps ne leur donnait le sentiment de vraiment progresser.`,
+    archAlt: 'Architecture et parcours',
+    archTitle: 'Architecture et parcours',
+    archText:
+      "L'expérience est structurée autour de cinq zones : Accueil, Apprendre, Quiz, Quêtes et Profil. Nous avons conçu des parcours fluides pour le duel, les quiz thématiques et l'apprentissage guidé, en garantissant une navigation claire.",
+    uiTitle: 'Conception UI',
+    uiText: `L'UI a été conçue pour simplifier la diversité des formats (cours, quiz, duels, quêtes) grâce à des patterns réutilisables : cartes de contenus, blocs de progression, modules de quiz et header cohérent.
+
+La hiérarchie d'information a été pensée pour être immédiate : titres clairs, actions primaires visibles, actions secondaires accessibles sans distraire.
+
+Les feedbacks (réponses, progression, score) jouent un rôle central pour soutenir la dimension gamifiée et garder l'utilisateur engagé.
+L'ensemble vise une interface prévisible et fluide, où chaque écran reprend les mêmes logiques pour réduire la charge cognitive.`,
+    dsAlt: 'Design system',
+    dsTitle: 'Design system',
+    dsText:
+      "Le projet couvre cinq sections (Accueil, Apprendre, Quiz, Quêtes, Profil) développées en parallèle par deux designers. Sans référentiel commun, les sections auraient divergé. On a construit un design system complet : tokens, fondations, composants documentés par usage, templates et documentation publiée sur Zeroheight, synchronisée depuis Figma.",
+    testsAlt: 'Tests utilisateurs',
+    testsTitle: 'Tests utilisateurs',
+    testsText: `Tests réalisés avec 3 participants sur deux parcours distincts.
+
+Les deux parcours ont été complétés à 100 %. La navigation était fluide, personne ne s'est perdu.
+
+Les tests ont quand même révélé des problèmes précis. Sur le parcours quiz : confusion devant les "réponses connues" affichées dès le premier écran alors que l'utilisateur n'avait pas encore joué, et impossibilité d'inviter plusieurs amis. Sur le parcours Apprendre : boutons non cliquables dans le prototype, absence de titre de page, pas de moyen de quitter puis reprendre un cours.
+
+Ce qui a changé : clarification de l'écran initial du quiz, récapitulatif de fin de partie revu, états manquants ajoutés.`,
+    uiAlt1: 'Lessons',
+    uiAlt2: 'Solo quizzes',
+    uiAlt3: 'Player duels',
+    uxAlt2: 'Interviews',
+    uxAlt3: 'Features'
+  },
+  en: {
+    projectNotFound: 'Project not found',
+    backToHome: '← Back to home',
+    contextAlt: 'Context and challenges',
+    contextTitle: 'Context and challenges',
+    contextText:
+      "Popular language-learning apps share a problem their metrics usually hide: users open them daily, but do not necessarily learn effectively. Duolingo gradually shifted toward entertainment. Streaks, notifications, and social pressure optimize retention, not acquisition. Interviews confirmed this. We started from a different constraint: can we design an app where progress is truly visible and training situations feel realistic?",
+    researchTitle: 'User research',
+    researchText: `Three 30-minute semi-structured interviews with active users of competing apps.
+
+Maxime, 25, uses Duolingo to learn Spanish before traveling. His frustration: no way to skip already mastered concepts, and frequent confusion between similar words across languages.
+
+Dorian, 27, uses MemRise for work. He dropped off because exercises were too easy for his level, repetition felt mechanical, and progress tracking was unclear.
+
+Noa cannot target learning around job-specific vocabulary. Everything stays generic regardless of real needs.
+
+All three had the same starting point: they wanted to learn. Motivation was not the issue. None of the apps made them feel real progress.`,
+    archAlt: 'Architecture and flows',
+    archTitle: 'Architecture and flows',
+    archText:
+      'The experience is structured around five areas: Home, Learn, Quiz, Quests, and Profile. We designed fluid paths for duels, themed quizzes, and guided learning while keeping navigation clear.',
+    uiTitle: 'UI design',
+    uiText: `The UI was designed to simplify multiple formats (lessons, quizzes, duels, quests) through reusable patterns: content cards, progress blocks, quiz modules, and a consistent header.
+
+Information hierarchy was built for immediacy: clear titles, visible primary actions, and accessible secondary actions without distraction.
+
+Feedback (answers, progress, score) is central to support the gamified layer and keep users engaged.
+The whole product aims for a predictable and fluid interface where each screen reuses the same logic to reduce cognitive load.`,
+    dsAlt: 'Design system',
+    dsTitle: 'Design system',
+    dsText:
+      'The project covered five sections (Home, Learn, Quiz, Quests, Profile) developed in parallel by two designers. Without a shared foundation, sections would diverge. We built a complete design system: tokens, foundations, documented components by usage, templates, and documentation published on Zeroheight and synced from Figma.',
+    testsAlt: 'User testing',
+    testsTitle: 'User testing',
+    testsText: `Tests were run with 3 participants across two distinct flows.
+
+Both flows were completed with a 100% success rate. Navigation was fluid and nobody got lost.
+
+However, testing surfaced specific issues. In the quiz flow: confusion about "known answers" displayed on the first screen before playing, and inability to invite multiple friends. In the Learn flow: non-clickable buttons in the prototype, missing page title, and no way to exit then resume a lesson.
+
+What changed: clarified initial quiz screen, redesigned end-of-game summary, and added missing states.`,
+    uiAlt1: 'Lessons',
+    uiAlt2: 'Solo quizzes',
+    uiAlt3: 'Player duels',
+    uxAlt2: 'Interviews',
+    uxAlt3: 'Features'
+  }
+}
+
+const pageContent = computed(() => PAGE_CONTENT[locale.value] ?? PAGE_CONTENT.fr)
+const projectData = computed(() => getWorksByLocale(locale.value).find((work) => work.route === PROJECT_ROUTE) || null)
+
+if (!projectData.value) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
 
-const uiGridImages = [
-  { src: apprentissage, alt: "Cours" },
-  { src: quiz, alt: "Quizs en solo" },
-  { src: duels, alt: "Duels entre joueurs" }
-]
+const uiGridImages = computed(() => [
+  { src: apprentissage, alt: pageContent.value.uiAlt1 },
+  { src: quiz, alt: pageContent.value.uiAlt2 },
+  { src: duels, alt: pageContent.value.uiAlt3 }
+])
 
-const rechercheUX = [
+const rechercheUX = computed(() => [
   { src: persona, alt: "Persona" },
-  { src: entretiens, mobileSrc: entretiensMobile, alt: "Entretiens" },
-  { src: fonctions, mobileSrc: fonctionsMobile, alt: "Fonctionnalités" }
-]
+  { src: entretiens, mobileSrc: entretiensMobile, alt: pageContent.value.uxAlt2 },
+  { src: fonctions, mobileSrc: fonctionsMobile, alt: pageContent.value.uxAlt3 }
+])
 
-const hasProject = computed(() => Boolean(projectData))
+const hasProject = computed(() => Boolean(projectData.value))
 const projectLabel = computed(() =>
-  hasProject.value ? `Projet ${projectData.title}` : 'Projet introuvable'
+  hasProject.value
+    ? `${locale.value === 'fr' ? 'Projet' : 'Project'} ${projectData.value.title}`
+    : pageContent.value.projectNotFound
 )
 
 const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))

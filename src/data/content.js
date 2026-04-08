@@ -35,7 +35,7 @@ export const works = [
     description:
       'Septième Séance est une plateforme qui permet de trouver rapidement les séances de cinéma autour de soi et d’explorer les films à l’affiche. L’objectif est de proposer une expérience simple, rapide et adaptée au mobile, loin de la complexité des services existants.',
     services: ['Recherche utilisateur', 'UI Design', 'UI Kit', 'Front-end'],
-    team: [{ label: 'Mathieu Lefebvre', href: 'https://bento.me/matlfb', external: true }],
+    team: [{ label: 'Mathieu Lefebvre', href: 'https://matlfb.com/', external: true }],
     links: [{ label: 'septiemeseance.fr', href: 'https://septiemeseance.fr', secondary: true, external: true }],
     tags: ['Freelance', 'UX/UI Design', 'Front-end'],
     cover: septiemeCover,
@@ -330,3 +330,130 @@ export const playgroundItems = [
   //   ]
   // }
 ]
+
+const WORKS_EN_TRANSLATIONS = {
+  lira: {
+    intro:
+      'Language learning tool that turns reading into memorable practice through a contextual dictionary, spaced-repetition algorithms, and personalized crosswords.',
+    description:
+      'Language learning tool that turns reading into memorable practice through a contextual dictionary, spaced-repetition algorithms, and personalized crosswords.',
+    tags: [{ label: 'Side project', color: '#4A6741', textColor: 'white' }, 'Product Design']
+  },
+  septiemeseance: {
+    intro:
+      'Online platform designed to quickly browse nearby cinema showtimes and discover movies currently in theaters.',
+    description:
+      'Septieme Seance is a platform designed to quickly find nearby cinema showtimes and discover movies currently in theaters. The goal was to provide a simple, fast, mobile-first experience, far from the complexity of existing services.',
+    services: ['User Research', 'UI Design', 'UI Kit', 'Front-end'],
+    tags: ['Freelance', 'UX/UI Design', 'Front-end']
+  },
+  talkie: {
+    intro:
+      'Talkie is a language-learning app designed to make progress more playful, personalized, and immersive through interactive lessons, quests, multiplayer, and a complete design system.',
+    description:
+      'We designed Talkie as a modern alternative to traditional language-learning apps: more dynamic, more flexible, and rooted in real-world scenarios, with a strong social layer. The project includes end-to-end UX research, product architecture, UI mockups, and a documented design system.',
+    services: ['User Research', 'UI Design', 'Design System'],
+    tags: ['School project', 'UX/UI Design', 'Design System']
+  },
+  alpine: {
+    title: 'Alpine Infotainment',
+    intro:
+      'Design of a complete infotainment experience for a fictional electric Alpine A110, shaped to reflect the brand identity and support the driver.',
+    description:
+      'Design of a complete interface for a fictional electric Alpine A110. The infotainment system was crafted for both the driver and the brand, covering core features: GPS, vehicle controls, climate, settings, phone, music, connectivity, and the required hazard control.',
+    tags: ['School project', 'UI Design']
+  }
+}
+
+const PLAYGROUND_EN_TRANSLATIONS = {
+  0: {
+    modalText: 'Book Club app - Discover, read, share, and organize.',
+    mediaAlt: ['Book Club voting flow video', 'Book Club app concept', 'Voting in Book Club app']
+  },
+  2: {
+    mediaAlt: ['Camera app and Library', 'Landscape mode']
+  },
+  3: {
+    modalText:
+      'E-commerce proposal for Au Baron brewery. Product page, cross-sells, upsells, and taste preferences.',
+    mediaAlt: ['Product page overview', 'Mobile product page', 'Cross-sells', 'Upsells and preference quiz']
+  },
+  4: {
+    modalText:
+      'Browser extension concept - Save vocabulary from YouTube to Anki flashcards',
+    mediaAlt: ['Browser extension concept - Save vocabulary from YouTube to Anki flashcards']
+  },
+  5: {
+    modalText: 'Cinema booking application',
+    mediaAlt: ['Flim - Movie session booking', 'Flim - iOS Live Activity']
+  },
+  7: {
+    modalText: 'School project - E-commerce website design and integration in Framer for a fictional product'
+  }
+}
+
+const cloneTag = (tag) => {
+  if (typeof tag === 'string') return tag
+  return { ...tag }
+}
+
+const cloneWork = (work) => ({
+  ...work,
+  services: Array.isArray(work.services) ? [...work.services] : [],
+  team: Array.isArray(work.team) ? work.team.map((item) => ({ ...item })) : [],
+  links: Array.isArray(work.links) ? work.links.map((item) => ({ ...item })) : [],
+  tags: Array.isArray(work.tags) ? work.tags.map(cloneTag) : []
+})
+
+export const getWorksByLocale = (locale = 'fr') => {
+  if (locale === 'fr') {
+    return works.map(cloneWork)
+  }
+
+  return works.map((work) => {
+    const translated = WORKS_EN_TRANSLATIONS[work.id]
+    if (!translated) return cloneWork(work)
+
+    return {
+      ...cloneWork(work),
+      title: translated.title ?? work.title,
+      intro: translated.intro ?? work.intro,
+      description: translated.description ?? work.description,
+      services: translated.services ?? work.services,
+      tags: translated.tags ?? work.tags
+    }
+  })
+}
+
+export const getPlaygroundItemsByLocale = (locale = 'fr') => {
+  const base = playgroundItems.map((item) => ({
+    ...item,
+    media: Array.isArray(item.media) ? item.media.map((media) => ({ ...media })) : []
+  }))
+
+  if (locale === 'fr') {
+    return base
+  }
+
+  return base.map((item, index) => {
+    const translated = PLAYGROUND_EN_TRANSLATIONS[index]
+    if (!translated) return item
+
+    const localizedMedia = item.media.map((media, mediaIndex) => {
+      if (!translated.mediaAlt || !translated.mediaAlt[mediaIndex]) {
+        return media
+      }
+
+      return {
+        ...media,
+        alt: translated.mediaAlt[mediaIndex]
+      }
+    })
+
+    return {
+      ...item,
+      modalText: translated.modalText ?? item.modalText,
+      media: localizedMedia
+    }
+  })
+}

@@ -28,10 +28,10 @@
             class="playground-modal__content"
             role="dialog"
             aria-modal="true"
-            :aria-label="selectedItem?.title || 'Aperçu Playground'"
+            :aria-label="selectedItem?.title || labels.modalPreview"
           >
-            <button class="playground-modal__close" type="button" aria-label="Fermer l’aperçu" @click="closeModal">
-              (fermer)
+            <button class="playground-modal__close" type="button" :aria-label="labels.closePreview" @click="closeModal">
+              {{ labels.closeAction }}
             </button>
 
             <div class="playground-modal__media">
@@ -65,7 +65,7 @@
                 v-if="hasMultipleMedia && hasPrev"
                 class="playground-modal__control playground-modal__control--prev"
                 type="button"
-                aria-label="Voir le visuel précédent"
+                :aria-label="labels.prevVisual"
                 @click.stop="goToPrevMedia"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -76,7 +76,7 @@
                 v-if="hasMultipleMedia && hasNext"
                 class="playground-modal__control playground-modal__control--next"
                 type="button"
-                aria-label="Voir le visuel suivant"
+                :aria-label="labels.nextVisual"
                 @click.stop="goToNextMedia"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -107,11 +107,32 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PlaygroundCard from '@/components/PlaygroundCard.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
 import ModalVideoPlayer from '@/components/ModalVideoPlayer.vue'
+import { useLocale } from '@/i18n'
 
 const props = defineProps({
   items: {
     type: Array,
     required: true
+  }
+})
+const { locale } = useLocale()
+const labels = computed(() => {
+  if (locale.value === 'en') {
+    return {
+      modalPreview: 'Playground preview',
+      closePreview: 'Close preview',
+      closeAction: '(close)',
+      prevVisual: 'See previous visual',
+      nextVisual: 'See next visual'
+    }
+  }
+
+  return {
+    modalPreview: 'Aperçu playground',
+    closePreview: "Fermer l'aperçu",
+    closeAction: '(fermer)',
+    prevVisual: 'Voir le visuel précédent',
+    nextVisual: 'Voir le visuel suivant'
   }
 })
 

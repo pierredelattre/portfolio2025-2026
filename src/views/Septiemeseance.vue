@@ -4,33 +4,22 @@
       :description="projectData.description" :services="projectData.services" :team="projectData.team"
       :links="projectData.links" />
     <section v-else class="project__error">
-      <h2>Projet introuvable</h2>
-      <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
+      <h2>{{ pageContent.projectNotFound }}</h2>
+      <RouterLink to="/" data-link>{{ pageContent.backToHome }}</RouterLink>
     </section>
 
-    <ColumnTextLayout :image-src="contextImage" image-alt="Vue d’écran présentant le contexte du service"
-      title="Contexte & Enjeu"
-      text="La plupart des services existants autour du cinéma proposent beaucoup d’informations, mais rarement de manière directe. L’utilisateur doit souvent naviguer entre plusieurs écrans avant d’avoir les projections proches de lui. Certaines plateformes ne tiennent pas compte de la position de l’utilisateur, même lorsqu’il l’a autorisée, et obligent à passer par une fiche film ou une fiche cinéma avant d’afficher des résultats.
-
-L’enjeu était de créer un service plus fluide, qui répond vraiment au besoin central : voir rapidement ce qui se joue autour de soi et choisir une séance sans perdre de temps.
-
-Le service a fonctionné jusqu’à la restriction d’accès à l’API tierce utilisée pour les données de séances. Le projet est resté dans ce portfolio parce qu’il représente un cycle complet, de la recherche au lancement." />
+    <ColumnTextLayout :image-src="contextImage" :image-alt="pageContent.contextAlt" :title="pageContent.contextTitle"
+      :text="pageContent.contextText" />
 
     <ImageFullWidthLayout secondary :image-mobile-src="geolocationImageMobile" :image-src="geolocationImage"
-      image-alt="Géolocalisation ou recherche manuelle" title="Géolocalisation ou recherche manuelle"
-      text="L’accueil propose soit d’activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation permet d’afficher les cinémas dans un périmètre proche (modifiable) dès qu’elle est autorisée. La recherche est, quant à elle, conçue pour être rapide, tolérante aux fautes de frappe et dôtée d'autocomplétion." />
+      :image-alt="pageContent.geoAlt" :title="pageContent.geoTitle" :text="pageContent.geoText" />
 
-    <GridScrollLayout :images="gridScrollImages" title="Filtres de recherche" :text="gridScrollFiltersText" />
+    <GridScrollLayout :images="gridScrollImages" :title="pageContent.filtersTitle" :text="gridScrollFiltersText" />
 
     <ImageFullWidthLayout secondary :image-mobile-src="projectionsImageMobile" :image-src="projectionsImage"
-      image-alt="Liste des projections autour" title="Liste des projections autour"
-      text="Une fois la géolocalisation acceptée par l'utilisateur, la liste des films projetés dans le périmètre défini apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple, et suffisamment compacte pour permettre un balayage rapide." />
+      :image-alt="pageContent.listAlt" :title="pageContent.listTitle" :text="pageContent.listText" />
 
-    <GridScrollLayout :images="upgrades" title="Futures améliorations" text="Lors des tests, plusieurs utilisateurs ont tapé le nom de leur cinéma plutôt que d'activer la géolocalisation. Ils cherchaient le programme de la salle sur la semaine, pas une séance précise. Ça a conduit à deux décisions : une recherche par nom de cinéma avec autocomplétion, et une vue salle sur plusieurs jours. Un autre utilisateur voulait croiser les résultats avec sa watchlist Letterboxd ou Trakt. Ce cas est dans les améliorations ci-dessous.
-
-Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. 
-    
-    Lorsqu'une recherche a été effectué, afficher le nombre de résultats en temps réel lors de la sélection des filtres dans la bottom sheet mobile ainsi qu'un bouton réinitialiser les filtres. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées." />
+    <GridScrollLayout :images="upgrades" :title="pageContent.futureTitle" :text="pageContent.futureText" />
   </section>
 </template>
 
@@ -42,7 +31,8 @@ import ColumnTextLayout from '@/components/layouts/ColumnTextLayout.vue'
 import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
-import { works } from '@/data/content'
+import { getWorksByLocale } from '@/data/content'
+import { useLocale } from '@/i18n'
 import { resolveOptimizedImageSrc } from '@/utils/image'
 
 import projectBackground from '@/assets/septiemeseance/002.jpg?optimized'
@@ -64,44 +54,120 @@ import letterboxdImage from '@/assets/septiemeseance/letterboxd.jpg?optimized'
 import letterboxdMobileImage from '@/assets/septiemeseance/mobile-letterboxd.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
 const PROJECT_ROUTE = '/projet/septiemeseance'
-const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
+const { locale } = useLocale()
 
-if (!projectData) {
+const PAGE_CONTENT = {
+  fr: {
+    projectNotFound: 'Projet introuvable',
+    backToHome: '← Retour à l’accueil',
+    contextAlt: 'Vue écran du contexte du service',
+    contextTitle: 'Contexte et enjeu',
+    contextText: `La plupart des services existants autour du cinéma proposent beaucoup d'informations, mais rarement de manière directe. L'utilisateur doit souvent naviguer entre plusieurs écrans avant d'avoir les projections proches de lui. Certaines plateformes ne tiennent pas compte de la position de l'utilisateur, même lorsqu'il l'a autorisée.
+
+L'enjeu était de créer un service plus fluide qui répond vraiment au besoin central : voir rapidement ce qui se joue autour de soi et choisir une séance sans perdre de temps.
+
+Le service a fonctionné jusqu'à la restriction d'accès à l'API tierce utilisée pour les données de séances. Le projet reste dans ce portfolio car il représente un cycle complet, de la recherche au lancement.`,
+    geoAlt: 'Géolocalisation ou recherche manuelle',
+    geoTitle: 'Géolocalisation ou recherche manuelle',
+    geoText:
+      "L'accueil propose soit d'activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation affiche les cinémas à proximité (périmètre modifiable). La recherche est rapide, tolérante aux fautes et dotée d'autocomplétion.",
+    filtersTitle: 'Filtres de recherche',
+    listAlt: 'Liste des projections autour',
+    listTitle: 'Liste des projections autour',
+    listText:
+      "Une fois la géolocalisation acceptée, la liste des films projetés dans le périmètre apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple et compacte.",
+    futureTitle: 'Futures améliorations',
+    futureText: `Lors des tests, plusieurs utilisateurs ont tapé le nom de leur cinéma plutôt que d'activer la géolocalisation. Ils cherchaient le programme de la salle sur la semaine. Cela a conduit à deux décisions : recherche par cinéma avec autocomplétion, et vue salle sur plusieurs jours.
+
+Parmi les évolutions prévues : affichage des prix, mise en avant de la prochaine séance, alertes mobiles personnalisées, détails de séance (3D, avant-première), notes/avis, distinctions, compteur de résultats en temps réel dans la bottom sheet, bouton de réinitialisation des filtres, et connexion Letterboxd/Trakt.`,
+    filtersDescription:
+      'Pour accompagner la recherche, des filtres ont été ajoutés afin de permettre un tri plus précis selon les situations.',
+    filtersOne:
+      'Certains filtres affinent les résultats : genre, année, durée et option films récents vs films cultes encore projetés. Les utilisateurs peuvent aussi filtrer par abonnements acceptés (UGC, Pathé...).',
+    filtersTwo:
+      "L'utilisateur peut définir la distance autour du point géolocalisé ou autour de la ville/cinéma choisi manuellement. Il peut aussi choisir la date souhaitée pour voir les projections correspondantes.",
+    filtersThree:
+      "La gestion des langues et sous-titres fait aussi partie des options. L'idée est de laisser chacun adapter l'affichage selon ses contraintes.",
+    altFilters1: 'Filtrer les films',
+    altFilters2: 'Périmètre de recherche et date',
+    altFilters3: 'Choix des langues et sous-titres',
+    altUpgrades1: 'Ajout des notes et critiques',
+    altUpgrades2: "Alerte de projection autour de chez soi",
+    altUpgrades3: 'Connexion Letterboxd'
+  },
+  en: {
+    projectNotFound: 'Project not found',
+    backToHome: '← Back to home',
+    contextAlt: 'Service context overview',
+    contextTitle: 'Context and challenge',
+    contextText: `Most existing cinema services provide a lot of information, but rarely in a direct way. Users often have to navigate multiple screens before seeing nearby showtimes. Some platforms still ignore user location even when permission is granted.
+
+The challenge was to create a more fluid service focused on the core need: quickly see what is playing nearby and pick a session without friction.
+
+The service ran until access to the third-party showtimes API was restricted. It remains in this portfolio because it represents a full cycle, from research to launch.`,
+    geoAlt: 'Geolocation or manual search',
+    geoTitle: 'Geolocation or manual search',
+    geoText:
+      'Home offers two options: enable geolocation, or manually search by city, cinema, or movie. Geolocation instantly shows nearby cinemas (with adjustable radius). Search is fast, typo-tolerant, and includes autocomplete.',
+    filtersTitle: 'Search filters',
+    listAlt: 'Nearby showtimes list',
+    listTitle: 'Nearby showtimes list',
+    listText:
+      'Once geolocation is enabled, projected movies in the selected area appear. Cinemas are sorted by distance with quick access to same-day sessions. The layout is mobile-first: readable, simple, and compact for rapid scanning.',
+    futureTitle: 'Future improvements',
+    futureText: `User tests showed that several people searched by cinema name instead of enabling geolocation. They wanted a weekly theater schedule, not only a single session view. This led to two roadmap decisions: cinema-name search with autocomplete, and multi-day cinema pages.
+
+Planned improvements include prices, highlighting the next session directly in results, personalized mobile alerts, session-specific metadata (3D, premieres), ratings/reviews, distinctions, real-time result counts in mobile filter sheets, reset filters action, and Letterboxd/Trakt integrations.`,
+    filtersDescription:
+      'To support search, filters were added to enable more precise and useful sorting across different user contexts.',
+    filtersOne:
+      'Some filters refine results by genre, year, duration, and by distinguishing recent movies from cult classics still being screened. Users can also filter by accepted subscriptions (UGC, Pathe...).',
+    filtersTwo:
+      'Users can define distance around the detected location or around a manually selected city/cinema. They can also set a desired date to view matching showtimes.',
+    filtersThree:
+      'Language and subtitle preferences are also available. The goal is to let users tailor the experience to their constraints.',
+    altFilters1: 'Filter movies',
+    altFilters2: 'Search radius and date',
+    altFilters3: 'Language and subtitle preferences',
+    altUpgrades1: 'Ratings and reviews',
+    altUpgrades2: 'Showtime notifications nearby',
+    altUpgrades3: 'Letterboxd account link'
+  }
+}
+
+const pageContent = computed(() => PAGE_CONTENT[locale.value] ?? PAGE_CONTENT.fr)
+const projectData = computed(() => getWorksByLocale(locale.value).find((work) => work.route === PROJECT_ROUTE) || null)
+
+if (!projectData.value) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
 
-const gridScrollImages = [
-  { src: filterFilmsImage, mobileSrc: filterFilmsMobileImage, alt: 'Filtrer les films' },
-  { src: filterPerimeterImage, mobileSrc: filterPerimeterMobileImage, alt: 'Périmètre de recherche & date' },
-  { src: filterLanguageImage, mobileSrc: filterLanguageMobileImage, alt: 'Choix des langues et des sous-titres' }
-]
+const gridScrollImages = computed(() => [
+  { src: filterFilmsImage, mobileSrc: filterFilmsMobileImage, alt: pageContent.value.altFilters1 },
+  { src: filterPerimeterImage, mobileSrc: filterPerimeterMobileImage, alt: pageContent.value.altFilters2 },
+  { src: filterLanguageImage, mobileSrc: filterLanguageMobileImage, alt: pageContent.value.altFilters3 }
+])
 
-const upgrades = [
-  { src: notesImage, alt: "Ajout des notes et critiques des films" },
-  { src: alertsImage, mobileSrc: alertsImageMobile, alt: "Être notifié de la projection d'un film autour de chez soi" },
-  { src: letterboxdImage, mobileSrc: letterboxdMobileImage, alt: "Lier son compte à Letterboxd" }
-]
+const upgrades = computed(() => [
+  { src: notesImage, alt: pageContent.value.altUpgrades1 },
+  { src: alertsImage, mobileSrc: alertsImageMobile, alt: pageContent.value.altUpgrades2 },
+  { src: letterboxdImage, mobileSrc: letterboxdMobileImage, alt: pageContent.value.altUpgrades3 }
+])
 
-const gridScrollFiltersText = [
+const gridScrollFiltersText = computed(() => [
   {
-    description:
-      'Pour accompagner la recherche, des filtres ont été ajoutés afin de permettre un tri plus précis et plus utile selon les situations.',
-    1: 'Certains filtres viennent affiner les résultats, notamment le genre du film, son année, sa durée et une option permettant de distinguer les films récents des “films cultes” encore projetés. Les utilisateurs peuvent également filtrer selon les abonnements acceptés par chaque salle, par exemple UGC ou Pathé.',
-    2: 'L’utilisateur peut définir la distance autour du point détecté en géolocalisation ou autour de la ville/cinéma qu’il a choisi manuellement. Cela permet d’élargir ou de réduire facilement la zone couverte. Il peut aussi choisir la date de sa séance souhaitée pour voir les projections à cette date.',
-    3: 'La gestion des langues et des sous-titres fait aussi partie des options disponibles. L’idée générale est de laisser à chacun la possibilité d’adapter l’affichage en fonction de ses contraintes. On retrouve aussi ces filtres sur la page film afin de filter dans les séances.',
+    description: pageContent.value.filtersDescription,
+    1: pageContent.value.filtersOne,
+    2: pageContent.value.filtersTwo,
+    3: pageContent.value.filtersThree,
   }
-]
+])
 
-const gridScrollUpgradesText = [
-  {
-    description:
-      "Plusieurs évolutions sont prévues : l’affichage des prix, la mise en avant de la prochaine séance directement dans les résultats, ainsi qu’une version mobile avec alertes personnalisées (nouveau film, séance proche, rappel dans une salle favorite). S’ajouteraient aussi les infos spécifiques des séances (3D, avant-première…), l’intégration de notes/avis et des distinctions des films. Lorsqu'une recherche a été effectué, afficher le nombre de résultats en temps réel lors de la sélection des filtres dans la bottom sheet mobile ainsi qu'un bouton réinitialiser les filtres. Enfin, une connexion à Letterboxd ou Trakt permettrait de n’afficher que les séances issues de sa watchlist et d’activer des alertes dédiées."
-  }
-]
-
-const hasProject = computed(() => Boolean(projectData))
+const hasProject = computed(() => Boolean(projectData.value))
 const projectLabel = computed(() =>
-  hasProject.value ? `Projet ${projectData.title}` : 'Projet introuvable'
+  hasProject.value
+    ? `${locale.value === 'fr' ? 'Projet' : 'Project'} ${projectData.value.title}`
+    : pageContent.value.projectNotFound
 )
 
 const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))

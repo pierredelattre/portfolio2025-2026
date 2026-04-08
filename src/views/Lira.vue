@@ -4,54 +4,23 @@
       :description="projectData.description" :services="projectData.services" :team="projectData.team"
       :links="projectData.links" />
     <section v-else class="project__error">
-      <h2>Projet introuvable</h2>
-      <RouterLink to="/" data-link>← Retour à l’accueil</RouterLink>
+      <h2>{{ pageContent.projectNotFound }}</h2>
+      <RouterLink to="/" data-link>{{ pageContent.backToHome }}</RouterLink>
     </section>
 
-    <ColumnTextLayout :image-src=contexte :video-src="liraDemo" :video-mobile-src="liraDemoMobile" image-alt="Contexte & Enjeux" title="Contexte & Enjeux"
-      text="Les apps d'apprentissage des langues ont toutes un angle mort différent.
+    <ColumnTextLayout :image-src=contexte :video-src="liraDemo" :video-mobile-src="liraDemoMobile"
+      :image-alt="pageContent.contextAlt" :title="pageContent.contextTitle" :text="pageContent.contextText" />
 
-Duolingo construit l'habitude mais le contenu est artificiel et le plafond B1-B2 arrive vite. Anki a l'algorithme le plus rigoureux du marché, mais préparer ses cartes prend plus de temps que les réviser. LingQ propose l'approche la plus proche de ce que je cherchais, lire du contenu authentique avec une traduction intégrée, mais l'interface reste difficile à prendre en main.
+    <GridScrollLayoutRows :images="rechercheUX" :title="pageContent.researchTitle" :text="pageContent.researchText" />
 
-Lira a été construit pour répondre à un besoin : lire du vrai contenu, sauvegarder les mots en contexte, les réviser ensuite avec un algorithme sérieux. Pas de configuration, pas de gamification. 
+    <GridScrollLayout :images="reader" :title="pageContent.readerTitle" :text="pageContent.readerText" />
 
-Le projet est en production depuis mars 2026." />
+    <ImageFullWidthLayout :image-src=biblio :image-mobile-src=biblioMobile secondary :image-alt="pageContent.libraryAlt"
+      :title="pageContent.libraryTitle" :text="pageContent.libraryText" />
 
-    <GridScrollLayoutRows :images="rechercheUX" title="Recherche & Positionnement"
-      text="La recherche s'est faite en desk research avant le lancement : Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), forums LingQ, reviews App Store, exports en batch de commentaires sur des vidéos YouTube. Pas d'interviews primaires à ce stade.
+    <GridScrollLayout :images="revision" :title="pageContent.reviewTitle" :text="pageContent.reviewText" />
 
-Ce type de source a un biais évident : les utilisateurs qui postent sont plus frustrés que la moyenne. J'en ai tenu compte.
-
-Ce qui ressort : le passage B1-B2 est la zone de blocage la plus décrite. Les utilisateurs avancés convergent naturellement vers la lecture, ce n'est pas un besoin à créer. Un besoin de vocabulaire ciblé par domaine ou contexte ressort aussi clairement. La création manuelle de cartes Anki est souvent citée comme raison d'abandon.
-
-J'ai construit trois proto-personas depuis ces données : le polyglotte qui connaît le FSRS et veut zéro friction, l'expatrié qui veut lire la presse locale sans perdre le fil de sa lecture, et celui qui a des mois de streak Duolingo mais ne sent plus de progression." />
-
-    <GridScrollLayout :images="reader" title="Le reader"
-      text="Le reader est la partie centrale du projet. L'objectif était que la lecture reste l'activité principale, pas la traduction.
-
-Un clic sur un mot affiche un panneau : deux onglets : traduction et définition. L'utilisateur voit la phonétique, peut lancer une prononciation audio de l'expression ou du mot via un algorithme local de synthèse vocale (PiperTTS). Sans changer de page, sans perdre le fil du texte. Un clic de plus pour sauvegarder. La carte FSRS est générée automatiquement avec la phrase source comme contexte de mémorisation." />
-
-    <ImageFullWidthLayout :image-src=biblio :image-mobile-src=biblioMobile secondary image-alt="Bibliothèque"
-      title="Bibliothèque & import"
-      text="L'import accepte une URL, un texte, un EPUB ou un PDF. L'utilisateur lit ce qu'il veut, sans bibliothèque imposée. 
-      
-      Pour ceux qui cherchent un point de départ, Lira intègre Project Gutenberg : plusieurs milliers de livres du domaine public, directement dans l'app. Romans, nouvelles, essais en espagnol, allemand, anglais, italien et d'autres langues. 
-      
-      Les textes importés et les livres Gutenberg s'organisent dans la même bibliothèque personnelle. Chaque texte affiche la progression de lecture et le nombre de mots sauvegardés." />
-
-    <GridScrollLayout :images="revision" title="Révision & Mots croisés"
-      text="La révision utilise le FSRS avec un rappel contextuel : le mot est masqué dans sa phrase d'origine, et l'utilisateur doit le retrouver. La mémorisation passe par la phrase, pas par le mot isolé.
-
-Après quelques minutes de lecture et au moins 3 mots sauvegardés, un mini-quiz apparaît sur les mots de la session en cours. Court, optionnel.
-
-Les mots croisés sont générés depuis le vocabulaire personnel. Une façon de réviser différente du format flashcard, pour les sessions où l'on veut changer de registre." />
-
-    <GridScrollLayout :images="design" title="Design"
-      text="La police de lecture est Literata, une serif taillée pour les longs textes sur écran. L'interface utilise Satoshi. Le fond est un blanc cassé chaud plutôt qu'un blanc neutre. Deux couleurs : un vert forêt pour les actions et la marque, un brun foncé pour le texte.
-
-Pas de streaks, pas de notifications de pression, pas de classements. La progression est personnelle.
-
-Le dark mode reprend les mêmes tokens avec un fond très sombre et le vert adapté au contraste." />
+    <GridScrollLayout :images="design" :title="pageContent.designTitle" :text="pageContent.designText" />
   </section>
 </template>
 
@@ -64,7 +33,8 @@ import ImageFullWidthLayout from '@/components/layouts/ImageFullWidthLayout.vue'
 import GridScrollLayout from '@/components/layouts/GridScrollLayout.vue'
 import GridScrollLayoutRows from '@/components/layouts/GridScrollLayoutRows.vue'
 import { usePageLoaded } from '@/composables/usePageLoaded'
-import { works } from '@/data/content'
+import { getWorksByLocale } from '@/data/content'
+import { useLocale } from '@/i18n'
 import { resolveOptimizedImageSrc } from '@/utils/image'
 
 import projectBackground from '@/assets/lira/lira-banner.jpg?optimized'
@@ -95,39 +65,151 @@ import profil from '@/assets/lira/profil.jpg?optimized'
 import profilMobile from '@/assets/lira/profil-mobile.jpg?optimized'
 
 const PROJECT_ROUTE = '/projet/lira'
-const projectData = works.find((work) => work.route === PROJECT_ROUTE) || null
+const { locale } = useLocale()
 
-if (!projectData) {
+const PAGE_CONTENT = {
+  fr: {
+    projectNotFound: 'Projet introuvable',
+    backToHome: '← Retour à l’accueil',
+    contextAlt: 'Contexte et enjeux',
+    contextTitle: 'Contexte et enjeux',
+    contextText: `Les apps d'apprentissage des langues ont toutes un angle mort différent.
+
+Duolingo construit l'habitude mais le contenu est artificiel et le plafond B1-B2 arrive vite. Anki a l'algorithme le plus rigoureux du marché, mais préparer ses cartes prend plus de temps que les réviser. LingQ propose l'approche la plus proche de ce que je cherchais, lire du contenu authentique avec une traduction intégrée, mais l'interface reste difficile à prendre en main.
+
+Lira a été construit pour répondre à un besoin : lire du vrai contenu, sauvegarder les mots en contexte, les réviser ensuite avec un algorithme sérieux. Pas de configuration, pas de gamification.
+
+Le projet est en production depuis mars 2026.`,
+    researchTitle: 'Recherche et positionnement',
+    researchText: `La recherche s'est faite en desk research avant le lancement : Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), forums LingQ, reviews App Store, exports en batch de commentaires sur des vidéos YouTube. Pas d'interviews primaires à ce stade.
+
+Ce type de source a un biais évident : les utilisateurs qui postent sont plus frustrés que la moyenne. J'en ai tenu compte.
+
+Ce qui ressort : le passage B1-B2 est la zone de blocage la plus décrite. Les utilisateurs avancés convergent naturellement vers la lecture, ce n'est pas un besoin à créer. Un besoin de vocabulaire ciblé par domaine ou contexte ressort aussi clairement. La création manuelle de cartes Anki est souvent citée comme raison d'abandon.
+
+J'ai construit trois proto-personas depuis ces données : le polyglotte qui connaît le FSRS et veut zéro friction, l'expatrié qui veut lire la presse locale sans perdre le fil de sa lecture, et celui qui a des mois de streak Duolingo mais ne sent plus de progression.`,
+    readerTitle: 'Le reader',
+    readerText: `Le reader est la partie centrale du projet. L'objectif était que la lecture reste l'activité principale, pas la traduction.
+
+Un clic sur un mot affiche un panneau : deux onglets : traduction et définition. L'utilisateur voit la phonétique, peut lancer une prononciation audio de l'expression ou du mot via un algorithme local de synthèse vocale (PiperTTS). Sans changer de page, sans perdre le fil du texte. Un clic de plus pour sauvegarder. La carte FSRS est générée automatiquement avec la phrase source comme contexte de mémorisation.`,
+    libraryAlt: 'Bibliothèque',
+    libraryTitle: 'Bibliothèque et import',
+    libraryText: `L'import accepte une URL, un texte, un EPUB ou un PDF. L'utilisateur lit ce qu'il veut, sans bibliothèque imposée.
+
+Pour ceux qui cherchent un point de départ, Lira intègre Project Gutenberg : plusieurs milliers de livres du domaine public, directement dans l'app. Romans, nouvelles, essais en espagnol, allemand, anglais, italien et d'autres langues.
+
+Les textes importés et les livres Gutenberg s'organisent dans la même bibliothèque personnelle. Chaque texte affiche la progression de lecture et le nombre de mots sauvegardés.`,
+    reviewTitle: 'Révision et mots croisés',
+    reviewText: `La révision utilise le FSRS avec un rappel contextuel : le mot est masqué dans sa phrase d'origine, et l'utilisateur doit le retrouver. La mémorisation passe par la phrase, pas par le mot isolé.
+
+Après quelques minutes de lecture et au moins 3 mots sauvegardés, un mini-quiz apparaît sur les mots de la session en cours. Court, optionnel.
+
+Les mots croisés sont générés depuis le vocabulaire personnel. Une façon de réviser différente du format flashcard, pour les sessions où l'on veut changer de registre.`,
+    designTitle: 'Design',
+    designText: `La police de lecture est Literata, une serif taillée pour les longs textes sur écran. L'interface utilise Satoshi. Le fond est un blanc cassé chaud plutôt qu'un blanc neutre. Deux couleurs : un vert forêt pour les actions et la marque, un brun foncé pour le texte.
+
+Pas de streaks, pas de notifications de pression, pas de classements. La progression est personnelle.
+
+Le dark mode reprend les mêmes tokens avec un fond très sombre et le vert adapté au contraste.`,
+    revisionAlt1: 'Mots croisés',
+    revisionAlt2: 'Flashcards en quiz',
+    revisionAlt3: 'Statistiques',
+    designAlt2: 'Dark mode',
+    designAlt3: 'Profil et paramètres',
+    readerAlt1: 'Persona: polyglotte',
+    readerAlt2: "Persona: travaille à l'étranger",
+    readerAlt3: 'Persona: Duolingo 559 daily streaks'
+  },
+  en: {
+    projectNotFound: 'Project not found',
+    backToHome: '← Back to home',
+    contextAlt: 'Context and challenges',
+    contextTitle: 'Context and challenges',
+    contextText: `Language-learning apps each have their own blind spot.
+
+Duolingo builds habits but its content is artificial, and most learners hit a B1-B2 ceiling quickly. Anki has one of the most rigorous algorithms on the market, but preparing cards often takes longer than reviewing them. LingQ is closer to what I wanted, reading real content with integrated translation, but the interface remains hard to navigate.
+
+Lira was built to solve a simple need: read real content, save words in context, and review them with a serious algorithm. No setup overhead, no gamification.
+
+The product has been live since March 2026.`,
+    researchTitle: 'Research and positioning',
+    researchText: `Research was run as desk research before launch: Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), LingQ forums, App Store reviews, and batch exports of YouTube comments. No primary interviews at this stage.
+
+This data has an obvious bias: users who post are often more frustrated than average. I accounted for that.
+
+Main insight: the B1-B2 transition is the most commonly reported plateau. Advanced learners naturally move toward reading, this is not a need you create. A strong need for domain-specific vocabulary also appeared clearly. Manual Anki card creation is often cited as a dropout reason.
+
+From this data, I built three proto-personas: a polyglot familiar with FSRS who wants zero friction, an expat who wants to read local news without breaking reading flow, and a long-term Duolingo user with a big streak but no real sense of progress.`,
+    readerTitle: 'Reader',
+    readerText: `The reader is the core of the product. The objective was to keep reading as the main activity, not translation.
+
+Clicking a word opens a panel with two tabs: translation and definition. The user sees phonetics and can trigger audio pronunciation for a word or expression using local TTS (PiperTTS). No page switch, no loss of reading flow. One more click saves the word. FSRS cards are generated automatically using the original sentence as memory context.`,
+    libraryAlt: 'Library',
+    libraryTitle: 'Library and import',
+    libraryText: `Import accepts a URL, plain text, EPUB, or PDF. Users read what they want, with no imposed catalog.
+
+For people who want a starting point, Lira integrates Project Gutenberg: thousands of public-domain books directly in the app, including novels, short stories, and essays in Spanish, German, English, Italian, and more.
+
+Imported texts and Gutenberg books live in the same personal library. Each text shows reading progress and saved-word count.`,
+    reviewTitle: 'Review and crosswords',
+    reviewText: `Review uses FSRS with contextual recall: a word is hidden in its original sentence and the learner must retrieve it. Memorization happens through sentence context, not isolated words.
+
+After a few minutes of reading and at least three saved words, a short optional mini-quiz appears for words from the current session.
+
+Crosswords are generated from personal vocabulary. It gives users an alternative review format to classic flashcards.`,
+    designTitle: 'Design',
+    designText: `Reading uses Literata, a serif tuned for long-form screen reading. The interface uses Satoshi. The background is a warm off-white instead of neutral white. Two core colors: a forest green for actions and brand, and a dark brown for text.
+
+No streaks, no pressure notifications, no leaderboards. Progress stays personal.
+
+Dark mode reuses the same tokens with a very dark background and contrast-safe green values.`,
+    revisionAlt1: 'Crosswords',
+    revisionAlt2: 'Flashcard quiz',
+    revisionAlt3: 'Statistics',
+    designAlt2: 'Dark mode',
+    designAlt3: 'Profile and settings',
+    readerAlt1: 'Persona: polyglot',
+    readerAlt2: 'Persona: works abroad',
+    readerAlt3: 'Persona: Duolingo 559 daily streaks'
+  }
+}
+
+const pageContent = computed(() => PAGE_CONTENT[locale.value] ?? PAGE_CONTENT.fr)
+const projectData = computed(() => getWorksByLocale(locale.value).find((work) => work.route === PROJECT_ROUTE) || null)
+
+if (!projectData.value) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
 
-const revision = [
-  { src: cross, alt: "Mots croisés" },
-  { src: quiz, mobileSrc: quizMobile, alt: "Flashcards en quiz" },
-  { src: stats, mobileSrc: statsMobile, alt: "Statistiques" }
-]
+const revision = computed(() => [
+  { src: cross, alt: pageContent.value.revisionAlt1 },
+  { src: quiz, mobileSrc: quizMobile, alt: pageContent.value.revisionAlt2 },
+  { src: stats, mobileSrc: statsMobile, alt: pageContent.value.revisionAlt3 }
+])
 
-const design = [
-  { src: landing, alt: "Landing page" },
-  { src: dark, mobileSrc: darkMobile, alt: "Dark mode" },
-  { src: profil, mobileSrc: profilMobile, alt: "Profil et paramètres" }
-]
+const design = computed(() => [
+  { src: landing, alt: 'Landing page' },
+  { src: dark, mobileSrc: darkMobile, alt: pageContent.value.designAlt2 },
+  { src: profil, mobileSrc: profilMobile, alt: pageContent.value.designAlt3 }
+])
 
-const reader = [
-  { src: reader1, alt: "Persona : Polyglotte" },
-  { src: reader2, mobileSrc: reader2Mobile, alt: "Persona : Travaille à l'étranger" },
-  { src: reader3, mobileSrc: reader3Mobile, alt: "Persona : Duolingo 559 daily streaks" }
-]
+const reader = computed(() => [
+  { src: reader1, alt: pageContent.value.readerAlt1 },
+  { src: reader2, mobileSrc: reader2Mobile, alt: pageContent.value.readerAlt2 },
+  { src: reader3, mobileSrc: reader3Mobile, alt: pageContent.value.readerAlt3 }
+])
 
-const rechercheUX = [
-  { src: persona1, alt: "Persona : Polyglotte" },
-  { src: persona2, alt: "Persona : Travaille à l'étranger" },
-  { src: persona3, alt: "Persona : Duolingo 559 daily streaks" }
-]
+const rechercheUX = computed(() => [
+  { src: persona1, alt: pageContent.value.readerAlt1 },
+  { src: persona2, alt: pageContent.value.readerAlt2 },
+  { src: persona3, alt: pageContent.value.readerAlt3 }
+])
 
-const hasProject = computed(() => Boolean(projectData))
+const hasProject = computed(() => Boolean(projectData.value))
 const projectLabel = computed(() =>
-  hasProject.value ? `Projet ${projectData.title}` : 'Projet introuvable'
+  hasProject.value
+    ? `${locale.value === 'fr' ? 'Projet' : 'Project'} ${projectData.value.title}`
+    : pageContent.value.projectNotFound
 )
 
 const projectBg = computed(() => resolveOptimizedImageSrc(projectBackground))
