@@ -1,6 +1,6 @@
 <template>
   <header id="header">
-     <!-- <button
+    <button
       class="switch"
       type="button"
       :aria-pressed="theme === 'dark'"
@@ -9,7 +9,7 @@
       @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"
       @keydown.space.prevent="toggleTheme"
-    ></button> -->
+    ></button>
     <div class="header__title">
       <RouterLink to="/" class="header__home-link" aria-label="Retour à l’accueil">
         <h1 class="text--secondary">Pierre Delattre</h1>
@@ -48,17 +48,25 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import LinkItem from './LinkItem.vue'
 
 const theme = ref('dark')
 import resumePdf from '@/assets/CV Delattre Pierre.pdf'
 
+const themeLabel = computed(() =>
+  theme.value === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre'
+)
+
 const applyTheme = (value) => {
   if (typeof document === 'undefined') return
   document.documentElement.dataset.theme = value
   theme.value = value
+}
+
+const toggleTheme = () => {
+  applyTheme(theme.value === 'dark' ? 'light' : 'dark')
 }
 
 onMounted(() => {
