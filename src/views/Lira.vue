@@ -38,31 +38,52 @@ import { useLocale } from '@/i18n'
 import { resolveOptimizedImageSrc } from '@/utils/image'
 
 import projectBackground from '@/assets/lira/lira-banner.jpg?optimized'
-import contexte from '@/assets/lira/contexte.jpg?optimized'
+import contexteFr from '@/assets/lira/contexte.jpg?optimized'
+import contexteEn from '@/assets/lira/contexte-EN.jpg?optimized'
 import liraDemo from '@/assets/lira/lira-demo.mp4'
 import liraDemoMobile from '@/assets/lira/lira-demo-mobile.mp4'
-import biblio from '@/assets/lira/biblio.jpg?optimized'
-import biblioMobile from '@/assets/lira/biblio-mobile.jpg?optimized'
-import persona1 from '@/assets/lira/persona-01.jpg?optimized'
-import persona2 from '@/assets/lira/persona-02.jpg?optimized'
-import persona3 from '@/assets/lira/persona-03.jpg?optimized'
-import reader1 from '@/assets/lira/reader-large.jpg?optimized'
-import reader2Mobile from '@/assets/lira/reader-mobile-mobile.jpg?optimized'
-import reader3Mobile from '@/assets/lira/reader-definitions-mobile.jpg?optimized'
-import reader2 from '@/assets/lira/reader-definitions.jpg?optimized'
-import reader3 from '@/assets/lira/reader-mobile.jpg?optimized'
+import biblioFr from '@/assets/lira/biblio.jpg?optimized'
+import biblioEn from '@/assets/lira/biblio-EN.jpg?optimized'
+import biblioMobileFr from '@/assets/lira/biblio-mobile.jpg?optimized'
+import biblioMobileEn from '@/assets/lira/biblio-mobile-EN.jpg?optimized'
+import persona1Fr from '@/assets/lira/persona-01.jpg?optimized'
+import persona1En from '@/assets/lira/persona-01-EN.jpg?optimized'
+import persona2Fr from '@/assets/lira/persona-02.jpg?optimized'
+import persona2En from '@/assets/lira/persona-02-EN.jpg?optimized'
+import persona3Fr from '@/assets/lira/persona-03.jpg?optimized'
+import persona3En from '@/assets/lira/persona-03-EN.jpg?optimized'
+import reader1Fr from '@/assets/lira/reader-large.jpg?optimized'
+import reader1En from '@/assets/lira/reader-large-EN.jpg?optimized'
+import reader2MobileFr from '@/assets/lira/reader-mobile-mobile.jpg?optimized'
+import reader2MobileEn from '@/assets/lira/reader-mobile-mobile-EN.jpg?optimized'
+import reader3MobileFr from '@/assets/lira/reader-definitions-mobile.jpg?optimized'
+import reader3MobileEn from '@/assets/lira/reader-définitions-mobile-EN.jpg?optimized'
+import reader2Fr from '@/assets/lira/reader-definitions.jpg?optimized'
+import reader2En from '@/assets/lira/reader-définitions-EN.jpg?optimized'
+import reader3Fr from '@/assets/lira/reader-mobile.jpg?optimized'
+import reader3En from '@/assets/lira/reader-mobile-EN.jpg?optimized'
 import entretiensMobile from '@/assets/talkie/mobile-entr.jpg?optimized'
 import fonctionsMobile from '@/assets/talkie/mobile-fonctions.jpg?optimized'
-import cross from '@/assets/lira/crossword.jpg?optimized'
-import stats from '@/assets/lira/stats.jpg?optimized'
-import statsMobile from '@/assets/lira/stats-mobile.jpg?optimized'
-import quiz from '@/assets/lira/revision.jpg?optimized'
-import quizMobile from '@/assets/lira/revision-mobile.jpg?optimized'
-import landing from '@/assets/lira/landing.jpg?optimized'
-import dark from '@/assets/lira/dark.jpg?optimized'
-import darkMobile from '@/assets/lira/dark-mobile.jpg?optimized'
-import profil from '@/assets/lira/profil.jpg?optimized'
-import profilMobile from '@/assets/lira/profil-mobile.jpg?optimized'
+import crossFr from '@/assets/lira/crossword.jpg?optimized'
+import crossEn from '@/assets/lira/crossword-EN.jpg?optimized'
+import statsFr from '@/assets/lira/stats.jpg?optimized'
+import statsEn from '@/assets/lira/stats-EN.jpg?optimized'
+import statsMobileFr from '@/assets/lira/stats-mobile.jpg?optimized'
+import statsMobileEn from '@/assets/lira/stats-mobile-EN.jpg?optimized'
+import quizFr from '@/assets/lira/revision.jpg?optimized'
+import quizEn from '@/assets/lira/revision-EN.jpg?optimized'
+import quizMobileFr from '@/assets/lira/revision-mobile.jpg?optimized'
+import quizMobileEn from '@/assets/lira/revision-mobile-EN.jpg?optimized'
+import landingFr from '@/assets/lira/landing.jpg?optimized'
+import landingEn from '@/assets/lira/landing-EN.jpg?optimized'
+import darkFr from '@/assets/lira/dark.jpg?optimized'
+import darkEn from '@/assets/lira/dark-EN.jpg?optimized'
+import darkMobileFr from '@/assets/lira/dark-mobile.jpg?optimized'
+import darkMobileEn from '@/assets/lira/dark-mobile-EN.jpg?optimized'
+import profilFr from '@/assets/lira/profil.jpg?optimized'
+import profilEn from '@/assets/lira/profil-EN.jpg?optimized'
+import profilMobileFr from '@/assets/lira/profil-mobile.jpg?optimized'
+import profilMobileEn from '@/assets/lira/profil-mobile-EN.jpg?optimized'
 
 const PROJECT_ROUTE = '/projet/lira'
 const { locale } = useLocale()
@@ -176,34 +197,64 @@ Dark mode reuses the same tokens with a very dark background and contrast-safe g
 
 const pageContent = computed(() => PAGE_CONTENT[locale.value] ?? PAGE_CONTENT.fr)
 const projectData = computed(() => getWorksByLocale(locale.value).find((work) => work.route === PROJECT_ROUTE) || null)
+const isEnglishLocale = computed(() => locale.value === 'en')
+const localizedImage = (frImage, enImage) => (isEnglishLocale.value ? enImage ?? frImage : frImage)
 
 if (!projectData.value) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
 }
 
 const revision = computed(() => [
-  { src: cross, alt: pageContent.value.revisionAlt1 },
-  { src: quiz, mobileSrc: quizMobile, alt: pageContent.value.revisionAlt2 },
-  { src: stats, mobileSrc: statsMobile, alt: pageContent.value.revisionAlt3 }
+  { src: localizedImage(crossFr, crossEn), alt: pageContent.value.revisionAlt1 },
+  {
+    src: localizedImage(quizFr, quizEn),
+    mobileSrc: localizedImage(quizMobileFr, quizMobileEn),
+    alt: pageContent.value.revisionAlt2
+  },
+  {
+    src: localizedImage(statsFr, statsEn),
+    mobileSrc: localizedImage(statsMobileFr, statsMobileEn),
+    alt: pageContent.value.revisionAlt3
+  }
 ])
 
 const design = computed(() => [
-  { src: landing, alt: 'Landing page' },
-  { src: dark, mobileSrc: darkMobile, alt: pageContent.value.designAlt2 },
-  { src: profil, mobileSrc: profilMobile, alt: pageContent.value.designAlt3 }
+  { src: localizedImage(landingFr, landingEn), alt: 'Landing page' },
+  {
+    src: localizedImage(darkFr, darkEn),
+    mobileSrc: localizedImage(darkMobileFr, darkMobileEn),
+    alt: pageContent.value.designAlt2
+  },
+  {
+    src: localizedImage(profilFr, profilEn),
+    mobileSrc: localizedImage(profilMobileFr, profilMobileEn),
+    alt: pageContent.value.designAlt3
+  }
 ])
 
 const reader = computed(() => [
-  { src: reader1, alt: pageContent.value.readerAlt1 },
-  { src: reader2, mobileSrc: reader2Mobile, alt: pageContent.value.readerAlt2 },
-  { src: reader3, mobileSrc: reader3Mobile, alt: pageContent.value.readerAlt3 }
+  { src: localizedImage(reader1Fr, reader1En), alt: pageContent.value.readerAlt1 },
+  {
+    src: localizedImage(reader2Fr, reader2En),
+    mobileSrc: localizedImage(reader2MobileFr, reader2MobileEn),
+    alt: pageContent.value.readerAlt2
+  },
+  {
+    src: localizedImage(reader3Fr, reader3En),
+    mobileSrc: localizedImage(reader3MobileFr, reader3MobileEn),
+    alt: pageContent.value.readerAlt3
+  }
 ])
 
 const rechercheUX = computed(() => [
-  { src: persona1, alt: pageContent.value.readerAlt1 },
-  { src: persona2, alt: pageContent.value.readerAlt2 },
-  { src: persona3, alt: pageContent.value.readerAlt3 }
+  { src: localizedImage(persona1Fr, persona1En), alt: pageContent.value.readerAlt1 },
+  { src: localizedImage(persona2Fr, persona2En), alt: pageContent.value.readerAlt2 },
+  { src: localizedImage(persona3Fr, persona3En), alt: pageContent.value.readerAlt3 }
 ])
+
+const contexte = computed(() => localizedImage(contexteFr, contexteEn))
+const biblio = computed(() => localizedImage(biblioFr, biblioEn))
+const biblioMobile = computed(() => localizedImage(biblioMobileFr, biblioMobileEn))
 
 const hasProject = computed(() => Boolean(projectData.value))
 const projectLabel = computed(() =>
