@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-# Block temporary build artifacts or source maps if accidentally published
-Disallow: /*.map$
-Disallow: /assets/*.map$
-
