@@ -509,6 +509,7 @@ export function initPageAnimations() {
         '.header__title, .header__cities, .header__services, .header__email, .header__intro, .header__links'
       )
       const themeSwitch = header?.querySelector('.switch') || null
+      const localeSwitch = header?.querySelector('.locale-switch') || null
       const headerPadding = getHeaderPaddingValues()
       const measuredHeaderHeight = header ? header.getBoundingClientRect().height || header.scrollHeight : null
 
@@ -531,6 +532,9 @@ export function initPageAnimations() {
         gsap.set(headerItems, { opacity: 0, y: 20 })
         if (themeSwitch) {
           gsap.set(themeSwitch, { opacity: 0, y: 20 })
+        }
+        if (localeSwitch) {
+          gsap.set(localeSwitch, { opacity: 0, y: 20 })
         }
 
         const tl = gsap.timeline({ delay: 0.4 })
@@ -578,13 +582,18 @@ export function initPageAnimations() {
           tl.fromTo(
             themeSwitch,
             { opacity: 0, y: 20 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: 'power2.out'
-            },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
             switchStart
+          )
+        }
+
+        if (localeSwitch) {
+          const localeSwitchStart = `${introStartLabel}+=0.3`
+          tl.fromTo(
+            localeSwitch,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+            localeSwitchStart
           )
         }
 
