@@ -36,6 +36,16 @@ const messages = {
       resume: 'CV',
       copyright: 'Portfolio 2026'
     },
+    playground: {
+      sectionLabel: 'Playground',
+      modalPreview: 'Aperçu playground',
+      closePreview: "Fermer l'aperçu",
+      closeAction: '(fermer)',
+      prevVisual: 'Voir le visuel précédent',
+      nextVisual: 'Voir le visuel suivant',
+      openProject: 'Ouvrir le projet {title}',
+      projectVisual: 'Visuel du projet {title}'
+    },
     projectType: {
       school: "Cas d'école",
       freelance: 'Freelance',
@@ -72,6 +82,16 @@ const messages = {
       email: 'Email',
       resume: 'Resume',
       copyright: 'Portfolio 2026'
+    },
+    playground: {
+      sectionLabel: 'Playground',
+      modalPreview: 'Playground preview',
+      closePreview: 'Close preview',
+      closeAction: '(close)',
+      prevVisual: 'See previous visual',
+      nextVisual: 'See next visual',
+      openProject: 'Open project {title}',
+      projectVisual: 'Project visual {title}'
     },
     projectType: {
       school: 'School project',
