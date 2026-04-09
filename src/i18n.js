@@ -19,8 +19,8 @@ const messages = {
       resume: 'CV',
       localeSwitchLabel: 'Changer de langue',
       localeButton: {
-        fr: 'Switch to English',
-        en: 'Switch to French'
+        fr: 'English',
+        en: 'Français'
       },
       themeSwitch: {
         darkToLight: 'Passer en mode clair',
@@ -56,8 +56,8 @@ const messages = {
       resume: 'Resume',
       localeSwitchLabel: 'Switch language',
       localeButton: {
-        fr: 'Switch to English',
-        en: 'Switch to French'
+        fr: 'English',
+        en: 'Français'
       },
       themeSwitch: {
         darkToLight: 'Switch to light mode',
