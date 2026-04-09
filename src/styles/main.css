@@ -61,7 +61,7 @@ h6 {
 
 :root[data-theme='light'] {
   --primary: oklch(27% 0 271);
-  --secondary: oklch(60.5% 0 271);
+  --secondary: rgb(118 118 118);
   --inactive: oklch(76% 0 271);
   --surface: oklch(100% 0 275);
 

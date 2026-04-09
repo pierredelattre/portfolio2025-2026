@@ -1,6 +1,6 @@
 <template>
   <section id="playground" aria-labelledby="playground-title">
-    <h3 id="playground-title">Playground</h3>
+    <h3 id="playground-title">{{ labels.sectionLabel }}</h3>
     <!-- Grille et cartes restent inchangées -->
     <div class="playground__content playground__content--grid">
       <div class="col" v-for="(column, columnIndex) in orderedColumns" :key="`column-${columnIndex}`">
@@ -115,26 +115,15 @@ const props = defineProps({
     required: true
   }
 })
-const { locale } = useLocale()
-const labels = computed(() => {
-  if (locale.value === 'en') {
-    return {
-      modalPreview: 'Playground preview',
-      closePreview: 'Close preview',
-      closeAction: '(close)',
-      prevVisual: 'See previous visual',
-      nextVisual: 'See next visual'
-    }
-  }
-
-  return {
-    modalPreview: 'Aperçu playground',
-    closePreview: "Fermer l'aperçu",
-    closeAction: '(fermer)',
-    prevVisual: 'Voir le visuel précédent',
-    nextVisual: 'Voir le visuel suivant'
-  }
-})
+const { t } = useLocale()
+const labels = computed(() => ({
+  sectionLabel: t('playground.sectionLabel'),
+  modalPreview: t('playground.modalPreview'),
+  closePreview: t('playground.closePreview'),
+  closeAction: t('playground.closeAction'),
+  prevVisual: t('playground.prevVisual'),
+  nextVisual: t('playground.nextVisual')
+}))
 
 const COLUMN_COUNT = 4
 const orderedColumns = computed(() => {

@@ -45,6 +45,7 @@
 import { computed } from 'vue'
 import ProjectLabel from '@/components/ProjectLabel.vue'
 import OptimizedImage from '@/components/OptimizedImage.vue'
+import { useLocale } from '@/i18n'
 
 const props = defineProps({
   title: {
@@ -70,6 +71,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['select'])
+const { t } = useLocale()
 
 const styleVars = computed(() => {
   if (props.color === 'dark') {
@@ -80,8 +82,8 @@ const styleVars = computed(() => {
   return {}
 })
 
-const ariaLabel = computed(() => `Ouvrir le projet ${props.title}`)
-const imageAlt = computed(() => `Visuel du projet ${props.title}`)
+const ariaLabel = computed(() => t('playground.openProject', { title: props.title }))
+const imageAlt = computed(() => t('playground.projectVisual', { title: props.title }))
 const isVideo = computed(() => typeof props.image === 'object' && props.image?.type === 'video' && props.image?.src)
 const videoSrc = computed(() => (isVideo.value ? props.image.src : null))
 const videoMobileSrc = computed(() => (isVideo.value ? props.image.mobileSrc : null))

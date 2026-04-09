@@ -80,6 +80,7 @@ const resolvedPoster = computed(() => {
   &>.image {
     grid-column: 1 / 9;
     height: 540px;
+    overflow: hidden;
 
     & :deep(.layout__column-text-image) {
       width: 100%;
@@ -98,6 +99,7 @@ const resolvedPoster = computed(() => {
       -moz-user-select: none;
       -webkit-user-select: none;
       -ms-user-select: none;
+      transform: scale(1.04);
     }
 
     @media screen and (max-width: 1280px) {

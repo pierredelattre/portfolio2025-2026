@@ -1,5 +1,5 @@
 <template>
-  <div class="tag" :style="style">
+  <div class="tag" :class="{ 'tag--custom': hasCustomColor }" :style="style">
     {{ label }}
   </div>
 </template>
@@ -22,11 +22,13 @@ const props = defineProps({
   }
 })
 
+const hasCustomColor = computed(() => Boolean(props.color))
+
 const style = computed(() => {
-  if (!props.color) return {}
+  if (!hasCustomColor.value) return {}
   return {
-    backgroundColor: props.color,
-    color: props.textColor || 'white'
+    '--tag-custom-bg': props.color,
+    '--tag-custom-text': props.textColor || 'white'
   }
 })
 </script>
@@ -38,5 +40,25 @@ const style = computed(() => {
   color: var(--surface);
   font-size: 0.75rem;
   transition: background-color 0.4s ease;
+}
+
+:root[data-theme='dark'] .tag:not(.tag--custom) {
+  background: color-mix(in oklch, var(--primary) 22%, var(--surface));
+  color: var(--primary);
+}
+
+:root[data-theme='dark'] .tag--custom {
+  background-color: var(--tag-custom-bg);
+  color: var(--tag-custom-text);
+}
+
+:root[data-theme='light'] .tag:not(.tag--custom) {
+  background: color-mix(in oklch, var(--primary) 10%, var(--surface));
+  color: var(--primary);
+}
+
+:root[data-theme='light'] .tag--custom {
+  background: #b8c6b3;
+  color: color-mix(in oklch, var(--tag-custom-bg) 58%, black);
 }
 </style>

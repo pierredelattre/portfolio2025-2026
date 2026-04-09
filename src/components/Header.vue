@@ -398,6 +398,20 @@ header {
     background-color: oklch(0% 0 0);
   }
 
+  :root[data-theme='light'] &.has-background .locale-switch,
+  :root[data-theme='dark'] &.has-background .locale-switch {
+    background: rgb(102 102 102 / 0.42) !important;
+    color: oklch(88% 0 271);
+    border: 0;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  :root[data-theme='light'] &.has-background .locale-switch:hover,
+  :root[data-theme='dark'] &.has-background .locale-switch:hover {
+    background: rgb(102 102 102 / 0.54) !important;
+  }
+
   &.has-background.is-floating {
     position: fixed;
     top: 0;
