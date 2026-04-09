@@ -19,7 +19,7 @@
       </svg>
       <span>{{ t(`header.localeButton.${locale}`) }}</span>
     </button>
-    <!-- <button
+    <button
       class="switch"
       type="button"
       :aria-pressed="theme === 'dark'"
@@ -28,7 +28,7 @@
       @click="toggleTheme"
       @keydown.enter.prevent="toggleTheme"
       @keydown.space.prevent="toggleTheme"
-    ></button> -->
+    ></button>
     <div class="header__title">
       <RouterLink to="/" class="header__home-link" :aria-label="t('header.homeAriaLabel')">
         <h1 class="text--secondary">Pierre Delattre</h1>
@@ -77,20 +77,33 @@ const resumePdf = computed(() =>
 )
 
 const theme = ref('dark')
+const THEME_STORAGE_KEY = 'portfolio-theme'
 const nextLocale = computed(() => (locale.value === 'fr' ? 'en' : 'fr'))
-const localeSwitchLabel = computed(() =>
-  nextLocale.value === 'en' ? 'Passer le site en anglais' : 'Switch site to French'
-)
+const localeSwitchLabel = computed(() => t('header.localeSwitchLabel'))
 const services = computed(() => t('header.services'))
 
 const themeLabel = computed(() =>
   theme.value === 'dark' ? t('header.themeSwitch.darkToLight') : t('header.themeSwitch.lightToDark')
 )
 
-const applyTheme = (value) => {
+const applyTheme = (value, { persist = true } = {}) => {
   if (typeof document === 'undefined') return
   document.documentElement.dataset.theme = value
   theme.value = value
+
+  if (!persist || typeof window === 'undefined') return
+  window.localStorage.setItem(THEME_STORAGE_KEY, value)
+}
+
+const getInitialTheme = () => {
+  if (typeof window === 'undefined') return 'dark'
+
+  const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY)
+  if (storedTheme === 'dark' || storedTheme === 'light') {
+    return storedTheme
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
 const toggleTheme = () => {
@@ -101,9 +114,8 @@ const toggleLocale = () => {
   setLocale(nextLocale.value)
 }
 
-// Keep explicit default in code: no auto system detection.
 onMounted(() => {
-  applyTheme('dark')
+  applyTheme(getInitialTheme(), { persist: false })
 })
 </script>
 
@@ -154,9 +166,9 @@ header {
   & .switch {
     position: absolute;
     top: 2rem;
-    right: 4.75rem;
-    width: 20px;
-    height: 20px;
+    right: 2rem;
+    width: 24px;
+    height: 24px;
     border-radius: 999px;
     background-color: var(--switch);
     cursor: pointer;
@@ -171,26 +183,27 @@ header {
 
     @media screen and (max-width: 768px) {
       top: 1rem;
-      right: 3.75rem;
+      right: 1rem;
     }
 
     @media screen and (min-width: 769px) and (max-width: 1280px) {
       top: 2rem;
-      right: 4.75rem;
+      right: 2rem;
     }
   }
 
   & .locale-switch {
     position: absolute;
     top: 2rem;
-    right: 2rem;
+    right: calc(2rem + 24px + 8px);
+    interpolate-size: allow-keywords;
     width: auto;
     min-width: 52px;
     height: 24px;
     border-radius: 999px;
     border: 0;
-    background: #282828;
-    color: var(--secondary);
+    background: color-mix(in oklch, var(--primary) 22%, var(--surface));
+    color: var(--primary);
     font-size: .875rem;
     line-height: 1;
     cursor: pointer;
@@ -200,7 +213,26 @@ header {
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
+    transition: width 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+
+    :root[data-theme='light'] & {
+      background: color-mix(in oklch, var(--primary) 10%, var(--surface));
+    }
+
+    &:hover {
+      background: color-mix(in oklch, var(--primary) 35%, var(--surface));
+    }
+
+    :root[data-theme='light'] &:hover {
+      background: color-mix(in oklch, var(--primary) 18%, var(--surface));
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
   }
+
 
   & .locale-switch__icon {
     width: 12px;
@@ -211,7 +243,7 @@ header {
   @media screen and (max-width: 768px) {
     & .locale-switch {
       top: 1rem;
-      right: 1rem;
+      right: calc(1rem + 24px + 8px);
     }
   }
 
@@ -360,6 +392,10 @@ header {
   &.has-background .header__intro,
   &.has-background .header__links {
     display: none;
+  }
+
+  :root[data-theme='light'] &.has-background .switch {
+    background-color: oklch(0% 0 0);
   }
 
   &.has-background.is-floating {
