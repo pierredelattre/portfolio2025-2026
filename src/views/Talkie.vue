@@ -42,16 +42,21 @@ import projectBackground from '@/assets/talkie/banner.jpg?optimized'
 import contexte from '@/assets/talkie/contexte.jpg?optimized'
 import flows from '@/assets/talkie/flows.jpg?optimized'
 import flowsMobile from '@/assets/talkie/mobile-flows.jpg?optimized'
-import designsystem from '@/assets/talkie/designsystem.jpg?optimized'
+import designsystemFr from '@/assets/talkie/designsystem.jpg?optimized'
+import designsystemEn from '@/assets/talkie/designsystem-EN.jpg?optimized'
 import apprentissage from '@/assets/talkie/apprentissage.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
 import quiz from '@/assets/talkie/quiz.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
 import duels from '@/assets/talkie/duels.jpg?optimized&w=1920;2560;3200&quality=96&lossless=true'
-import tests from '@/assets/talkie/tests.jpg?optimized'
+import testsFr from '@/assets/talkie/tests.jpg?optimized'
+import testsEn from '@/assets/talkie/tests-EN.jpg?optimized'
 
-import persona from '@/assets/talkie/per.jpg?optimized'
-import entretiens from '@/assets/talkie/entr.jpg?optimized'
+import personaFr from '@/assets/talkie/per.jpg?optimized'
+import personaEn from '@/assets/talkie/per-EN.jpg?optimized'
+import entretiensFr from '@/assets/talkie/entr.jpg?optimized'
+import entretiensEn from '@/assets/talkie/entr-EN.jpg?optimized'
 import entretiensMobile from '@/assets/talkie/mobile-entr.jpg?optimized'
-import fonctions from '@/assets/talkie/fonctions.jpg?optimized'
+import fonctionsFr from '@/assets/talkie/fonctions.jpg?optimized'
+import fonctionsEn from '@/assets/talkie/fonctions-EN.jpg?optimized'
 import fonctionsMobile from '@/assets/talkie/mobile-fonctions.jpg?optimized'
 
 const PROJECT_ROUTE = '/projet/talkie'
@@ -156,6 +161,8 @@ What changed: clarified initial quiz screen, redesigned end-of-game summary, and
 
 const pageContent = computed(() => PAGE_CONTENT[locale.value] ?? PAGE_CONTENT.fr)
 const projectData = computed(() => getWorksByLocale(locale.value).find((work) => work.route === PROJECT_ROUTE) || null)
+const isEnglishLocale = computed(() => locale.value === 'en')
+const localizedImage = (frImage, enImage) => (isEnglishLocale.value ? enImage ?? frImage : frImage)
 
 if (!projectData.value) {
   console.error(`Project data not found for route "${PROJECT_ROUTE}"`)
@@ -168,10 +175,21 @@ const uiGridImages = computed(() => [
 ])
 
 const rechercheUX = computed(() => [
-  { src: persona, alt: "Persona" },
-  { src: entretiens, mobileSrc: entretiensMobile, alt: pageContent.value.uxAlt2 },
-  { src: fonctions, mobileSrc: fonctionsMobile, alt: pageContent.value.uxAlt3 }
+  { src: localizedImage(personaFr, personaEn), alt: "Persona" },
+  {
+    src: localizedImage(entretiensFr, entretiensEn),
+    mobileSrc: entretiensMobile,
+    alt: pageContent.value.uxAlt2
+  },
+  {
+    src: localizedImage(fonctionsFr, fonctionsEn),
+    mobileSrc: fonctionsMobile,
+    alt: pageContent.value.uxAlt3
+  }
 ])
+
+const designsystem = computed(() => localizedImage(designsystemFr, designsystemEn))
+const tests = computed(() => localizedImage(testsFr, testsEn))
 
 const hasProject = computed(() => Boolean(projectData.value))
 const projectLabel = computed(() =>
