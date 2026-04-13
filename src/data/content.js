@@ -116,10 +116,6 @@ import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
 import rvrs from '@/assets/playground/rvrs.jpg?optimized'
 import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
 
-import anki from '@/assets/playground/anki.jpg?optimized'
-import ankiMobile from '@/assets/playground/mobile-anki.jpg?optimized'
-import ankiDesk from '@/assets/playground/desk-anki.jpg?optimized'
-
 import mag from '@/assets/playground/magazine.jpg?optimized'
 import mag2 from '@/assets/playground/magazine-2.jpg?optimized'
 import magMobile from '@/assets/playground/mobile-magazine.jpg?optimized'
@@ -231,16 +227,22 @@ export const playgroundItems = [
     ]
   },
   {
-    title: 'Youtube to Anki',
-    image: anki,
+    title: 'Magazine',
+    image: mag,
     color: 'dark',
-    modalText: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki',
+    modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
     media: [
       {
         type: 'image',
-        src: ankiDesk,
-        mobileSrc: ankiMobile,
-        alt: 'Concept d\'extension navigateur - Sauvegarder du vocabulaire issu de Youtube sur une flashcard Anki'
+        src: mag,
+        mobileSrc: magMobile,
+        alt: 'Magazine app - écran principal'
+      },
+      {
+        type: 'image',
+        src: mag2,
+        mobileSrc: mag2Mobile,
+        alt: 'Magazine app - écran secondaire'
       }
     ]
   },
@@ -295,26 +297,6 @@ export const playgroundItems = [
       }
     ]
   },
-  // {
-  //   title: 'Magazine',
-  //   image: mag,
-  //   color: 'dark',
-  //   modalText: 'École - Conception d\'une application de moodboard propulsé par IA - Avec Adrien BAELEN',
-  //   media: [
-  //     {
-  //       type: 'image',
-  //       src: mag,
-  //       mobileSrc: magMobile,
-  //       alt: 'Site RVRS'
-  //     },
-  //     {
-  //       type: 'image',
-  //       src: mag2,
-  //       mobileSrc: mag2Mobile,
-  //       alt: 'Site RVRS'
-  //     }
-  //   ]
-  // },
   // {
   //   title: 'Nehomia',
   //   image: nehomia,
@@ -380,8 +362,8 @@ const PLAYGROUND_EN_TRANSLATIONS = {
   },
   4: {
     modalText:
-      'Browser extension concept - Save vocabulary from YouTube to Anki flashcards',
-    mediaAlt: ['Browser extension concept - Save vocabulary from YouTube to Anki flashcards']
+      'School project - AI-powered moodboard app design, with Adrien BAELEN',
+    mediaAlt: ['Magazine app - primary screen', 'Magazine app - secondary screen']
   },
   5: {
     modalText: 'Cinema booking application',
