@@ -222,6 +222,7 @@ const parsedImages = computed(() =>
       border-radius: 999px;
       width: 16px;
       height: 16px;
+      line-height: 1.2;
     }
 
     .grid-scroll-text__idea:nth-child(1) .grid-scroll-text__idea-index {
