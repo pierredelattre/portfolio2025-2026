@@ -21,6 +21,22 @@ export const works = [
     route: '/projet/lira',
     type: 'perso'
   },
+    {
+    id: 'mba',
+    title: 'My Business Academy',
+    intro:
+      "Conception stratégique du site vitrine d'un organisme de formation certifié Qualiopi, orientée clarté des parcours, réassurance et conversion.",
+    description:
+      "Projet mené de la phase de cadrage à l'architecture d'information : recueil des besoins, recherche exploratoire et concurrentielle, priorisation UX, définition des parcours et préparation de la phase UI (maquettes à venir).",
+    services: ['UX Research', "Architecture de l'information", 'UI Kit'],
+    team: [],
+    links: [],
+    tags: ['Product Design'],
+    cover: mbaBanner,
+    thumbnail: mbaBanner,
+    route: '/projet/my-business-academy',
+    type: 'freelance'
+  },
   {
     id: 'septiemeseance',
     title: 'Septième Séance',
@@ -31,7 +47,7 @@ export const works = [
     services: ['Recherche utilisateur', 'UI Design', 'UI Kit'],
     team: [{ label: 'Mathieu Lefebvre', href: 'https://matlfb.com/', external: true }],
     links: [{ label: 'septiemeseance.fr', href: 'https://septiemeseance.fr', secondary: true, external: true }],
-    tags: ['UX/UI Design', 'Front-end'],
+    tags: ['UX/UI Design'],
     cover: septiemeCover,
     route: '/projet/septiemeseance',
     type: 'freelance'
@@ -50,22 +66,6 @@ export const works = [
     cover: talkiePlaceholder,
     route: '/projet/talkie',
     type: 'school'
-  },
-  {
-    id: 'mba',
-    title: 'My Business Academy',
-    intro:
-      "Conception stratégique du site vitrine d'un organisme de formation certifié Qualiopi, orientée clarté des parcours, réassurance et conversion.",
-    description:
-      "Projet mené de la phase de cadrage à l'architecture d'information : recueil des besoins, recherche exploratoire et concurrentielle, priorisation UX, définition des parcours et préparation de la phase UI (maquettes à venir).",
-    services: ['UX Research', "Architecture de l'information", 'UI Kit'],
-    team: [],
-    links: [],
-    tags: ['Product Design', 'UX Strategy'],
-    cover: mbaBanner,
-    thumbnail: mbaBanner,
-    route: '/projet/my-business-academy',
-    type: 'freelance'
   },
   // {
   //   id: 'alpine',

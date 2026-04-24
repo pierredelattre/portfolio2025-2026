@@ -45,48 +45,48 @@ import projectBackground from '@/assets/mba/mba-banner.jpg?optimized'
 
 import contexteFr from '@/assets/mba/mba-contexte-contraintes.jpg?optimized'
 import contexteEn from '@/assets/mba/en-mba-contexte-contraintes.jpg?optimized'
-import contexteMobileFr from '@/assets/mba/mobile-mba-contexte-contraintes.jpg?optimized'
-import contexteMobileEn from '@/assets/mba/en-mobile-mba-contexte-contraintes.jpg?optimized'
+import contexteMobileFr from '@/assets/mba/mobile-mba-contexte-contraintes.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import contexteMobileEn from '@/assets/mba/en-mobile-mba-contexte-contraintes.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
 import cadrageFr from '@/assets/mba/mba-cadrage.jpg?optimized'
 import cadrageEn from '@/assets/mba/en-mba-cadrage.jpg?optimized'
-import cadrageMobileFr from '@/assets/mba/mobile-mba-cadrage.jpg?optimized'
-import cadrageMobileEn from '@/assets/mba/en-mobile-mba-cadrage.jpg?optimized'
+import cadrageMobileFr from '@/assets/mba/mobile-mba-cadrage.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import cadrageMobileEn from '@/assets/mba/en-mobile-mba-cadrage.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
-import frictionsFr from '@/assets/mba/mba-frictions.jpg?optimized'
-import frictionsEn from '@/assets/mba/en-mba-frictions.jpg?optimized'
-import frictionsMobileFr from '@/assets/mba/mobile-mba-frictions.jpg?optimized'
-import frictionsMobileEn from '@/assets/mba/en-mobile-mba-frictions.jpg?optimized'
+import frictionsFr from '@/assets/mba/mba-frictions.jpg?optimized&w=1920;2560;3200&quality=92'
+import frictionsEn from '@/assets/mba/en-mba-frictions.jpg?optimized&w=1920;2560;3200&quality=92'
+import frictionsMobileFr from '@/assets/mba/mobile-mba-frictions.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import frictionsMobileEn from '@/assets/mba/en-mobile-mba-frictions.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
-import personasFr from '@/assets/mba/mba-personas.jpg?optimized'
-import personasEn from '@/assets/mba/en-mba-personas.jpg?optimized'
-import personasMobileFr from '@/assets/mba/mobile-mba-personas.jpg?optimized'
-import personasMobileEn from '@/assets/mba/en-mobile-mba-personas.jpg?optimized'
+import personasFr from '@/assets/mba/mba-personas.jpg?optimized&w=1920;2560;3200&quality=92'
+import personasEn from '@/assets/mba/en-mba-personas.jpg?optimized&w=1920;2560;3200&quality=92'
+import personasMobileFr from '@/assets/mba/mobile-mba-personas.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import personasMobileEn from '@/assets/mba/en-mobile-mba-personas.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
-import principesFr from '@/assets/mba/mba-principes.jpg?optimized'
-import principesEn from '@/assets/mba/en-mba-principes.jpg?optimized'
-import principesMobileFr from '@/assets/mba/mobile-mba-principes.jpg?optimized'
-import principesMobileEn from '@/assets/mba/en-mobile-mba-principes.jpg?optimized'
+import principesFr from '@/assets/mba/mba-principes.jpg?optimized&w=1920;2560;3200&quality=92'
+import principesEn from '@/assets/mba/en-mba-principes.jpg?optimized&w=1920;2560;3200&quality=92'
+import principesMobileFr from '@/assets/mba/mobile-mba-principes.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import principesMobileEn from '@/assets/mba/en-mobile-mba-principes.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
-import priorisationFr from '@/assets/mba/mba-priorisation.jpg?optimized'
-import priorisationEn from '@/assets/mba/en-mba-priorisation.jpg?optimized'
-import priorisationMobileFr from '@/assets/mba/mobile-mba-priorisation.jpg?optimized'
-import priorisationMobileEn from '@/assets/mba/en-mobile-mba-priorisation.jpg?optimized'
+import priorisationFr from '@/assets/mba/mba-priorisation.jpg?optimized&w=1920;2560;3200&quality=92'
+import priorisationEn from '@/assets/mba/en-mba-priorisation.jpg?optimized&w=1920;2560;3200&quality=92'
+import priorisationMobileFr from '@/assets/mba/mobile-mba-priorisation.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import priorisationMobileEn from '@/assets/mba/en-mobile-mba-priorisation.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
 import arboFr from '@/assets/mba/mba-arbo.jpg?optimized'
 import arboEn from '@/assets/mba/en-mba-arbo.jpg?optimized'
-import arboMobileFr from '@/assets/mba/mobile-mba-arbo.jpg?optimized'
-import arboMobileEn from '@/assets/mba/en-mobile-mba-arbo.jpg?optimized'
+import arboMobileFr from '@/assets/mba/mobile-mba-arbo.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import arboMobileEn from '@/assets/mba/en-mobile-mba-arbo.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
 import roadmapFr from '@/assets/mba/mba-roadmap.jpg?optimized'
 import roadmapEn from '@/assets/mba/en-mba-roadmap.jpg?optimized'
-import roadmapMobileFr from '@/assets/mba/mobile-mba-roadmap.jpg?optimized'
-import roadmapMobileEn from '@/assets/mba/en-mobile-mba-roadmap.jpg?optimized'
+import roadmapMobileFr from '@/assets/mba/mobile-mba-roadmap.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import roadmapMobileEn from '@/assets/mba/en-mobile-mba-roadmap.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
 import impactFr from '@/assets/mba/mba-impact.jpg?optimized'
 import impactEn from '@/assets/mba/en-mba-impact.jpg?optimized'
-import impactMobileFr from '@/assets/mba/mobile-mba-impact.jpg?optimized'
-import impactMobileEn from '@/assets/mba/en-mobile-mba-impact.jpg?optimized'
+import impactMobileFr from '@/assets/mba/mobile-mba-impact.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
+import impactMobileEn from '@/assets/mba/en-mobile-mba-impact.jpg?optimized&w=480;720;960;1280&quality=85&format=webp;jpg'
 
 const PROJECT_ROUTE = '/projet/my-business-academy'
 const { locale } = useLocale()
@@ -97,108 +97,104 @@ const PAGE_CONTENT = {
   fr: {
     projectNotFound: 'Projet introuvable',
     backToHome: "← Retour à l'accueil",
-    contextAlt: 'Contexte business et contraintes',
-    contextTitle: 'Contexte business et contraintes',
-    contextText: `My Business Academy est un projet de création d'une plateforme pour un organisme de formation français certifié Qualiopi.
+    contextAlt: 'Contexte',
+    contextTitle: 'Contexte',
+    contextText: `My Business Academy est un organisme de formation français certifié Qualiopi. J'ai pris en charge la phase stratégique avant toute production visuelle, en partant des utilisateurs.
 
-J'ai réalisé la phase stratégique en cadrant les enjeux avant la production visuelle, avec une approche centrée utilisateurs. La contrainte principale était d'aligner acquisition SEO, réassurance, lisibilité des parcours et maintenabilité du contenu.
+L'enjeu principal : aligner acquisition SEO, réassurance, lisibilité des parcours et gouvernance du contenu.
 
-Les livrables alimentent aussi une base de connaissance interne, à partir de contenus publics et de documents internes, pour la documentation interne et les usages IA.`,
-    discoveryTitle: 'Cadrage, recueil des besoins et recherche exploratoire',
-    discoveryText: `J'ai structuré le cadrage en partant du besoin utilisateur, puis en transformant les informations métier en contenus actionnables et en parcours concrets à implémenter.
+Les livrables alimentent aussi une base de connaissance interne pour la documentation entreprise et les usages IA.`,
+    discoveryTitle: 'Cadrage et recherche exploratoire',
+    discoveryText: `J'ai structuré le cadrage depuis les besoins utilisateurs plutôt que depuis des demandes d'interface. Trois priorités ont émergé : rendre l'offre lisible rapidement, réduire la friction de contact, installer la confiance tôt.
 
-Le recueil des besoins a été mené à partir des décisions produit à prendre, et non de demandes d'interface isolées. Trois besoins se sont imposés : rendre l'offre compréhensible rapidement, réduire la friction de contact, et installer la confiance tôt dans le parcours.
+La recherche a porté sur six concurrents directs : audit des parcours clés, analyse UX/SEO, signaux de réassurance, benchmark tarifaire et ateliers avec les parties prenantes.
 
-J'ai alors mené une recherche exploratoire sur six concurrents directs en combinant plusieurs méthodes : audit des parcours clés (découverte, fiche formation, financement, contact), analyse concurrentielle UX/SEO, revue des signaux de réassurance (Qualiopi, preuves, conformité), benchmark de lisibilité tarifaire, et synthèse des besoins via ateliers avec les parties prenantes (atelier de cadrage, priorisation des parcours, validation des contenus clés).
-
-Cette analyse m'a permis d'identifier trois points structurants : les parcours les plus performants partent d'une intention utilisateur explicite, la question du financement arrive souvent trop tard dans l'expérience, et les faiblesses récurrentes (navigation confuse, manque de preuve, accessibilité incomplète, tarifs opaques) créent une opportunité de différenciation nette.`,
+Trois points ont retenu mon attention : les parcours performants partent d'une intention explicite, le financement arrive trop tard dans la plupart des expériences, et les faiblesses récurrentes (navigation confuse, tarifs opaques, accessibilité incomplète) représentent une vraie opportunité.`,
     needsAlt: 'Synthèse des besoins utilisateurs',
-    needsTitle: 'Synthèse des besoins utilisateurs et personas',
-    needsText: `J'ai construit des proto-personas opérationnels : reconversion, salarié en évolution, porteur de projet, employeur/RH.
+    needsTitle: 'Besoins utilisateurs et personas',
+    needsText: `Quatre proto-personas : reconversion, salarié en évolution, porteur de projet, employeur/RH.
 
-Le besoin transversal était constant : décider vite sans zone d'ombre. Cela implique une information scannable, une hiérarchie claire, des appels à l'action explicites et une réassurance répartie dans tout le parcours.
+Besoin commun : décider vite, sans zone d'ombre. Ça se traduit par une information scannable, une hiérarchie claire et une réassurance distribuée dans tout le parcours.
 
-J'ai écarté l'approche « catalogue complet dès l'entrée », qui augmente la charge cognitive et ralentit la décision.`,
+J'ai écarté l'approche catalogue complet dès l'entrée : trop coûteuse cognitivement, elle ralentit la décision.`,
     uxTitle: 'Principes UX et priorisation',
-    uxText: `Principes retenus : clarté avant densité, réassurance continue, mobile en priorité, accessibilité par défaut et gouvernance éditoriale explicite.
+    uxText: `Principes retenus : clarté avant densité, réassurance continue, mobile d'abord, accessibilité par défaut, gouvernance éditoriale.
 
-Définition du parcours principal : page d'accueil -> pages catégories -> fiches formation -> contact et demande d'information contextualisée.
+Parcours principal : accueil -> catégories -> fiches formation -> contact.
 
-Ce choix a été préféré à une exécution en parallèle de toutes les pages, trop coûteuse en cohérence et en qualité de passation.`,
-    archAlt: "Architecture de l'information et parcours",
-    archTitle: "Architecture de l'information, parcours et réassurance",
-    archText: `L'architecture repose sur une hiérarchie robuste : accueil -> catalogue -> catégories -> fiches formation, avec des pages transverses dédiées au financement, à l'organisme, au contact et aux obligations légales.
+J'ai préféré une production page par page, pour préserver la cohérence et la qualité de passation.`,
+    archAlt: "Architecture de l'information",
+    archTitle: "Architecture de l'information",
+    archText: `Hiérarchie claire : accueil -> catalogue -> catégories -> fiches formation, avec des pages transverses pour le financement, l'organisme, le contact et les mentions légales.
 
-Parcours utilisateurs clés : reconversion (recherche -> fiche -> financement -> contact) et employeur (preuve de conformité -> offre ciblée -> demande de proposition).
+Deux parcours clés : reconversion (recherche -> fiche -> financement -> contact) et employeur (preuve de conformité -> offre ciblée -> demande).
 
-La personnalisation reste progressive et pragmatique : préremplissage contextuel des formulaires, appels à l'action adaptés à l'intention et formulations orientées situation.`,
-    roadmapAlt: 'Feuille de route design',
-    roadmapTitle: 'Feuille de route design et prochaines étapes',
-    roadmapText: `Le socle stratégique est posé : cadrage, recherche, architecture, principes UX et gouvernance.
+La personnalisation est pragmatique : préremplissage contextuel, appels à l'action adaptés à l'intention, formulations orientées situation.`,
+    roadmapAlt: 'Roadmap et prochaines étapes',
+    roadmapTitle: 'Roadmap et prochaines étapes',
+    roadmapText: `Le socle est posé : cadrage, recherche, architecture, principes UX, gouvernance.
 
-Prochaines étapes : traduire les principes en maquettes, préparer la passation front, lancer une première version instrumentée puis itérer sur des signaux réels.`,
-    impactAlt: "Cadre d'impact business",
-    impactTitle: "Cadre d'impact business",
+Prochaine étape : maquettes, passation front, première version instrumentée, puis itérations sur signaux réels.`,
+    impactAlt: 'Impact',
+    impactTitle: 'Impact',
     impactText: `Indicateurs prévus :
 - taux de conversion visite -> demande
 - temps d'accès à l'information clé
-- taux de clic sur les appels à l'action principaux
+- taux de clic sur les CTA principaux
 - qualité des leads
 - progression dans l'entonnoir
-- conformité éditoriale (structure, SEO, accessibilité RGAA)`
+- conformité éditoriale (SEO, RGAA)`
   },
   en: {
     projectNotFound: 'Project not found',
     backToHome: '← Back to home',
-    contextAlt: 'Business context and constraints',
-    contextTitle: 'Business context and constraints',
-    contextText: `My Business Academy is a platform creation project for a French training organization certified Qualiopi.
+    contextAlt: 'Context',
+    contextTitle: 'Context',
+    contextText: `My Business Academy is a French training organization certified Qualiopi. I led the strategic phase before any visual production, starting from users.
 
-I carried out the strategic phase by framing the key challenges before visual production, with a user-centered approach. The main constraint was aligning SEO acquisition, reassurance, journey clarity, and content maintainability.
+Main challenge: aligning SEO acquisition, reassurance, journey clarity, and content governance.
 
-The deliverables also feed an internal knowledge base, built from public content and internal documents, for internal documentation and AI use.`,
-    discoveryTitle: 'Framing, needs collection, and exploratory research',
-    discoveryText: `I structured framing from user needs, then turned business information into actionable content and concrete journeys to implement.
+The deliverables also feed an internal knowledge base for company documentation and AI use.`,
+    discoveryTitle: 'Framing and exploratory research',
+    discoveryText: `I structured the framing from user needs, not from interface requests. Three priorities emerged: make the offer quickly understandable, reduce contact friction, build trust early.
 
-Needs collection focused on product decisions, not isolated interface requests. Three priorities emerged: make the offer quickly understandable, reduce contact friction, and build trust early in the journey.
+Research covered six direct competitors: key journey audits, UX/SEO analysis, reassurance signals, pricing benchmark, and stakeholder workshops.
 
-I then ran exploratory research on six direct competitors using multiple methods: audit of key journeys (discovery, training page, funding, contact), UX/SEO competitive analysis, review of reassurance signals (Qualiopi, proof points, compliance), pricing readability benchmark, and needs synthesis through stakeholder workshops (framing workshop, journey prioritization workshop, key-content validation workshop).
-
-This analysis highlighted three structuring points: top-performing journeys start from explicit user intent, funding questions come too late in many experiences, and recurring weaknesses (confusing navigation, weak proof, incomplete accessibility, opaque pricing) create a clear differentiation opportunity.`,
+Three things stood out: top-performing journeys start from explicit user intent, funding comes too late in most experiences, and recurring weaknesses (confusing navigation, opaque pricing, incomplete accessibility) represent a real opportunity.`,
     needsAlt: 'User needs synthesis',
-    needsTitle: 'User needs synthesis and personas',
-    needsText: `I built operational proto-personas: career switcher, employee in progression, entrepreneur profile, and employer/HR.
+    needsTitle: 'User needs and personas',
+    needsText: `Four proto-personas: career switcher, employee in progression, entrepreneur, and employer/HR.
 
-The cross-cutting need was consistent: help people decide fast, with no blind spots. This translates into scannable information, clear hierarchy, explicit calls to action, and reassurance distributed across the journey.
+Shared need: decide fast, with no blind spots. That means scannable information, clear hierarchy, and reassurance distributed across the journey.
 
-I rejected the "full catalog first" approach at entry level because it increased cognitive load and slowed down decisions.`,
+I ruled out the "full catalog first" approach: too cognitively costly, it slows decisions down.`,
     uxTitle: 'UX principles and prioritization',
-    uxText: `Selected principles: clarity before density, continuous reassurance, mobile-first approach, accessibility by default, and explicit editorial governance.
+    uxText: `Selected principles: clarity before density, continuous reassurance, mobile-first, accessibility by default, editorial governance.
 
-Main journey definition: homepage -> category pages -> training pages -> contact and contextual information request.
+Main journey: homepage -> category pages -> training pages -> contact.
 
-This was chosen over parallel production of all pages, which would have been too costly in consistency and handoff quality.`,
-    archAlt: 'Information architecture and journeys',
-    archTitle: 'Information architecture, journeys, and reassurance',
-    archText: `The architecture relies on a clear hierarchy: home -> catalog -> categories -> training pages, with transversal pages for funding, organization, contact, and legal obligations.
+I chose a page-by-page production over a parallel approach, to protect consistency and handoff quality.`,
+    archAlt: 'Information architecture',
+    archTitle: 'Information architecture',
+    archText: `Clear hierarchy: home -> catalog -> categories -> training pages, with transversal pages for funding, organization, contact, and legal.
 
-Key user journeys: career switcher (search -> training page -> funding -> contact) and employer (compliance proof -> targeted offer -> proposal request).
+Two key journeys: career switcher (search -> training page -> funding -> contact) and employer (compliance proof -> targeted offer -> proposal request).
 
-Personalization stays progressive and pragmatic: contextual form prefill, intent-based calls to action, and situation-specific wording.`,
-    roadmapAlt: 'Design roadmap',
-    roadmapTitle: 'Design roadmap and next steps',
-    roadmapText: `The strategic foundation is in place: framing, research, architecture, UX principles, and governance.
+Personalization is pragmatic: contextual form prefill, intent-based CTAs, situation-specific wording.`,
+    roadmapAlt: 'Roadmap and next steps',
+    roadmapTitle: 'Roadmap and next steps',
+    roadmapText: `Foundation in place: framing, research, architecture, UX principles, governance.
 
-Next steps: translate principles into mockups, prepare front-end handoff, launch an instrumented first version, then iterate based on real signals.`,
-    impactAlt: 'Business impact framework',
-    impactTitle: 'Business impact framework',
+Next: mockups, front-end handoff, instrumented first version, then iteration on real signals.`,
+    impactAlt: 'Business impact',
+    impactTitle: 'Business impact',
     impactText: `Planned indicators:
 - visitor-to-request conversion rate
 - time to key information
-- click rate on primary calls to action
+- click rate on primary CTAs
 - lead quality
 - funnel progression
-- editorial compliance (structure, SEO, accessibility)`
+- editorial compliance (SEO, accessibility)`
   }
 }
 
