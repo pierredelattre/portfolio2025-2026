@@ -1,8 +1,17 @@
 <template>
   <section class="project" :aria-label="projectLabel">
-    <ProjectIntro v-if="hasProject" :title="projectData.title" :type="projectData.type" :intro="projectData.intro"
-      :description="projectData.description" :services="projectData.services" :team="projectData.team"
-      :links="projectData.links" />
+    <ProjectIntro
+      v-if="hasProject"
+      :title="projectData.title"
+      :type="projectData.type"
+      :intro="locale === 'fr'
+        ? 'Lira aide les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.'
+        : 'Lira helps learners read real content, save useful words in context, and memorize them through personalized review.'"
+      :description="projectData.description"
+      :services="projectData.services"
+      :team="projectData.team"
+      :links="projectData.links"
+    />
     <section v-else class="project__error">
       <h2>{{ pageContent.projectNotFound }}</h2>
       <RouterLink to="/" data-link>{{ pageContent.backToHome }}</RouterLink>
@@ -100,32 +109,42 @@ const PAGE_CONTENT = {
     backToHome: '← Retour à l’accueil',
     contextAlt: 'Contexte et enjeux',
     contextTitle: 'Contexte et enjeux',
-    contextText: `Les apps d'apprentissage des langues ont toutes un angle mort différent.
+    contextText: `Les apps d'apprentissage des langues ont chacune leur angle mort.
 
-Duolingo construit l'habitude mais le contenu est artificiel et le plafond B1-B2 arrive vite. Anki a l'algorithme le plus rigoureux du marché, mais préparer ses cartes prend plus de temps que les réviser. LingQ propose l'approche la plus proche de ce que je cherchais, lire du contenu authentique avec une traduction intégrée, mais l'interface reste difficile à prendre en main.
+Duolingo installe une habitude, mais le contenu reste artificiel et beaucoup d'utilisateurs stagnent autour du niveau intermédiaire. Anki est extrêmement puissant, mais la création des cartes demande souvent plus d'effort que leur révision. LingQ se rapproche d'une expérience de lecture réelle, mais l'interface peut freiner la prise en main.
 
-Lira a été construit pour répondre à un besoin : lire du vrai contenu, sauvegarder les mots en contexte, les réviser ensuite avec un algorithme sérieux. Pas de configuration, pas de gamification.
+Lira part d'un besoin simple : lire du contenu réel, sauvegarder les mots directement dans leur contexte, puis les revoir avec un système de répétition efficace. Le tout sans configuration lourde, ni mécanique de gamification.
 
-Le projet est en production depuis mars 2026.`,
+Le produit est en ligne depuis mars 2026.`,
     researchTitle: 'Recherche et positionnement',
-    researchText: `La recherche s'est faite en desk research avant le lancement : Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), forums LingQ, reviews App Store, exports en batch de commentaires sur des vidéos YouTube. Pas d'interviews primaires à ce stade.
+    researchText: `La recherche s'est faite en amont du lancement, principalement en desk research : Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), forums LingQ, avis App Store et commentaires YouTube.
 
-Ce type de source a un biais évident : les utilisateurs qui postent sont plus frustrés que la moyenne. J'en ai tenu compte.
+Ces sources ont un biais évident : elles reflètent souvent des frustrations. Elles restent utiles pour comprendre où les produits actuels échouent.
 
-Ce qui ressort : le passage B1-B2 est la zone de blocage la plus décrite. Les utilisateurs avancés convergent naturellement vers la lecture, ce n'est pas un besoin à créer. Un besoin de vocabulaire ciblé par domaine ou contexte ressort aussi clairement. La création manuelle de cartes Anki est souvent citée comme raison d'abandon.
+Un point revient constamment : beaucoup d'apprenants atteignent un plateau autour du niveau intermédiaire. À ce stade, la lecture devient un levier naturel de progression. Le besoin n'est pas de motiver, mais de rendre cette transition plus fluide.
 
-J'ai construit trois proto-personas depuis ces données : le polyglotte qui connaît le FSRS et veut zéro friction, l'expatrié qui veut lire la presse locale sans perdre le fil de sa lecture, et celui qui a des mois de streak Duolingo mais ne sent plus de progression.`,
+Autre friction récurrente : la création manuelle de cartes Anki, souvent citée comme une raison d'abandon.
+
+À partir de là, j'ai défini trois profils : un utilisateur avancé qui cherche un outil rapide et sans friction, un expatrié qui veut lire du contenu local sans casser son rythme, et un utilisateur régulier d'apps comme Duolingo qui ne ressent plus de progression réelle.`,
     designLogicAlt: 'Logique de design du reader Lira',
     designLogicTitle: 'Logique de design',
-    designLogicText: `La lecture reste l'activité principale. Le panneau de traduction s'ouvre sans remplacer la page. Le texte reste visible. Appuyer sur un mot suffit à l'ouvrir.
+    designLogicText: `La lecture reste l'activité principale. Tout le reste doit s'y intégrer sans l'interrompre.
 
-La sauvegarde des mots a été la partie importante à mettre au point. Un clic ouvre le panneau, un deuxième sauvegarde. Le bouton passe par un état de chargement, puis affiche une coche avec un label. Le mot passe en état sauvegardé directement dans le texte.
+Le panneau de traduction s'ouvre sans remplacer la page. Le texte reste visible. Un mot se consulte en un geste.
 
-Les premières versions utilisaient un overlay plein écran. Abandonné : fermer le panneau faisait perdre l'endroit dans le texte. La version finale s'ancre en bas sur mobile, sur le côté sur desktop, sans toucher à la colonne de lecture.`,
+La sauvegarde a demandé le plus d'ajustements. Un premier clic ouvre le panneau, un second enregistre le mot. Le retour visuel est immédiat : état chargé, puis confirmation et marquage dans le texte.
+
+Les premières versions utilisaient un overlay plein écran. Ce choix a été abandonné : il coupait la lecture et faisait perdre le repère dans le texte.
+
+La version finale s'ancre en bas sur mobile et sur le côté sur desktop, sans déplacer la colonne de lecture.`,
     readerTitle: 'Le reader',
-    readerText: `Le reader est la partie centrale du projet. L'objectif était que la lecture reste l'activité principale, pas la traduction.
+    readerText: `Le reader est le cœur du produit. L'objectif est simple : lire sans être interrompu.
 
-Un clic sur un mot affiche un panneau : deux onglets : traduction et définition. L'utilisateur voit la phonétique, peut lancer une prononciation audio de l'expression ou du mot via un algorithme local de synthèse vocale (PiperTTS). Sans changer de page, sans perdre le fil du texte. Un clic de plus pour sauvegarder. La carte FSRS est générée automatiquement avec la phrase source comme contexte de mémorisation.`,
+Un clic sur un mot ouvre un panneau avec deux onglets : traduction et définition. L'utilisateur voit la phonétique et peut lancer une prononciation audio via un moteur local (PiperTTS).
+
+Tout se fait sans quitter la page. Un second clic permet de sauvegarder le mot. Une carte est alors générée automatiquement, en utilisant la phrase d'origine comme contexte de mémorisation.
+
+L'idée est de transformer un moment de lecture en opportunité d'apprentissage, sans changer de mode.`,
     libraryAlt: 'Bibliothèque',
     libraryTitle: 'Bibliothèque et import',
     libraryText: `L'import accepte une URL, un texte, un EPUB ou un PDF. L'utilisateur lit ce qu'il veut, sans bibliothèque imposée.
@@ -134,15 +153,21 @@ Pour ceux qui cherchent un point de départ, Lira intègre Project Gutenberg : p
 
 Les textes importés et les livres Gutenberg s'organisent dans la même bibliothèque personnelle. Chaque texte affiche la progression de lecture et le nombre de mots sauvegardés.`,
     reviewTitle: 'Révision et mots croisés',
-    reviewText: `La révision utilise le FSRS avec un rappel contextuel : l'utilisateur doit retrouver la traduction ou le mot original selon le mode. Un indice est proposé si l'utilisateur ne trouve pas la réponse : la phrase originale dont il est provient afin d'apporter du contexte. La mémorisation passe par le mot isolé mais aussi le contexte.
+    reviewText: `La révision repose sur FSRS avec un rappel contextuel. L'utilisateur doit retrouver un mot ou sa traduction, avec la possibilité de revoir la phrase d'origine en cas de doute.
 
-Après quelques minutes de lecture et au moins 3 mots sauvegardés, un mini-quiz apparaît sur les mots de la session en cours. Court, optionnel.
+La mémorisation ne passe pas uniquement par le mot isolé, mais aussi par son contexte d'utilisation.
 
-Les mots croisés sont générés depuis le vocabulaire personnel. Une façon de réviser différente du format flashcard, pour les sessions où l'on veut changer de registre.`,
+Après quelques minutes de lecture et quelques mots sauvegardés, un mini-quiz optionnel apparaît. Court, rapide, lié à la session en cours.
+
+Les mots croisés sont générés à partir du vocabulaire personnel. Ils offrent une alternative aux flashcards pour varier les sessions de révision.`,
     designTitle: 'Design',
-    designText: `La police de lecture est Literata, une serif taillée pour les longs textes sur écran. L'interface utilise Satoshi. Le fond est un blanc cassé chaud plutôt qu'un blanc neutre. Deux couleurs : un vert forêt pour les actions et la marque, un brun foncé pour le texte.
+    designText: `La lecture a guidé les choix visuels.
 
-Le dark mode reprend les mêmes tokens avec un fond très sombre et le vert adapté au contraste.`,
+La police Literata est utilisée pour les textes longs, afin d'améliorer le confort de lecture. L'interface repose sur Satoshi pour garder une bonne lisibilité sur les éléments fonctionnels.
+
+Le fond est légèrement teinté pour éviter la fatigue liée au blanc pur. Les couleurs restent limitées : un vert pour les actions et un brun foncé pour le texte.
+
+Le mode sombre reprend les mêmes principes avec des contrastes ajustés pour conserver le confort sur de longues sessions.`,
     revisionAlt1: 'Mots croisés',
     revisionAlt2: 'Flashcards en quiz',
     revisionAlt3: 'Statistiques',
@@ -159,30 +184,40 @@ Le dark mode reprend les mêmes tokens avec un fond très sombre et le vert adap
     contextTitle: 'Context and challenges',
     contextText: `Language-learning apps each have their own blind spot.
 
-Duolingo builds habits but its content is artificial, and most learners hit a B1-B2 ceiling quickly. Anki has one of the most rigorous algorithms on the market, but preparing cards often takes longer than reviewing them. LingQ is closer to what I wanted, reading real content with integrated translation, but the interface remains hard to navigate.
+Duolingo builds habits, but its content remains artificial and many users plateau at an intermediate level. Anki is extremely powerful, but creating cards often takes more effort than reviewing them. LingQ moves closer to real reading, but the interface can be hard to navigate.
 
-Lira was built to solve a simple need : read real content, save words in context, and review them with a serious algorithm. No complex setup, no gamification.
+Lira is built around a simple need: read real content, save words in context, and review them with an efficient repetition system. No heavy setup, no gamification.
 
 The product has been live since March 2026.`,
     researchTitle: 'Research and positioning',
-    researchText: `Research was run as desk research before launch : Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), LingQ forums, App Store reviews, and batch exports of YouTube comments. No primary interviews at this stage.
+    researchText: `Research was conducted before launch, mainly through desk research: Reddit (r/languagelearning, r/Anki, r/duolingo, r/busuu...), LingQ forums, App Store reviews, and YouTube comments.
 
-This data has an obvious bias : users who post are often more frustrated than average.
+These sources are biased toward frustration, but they are useful to understand where existing products fail.
 
-Main insight : the B1-B2 transition is the most commonly reported plateau. Advanced learners naturally move toward reading, this is not a need you create. A strong need for domain-specific vocabulary also appeared clearly. Manual Anki card creation is often cited as a dropout reason.
+One pattern appears consistently: many learners plateau at an intermediate level. At that stage, reading becomes a natural next step. The challenge is not motivation, but making that transition easier.
 
-From this data, I built three proto-personas : a polyglot familiar with FSRS (a Free Spaced Repetition Scheduler algorithm) who wants zero friction, an expat who wants to read local news without breaking the reading flow, and a long-term Duolingo user with a big streak but no real sense of progress.`,
+Another recurring friction is manual Anki card creation, often cited as a reason for dropping the tool.
+
+From this, three profiles emerged: an advanced user looking for speed and no friction, an expat wanting to read local content without breaking flow, and a regular user of apps like Duolingo who no longer feels progress.`,
     designLogicAlt: 'Lira reader design logic',
     designLogicTitle: 'Design logic',
-    designLogicText: `Reading stays the primary activity. The translation panel slides in without replacing the page. Text stays visible. Tapping a word opens it in one gesture.
+    designLogicText: `Reading remains the primary activity. Everything else has to fit around it without interrupting it.
 
-Word-saving was the part to get right. One tap opens the panel, one more saves. The button goes through a loading state, then settles on a checkmark and a label. The word shows its saved state inline.
+The translation panel opens without replacing the page. The text stays visible. A word can be checked in a single gesture.
 
-Early flows used a full overlay. It was dropped because closing the panel meant losing your place in the text. The final version anchors to the bottom on mobile and to the side on desktop, and doesn't move the reading column.`,
+Saving words required the most iteration. One tap opens the panel, another saves the word. Feedback is immediate: loading state, then confirmation and inline marking.
+
+Early versions used a full-screen overlay. It was dropped because it broke the reading flow and made users lose their place.
+
+The final version anchors at the bottom on mobile and on the side on desktop, without shifting the reading column.`,
     readerTitle: 'Reader',
-    readerText: `The reader is the core of the product. The objective was to keep reading as the main activity, not translation.
+    readerText: `The reader is the core of the product. The goal is simple: read without interruption.
 
-Clicking a word opens a panel with two tabs : translation and definition (beta). The user sees phonetics and can trigger audio pronunciation for a word or expression using local Text-to-Speech (PiperTTS). No page switch, no loss of reading flow. One more click saves the word. FSRS cards are generated automatically using the original sentence as memory context.`,
+Clicking a word opens a panel with two tabs: translation and definition. The user sees phonetics and can trigger audio using a local TTS engine (PiperTTS).
+
+Everything happens in place. A second click saves the word, and a card is generated automatically using the original sentence as context.
+
+The idea is to turn reading into learning without switching modes.`,
     libraryAlt: 'Library',
     libraryTitle: 'Library and import',
     libraryText: `Import accepts a URL, plain text, EPUB, or PDF. Users read what they want, with no imposed catalog.
@@ -191,15 +226,21 @@ For people who want a starting point, Lira integrates Project Gutenberg: some pu
 
 Imported texts and Gutenberg books live in the same personal library. Each text shows reading progress and saved-word count.`,
     reviewTitle: 'Review and crosswords',
-    reviewText: `Review uses FSRS with contextual recall : the learner needs to translate the word (or the original word if he switched languages). If he can't manage to find it, he can see the original context where the word if from. Memorization happens through both isolated words and sentence context.
+    reviewText: `Review relies on FSRS with contextual recall. The user has to retrieve a word or its translation, with the option to reveal the original sentence if needed.
 
-After a few minutes of reading and at least three saved words, a short optional mini-quiz appears for words from the current session.
+Memorization happens through both the word itself and its usage context.
 
-Crosswords are generated from personal vocabulary. It gives users an alternative review format to classic flashcards.`,
+After a few minutes of reading and a few saved words, a short optional quiz appears, based on the current session.
+
+Crosswords are generated from personal vocabulary. They offer an alternative to flashcards for users who want a different review format.`,
     designTitle: 'Design',
-    designText: `Reading uses Literata, a serif tuned for long-form screen reading. The interface uses Satoshi. The background is a warm off-white instead of neutral white. Two core colors : a forest green for actions and brand, and a dark brown for text.
+    designText: `Visual choices are driven by reading comfort.
 
-Dark mode reuses the same tokens with a very dark background and contrast-safe green values.`,
+Literata is used for long-form text to improve readability, while the interface relies on Satoshi for functional clarity.
+
+The background uses a slightly warm tone to reduce fatigue compared to pure white. Colors are limited: a green for actions and a dark brown for text.
+
+Dark mode follows the same logic, with adjusted contrast to support long reading sessions.`,
     revisionAlt1: 'Crosswords',
     revisionAlt2: 'Flashcard quiz',
     revisionAlt3: 'Statistics',

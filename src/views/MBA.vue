@@ -146,102 +146,110 @@ const PAGE_CONTENT = {
     backToHome: "← Retour à l'accueil",
     contextAlt: 'Contexte',
     contextTitle: 'Contexte',
-    contextText: `My Business Academy est un organisme de formation français certifié Qualiopi. J'ai pris en charge la phase stratégique avant toute production visuelle, en partant des utilisateurs.
+    contextText: `My Business Academy est un organisme de formation français certifié Qualiopi. J'ai accompagné la phase de cadrage avant de passer à l'interface, avec un objectif clair : rendre une offre complexe plus facile à comprendre et à choisir.
 
-L'enjeu principal : aligner acquisition SEO, réassurance, lisibilité des parcours et gouvernance du contenu.
+Le sujet dépassait largement le design visuel. Il fallait aider les visiteurs à comprendre l'offre rapidement, les rassurer, faciliter la prise de contact et poser une structure de contenu durable.
 
-Les livrables alimentent aussi une base de connaissance interne pour la documentation entreprise et les usages IA.`,
+Ce travail sert à la fois le site public et une base de connaissance interne, pensée pour mieux organiser la documentation et préparer certains usages liés à l'IA.`,
     discoveryTitle: 'Cadrage et recherche exploratoire',
-    discoveryText: `J'ai structuré le cadrage depuis les besoins utilisateurs plutôt que depuis des demandes d'interface. Trois priorités ont émergé : rendre l'offre lisible rapidement, réduire la friction de contact, installer la confiance tôt.
+    discoveryText: `J'ai commencé par clarifier le problème avant de penser aux écrans. Les premières questions étaient simples : qu'est-ce qu'un visiteur doit comprendre en arrivant ? Qu'est-ce qui peut le bloquer ? Qu'est-ce qui peut lui donner confiance ?
 
-La recherche a porté sur six concurrents directs : audit des parcours clés, analyse UX/SEO, signaux de réassurance, benchmark tarifaire et ateliers avec les parties prenantes.
+La recherche a couvert six concurrents directs, avec une lecture à la fois UX, SEO et contenu : structure des pages, signaux de réassurance, clarté des offres, accès aux informations de financement et logique de contact.
 
-Trois points ont retenu mon attention : les parcours performants partent d'une intention explicite, le financement arrive trop tard dans la plupart des expériences, et les faiblesses récurrentes (navigation confuse, tarifs opaques, accessibilité incomplète) représentent une vraie opportunité.`,
+Ce qui ressortait le plus : les meilleurs parcours partent d'une intention claire, alors que beaucoup d'acteurs noient l'utilisateur dans un catalogue trop large. Le financement arrivait aussi souvent trop tard, alors qu'il fait partie des premières questions côté utilisateur.`,
     needsAlt: 'Synthèse des besoins utilisateurs',
     needsTitle: 'Besoins utilisateurs et personas',
-    needsText: `Quatre proto-personas : reconversion, salarié en évolution, porteur de projet, employeur/RH.
+    needsText: `J'ai synthétisé quatre profils principaux : une personne en reconversion, un salarié qui veut évoluer, un porteur de projet et un employeur ou responsable RH.
 
-Besoin commun : décider vite, sans zone d'ombre. Ça se traduit par une information scannable, une hiérarchie claire et une réassurance distribuée dans tout le parcours.
+Ils n'ont pas tous les mêmes attentes, mais ils partagent une même contrainte : ils doivent comprendre vite s'ils sont au bon endroit. Ils ont besoin d'informations lisibles, de preuves de sérieux et d'un chemin clair vers l'étape suivante.
 
-J'ai écarté l'approche catalogue complet dès l'entrée : trop coûteuse cognitivement, elle ralentit la décision.`,
+C'est pour cette raison que j'ai écarté l'idée d'un catalogue complet dès l'arrivée. Sur le papier, cela donne une impression de richesse. En pratique, cela ajoute surtout de la charge mentale et ralentit la décision.`,
     uxTitle: 'Principes UX et priorisation',
-    uxText: `Principes retenus : clarté avant densité, réassurance continue, mobile d'abord, accessibilité par défaut, gouvernance éditoriale.
+    uxText: `Les principes retenus sont volontairement simples : aller à l'essentiel, rassurer progressivement, penser mobile dès le départ, garder une structure accessible et rendre le contenu facile à maintenir.
 
-Parcours principal : accueil -> catégories -> fiches formation -> contact.
+Le parcours principal devient : accueil -> catégories -> fiches formation -> contact. Chaque page a un rôle précis : aider à comprendre, comparer, vérifier que l'offre est crédible, puis passer à l'action.
 
-J'ai préféré une production page par page, pour préserver la cohérence et la qualité de passation.`,
+J'ai privilégié une conception page par page plutôt qu'un travail en parallèle sur tout le site. C'était plus lent au départ, mais plus sûr pour garder une expérience cohérente et faciliter la passation ensuite.`,
     archAlt: "Architecture de l'information",
     archTitle: "Architecture de l'information",
-    archText: `Hiérarchie claire : accueil -> catalogue -> catégories -> fiches formation, avec des pages transverses pour le financement, l'organisme, le contact et les mentions légales.
+    archText: `L'architecture suit une progression simple : accueil -> catalogue -> catégories -> fiches formation, avec des pages transverses pour le financement, l'organisme, le contact et les mentions légales.
 
-Deux parcours clés : reconversion (recherche -> fiche -> financement -> contact) et employeur (preuve de conformité -> offre ciblée -> demande).
+Deux parcours ont servi de repères : la personne en reconversion, qui cherche une formation puis veut comprendre le financement, et l'employeur, qui a surtout besoin de preuves de sérieux avant de faire une demande.
 
-La personnalisation est pragmatique : préremplissage contextuel, appels à l'action adaptés à l'intention, formulations orientées situation.`,
+La personnalisation reste légère : formulaires préremplis selon le contexte, appels à l'action adaptés et formulations plus proches de la situation de l'utilisateur. L'idée est de retirer les petites décisions inutiles avant la prise de contact.`,
     roadmapAlt: 'Roadmap et prochaines étapes',
     roadmapTitle: 'Roadmap et prochaines étapes',
-    roadmapText: `Le socle est posé : cadrage, recherche, architecture, principes UX, gouvernance.
+    roadmapText: `Le socle est posé : cadrage, recherche, architecture, principes UX et gouvernance de contenu.
 
-Prochaine étape : maquettes, passation front, première version instrumentée, puis itérations sur signaux réels.`,
+La suite prévue : passer aux maquettes, préparer la passation front, mettre en ligne une première version instrumentée, puis améliorer le parcours à partir de signaux réels.
+
+L'objectif est de livrer une version claire sans figer le produit trop tôt. Chaque étape prépare la suivante : mesurer les frictions, qualifier les demandes et comprendre où les visiteurs avancent ou décrochent.`,
     impactAlt: 'Impact',
     impactTitle: 'Impact',
-    impactText: `Indicateurs prévus :
+    impactText: `Indicateurs définis pour suivre la suite :
 - taux de conversion visite -> demande
 - temps d'accès à l'information clé
 - taux de clic sur les CTA principaux
 - qualité des leads
-- progression dans l'entonnoir
-- conformité éditoriale (SEO, RGAA)`
+- progression dans le parcours
+- conformité éditoriale (SEO, RGAA)
+
+Le but n'est pas seulement de produire des écrans. C'est de construire une première version mesurable, capable de relier les choix UX, l'acquisition et la performance commerciale.`,
   },
   en: {
     projectNotFound: 'Project not found',
     backToHome: '← Back to home',
     contextAlt: 'Context',
     contextTitle: 'Context',
-    contextText: `My Business Academy is a French training organization certified Qualiopi. I led the strategic phase before any visual production, starting from users.
+    contextText: `My Business Academy is a French training organization certified Qualiopi. I worked on the framing phase before moving into interface design, with one clear goal: make a complex offer easier to understand and choose.
 
-Main challenge: aligning SEO acquisition, reassurance, journey clarity, and content governance.
+The challenge went beyond visual design. The experience had to help visitors understand the offer quickly, feel reassured, contact the right person more easily, and rely on a content structure that could last.
 
-The deliverables also feed an internal knowledge base for company documentation and AI use.`,
+The work supports both the public website and an internal knowledge base, designed to organize company documentation and prepare some AI-related uses.`,
     discoveryTitle: 'Framing and exploratory research',
-    discoveryText: `I structured the framing from user needs, not from interface requests. Three priorities emerged: make the offer quickly understandable, reduce contact friction, build trust early.
+    discoveryText: `I started by clarifying the problem before thinking about screens. The first questions were simple: what does a visitor need to understand when they arrive? What could block them? What would make them trust the organization?
 
-Research covered six direct competitors: key journey audits, UX/SEO analysis, reassurance signals, pricing benchmark, and stakeholder workshops.
+Research covered six direct competitors, looking at UX, SEO, and content: page structure, reassurance signals, offer clarity, access to funding information, and contact logic.
 
-Three things stood out: top-performing journeys start from explicit user intent, funding comes too late in most experiences, and recurring weaknesses (confusing navigation, opaque pricing, incomplete accessibility) represent a real opportunity.`,
+The main pattern was clear: the strongest journeys start from explicit user intent, while many competitors push users into a broad catalog too early. Funding information also appeared too late in most experiences, even though it is one of the first questions users have.`,
     needsAlt: 'User needs synthesis',
     needsTitle: 'User needs and personas',
-    needsText: `Four proto-personas: career switcher, employee in progression, entrepreneur, and employer/HR.
+    needsText: `I synthesized four main profiles: a career switcher, an employee looking to progress, an entrepreneur, and an employer or HR stakeholder.
 
-Shared need: decide fast, with no blind spots. That means scannable information, clear hierarchy, and reassurance distributed across the journey.
+They do not all expect the same thing, but they share one constraint: they need to quickly understand whether they are in the right place. They need readable information, proof of credibility, and a clear path to the next step.
 
-I ruled out the "full catalog first" approach: too cognitively costly, it slows decisions down.`,
+That is why I ruled out the idea of showing the full catalog first. On paper, it creates a feeling of depth. In practice, it mainly adds cognitive load and slows down the decision.`,
     uxTitle: 'UX principles and prioritization',
-    uxText: `Selected principles: clarity before density, continuous reassurance, mobile-first, accessibility by default, editorial governance.
+    uxText: `The principles were intentionally simple: focus on what matters, build reassurance progressively, design mobile-first, keep the structure accessible, and make the content easy to maintain.
 
-Main journey: homepage -> category pages -> training pages -> contact.
+The main journey becomes: homepage -> categories -> training pages -> contact. Each page has a clear role: help users understand, compare, check that the offer is credible, then take action.
 
-I chose a page-by-page production over a parallel approach, to protect consistency and handoff quality.`,
+I chose to design page by page instead of working on the whole site in parallel. It was slower at first, but safer for keeping the experience consistent and making handoff easier later.`,
     archAlt: 'Information architecture',
     archTitle: 'Information architecture',
-    archText: `Clear hierarchy: home -> catalog -> categories -> training pages, with transversal pages for funding, organization, contact, and legal.
+    archText: `The architecture follows a simple progression: home -> catalog -> categories -> training pages, with transversal pages for funding, organization, contact, and legal information.
 
-Two key journeys: career switcher (search -> training page -> funding -> contact) and employer (compliance proof -> targeted offer -> proposal request).
+Two journeys were used as references: the career switcher, who searches for a training program and then needs to understand funding, and the employer, who mostly needs proof of credibility before making a request.
 
-Personalization is pragmatic: contextual form prefill, intent-based CTAs, situation-specific wording.`,
+Personalization stays lightweight: contextual form prefill, adapted calls to action, and wording closer to the user's situation. The idea is to remove small unnecessary decisions before contact.`,
     roadmapAlt: 'Roadmap and next steps',
     roadmapTitle: 'Roadmap and next steps',
-    roadmapText: `Foundation in place: framing, research, architecture, UX principles, governance.
+    roadmapText: `The foundation is in place: framing, research, architecture, UX principles, and content governance.
 
-Next: mockups, front-end handoff, instrumented first version, then iteration on real signals.`,
+Next steps: move into mockups, prepare front-end handoff, launch an instrumented first version, then improve the journey based on real signals.
+
+The goal is to ship a clear first version without freezing the product too early. Each step prepares the next one: measuring friction, qualifying requests, and understanding where visitors move forward or drop off.`,
     impactAlt: 'Business impact',
     impactTitle: 'Business impact',
-    impactText: `Planned indicators:
+    impactText: `Indicators defined to follow the next steps:
 - visitor-to-request conversion rate
 - time to key information
 - click rate on primary CTAs
 - lead quality
-- funnel progression
-- editorial compliance (SEO, accessibility)`
+- journey progression
+- editorial compliance (SEO, accessibility)
+
+The goal is not only to produce screens. It is to build a measurable first version that connects UX decisions, acquisition, and business performance.`,
   }
 }
 

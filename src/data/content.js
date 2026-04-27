@@ -9,26 +9,26 @@ export const works = [
     id: 'lira',
     title: 'Lira',
     intro:
-      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés.',
+      'Lira aide les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.',
     description:
-      'Outil d\'apprentissage linguistique permettant de transformer sa lecture en exercices mémorisables via un dictionnaire contextuel, des algorithmes de révision et des jeux de mots croisés personnalisés.',
-    services: ['Product Design'],
+      'Lira aide les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.',
+    services: ['Product Design', 'UX Research', 'UI Design'],
     team: [],
     links: [{ label: 'readwithlira.com', href: 'https://readwithlira.com', external: true }],
-    tags: ['Product Design'],
+    tags: ['Product Design', 'Live product'],
     cover: liraBanner,
     thumbnail: liraBanner,
     route: '/projet/lira',
     type: 'perso'
   },
-    {
+  {
     id: 'mba',
     title: 'My Business Academy',
     intro:
       "Conception stratégique du site vitrine d'un organisme de formation certifié Qualiopi, orientée clarté des parcours, réassurance et conversion.",
     description:
       "Projet mené de la phase de cadrage à l'architecture d'information : recueil des besoins, recherche exploratoire et concurrentielle, priorisation UX, définition des parcours et préparation de la phase UI (maquettes à venir).",
-    services: ['UX Research', "Architecture de l'information", 'UI Kit'],
+    services: ['UX Research', "Architecture de l'information", 'UX Strategy'],
     team: [],
     links: [],
     tags: ['Product Design'],
@@ -44,10 +44,10 @@ export const works = [
       'Plateforme en ligne permettant de consulter rapidement les séances de cinéma autour de soi et de parcourir les films actuellement à l’affiche.',
     description:
       'Septième Séance est une plateforme qui permet de trouver rapidement les séances de cinéma autour de soi et d’explorer les films à l’affiche. L’objectif est de proposer une expérience simple, rapide et adaptée au mobile, loin de la complexité des services existants.',
-    services: ['Recherche utilisateur', 'UI Design', 'UI Kit'],
+    services: ['Product Design', 'Recherche utilisateur', 'UI Design'],
     team: [{ label: 'Mathieu Lefebvre', href: 'https://matlfb.com/', external: true }],
     links: [{ label: 'septiemeseance.fr', href: 'https://septiemeseance.fr', secondary: true, external: true }],
-    tags: ['UX/UI Design'],
+    tags: ['Product Design'],
     cover: septiemeCover,
     route: '/projet/septiemeseance',
     type: 'freelance'
@@ -368,18 +368,18 @@ export const playgroundItems = [
 const WORKS_EN_TRANSLATIONS = {
   lira: {
     intro:
-      'Language learning tool that turns reading into memorable practice through a contextual dictionary, spaced-repetition algorithms, and personalized crosswords.',
+      'Lira helps learners read real content, save useful words in context, and memorize them through personalized review.',
     description:
-      'Language learning tool that turns reading into memorable practice through a contextual dictionary, spaced-repetition algorithms, and personalized crosswords.',
-    tags: ['Product Design']
+      'Lira helps learners read real content, save useful words in context, and memorize them through personalized review.',
+    tags: ['Product Design', 'Live product']
   },
   septiemeseance: {
     intro:
       'Online platform designed to quickly browse nearby cinema showtimes and discover movies currently in theaters.',
     description:
       'Septieme Seance is a platform designed to quickly find nearby cinema showtimes and discover movies currently in theaters. The goal was to provide a simple, fast, mobile-first experience, far from the complexity of existing services.',
-    services: ['User Research', 'UI Design', 'UI Kit'],
-    tags: ['UX/UI Design', 'Front-end']
+    services: ['Product Design', 'User Research', 'UI Design'],
+    tags: ['Product Design']
   },
   talkie: {
     intro:
@@ -394,7 +394,7 @@ const WORKS_EN_TRANSLATIONS = {
       'Strategic design of the showcase website for a Qualiopi-certified training organization, focused on journey clarity, trust-building, and conversion.',
     description:
       'Project led from scoping to information architecture: requirements gathering, exploratory and competitive research, UX prioritization, journey definition, and preparation for the UI phase (mockups upcoming).',
-    services: ['UX Research', 'Information Architecture', 'UI Kit'],
+    services: ['UX Research', 'Information Architecture', 'UX Strategy'],
     tags: ['Product Design']
   },
   alpine: {

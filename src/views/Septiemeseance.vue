@@ -71,34 +71,47 @@ const PAGE_CONTENT = {
     backToHome: '← Retour à l’accueil',
     contextAlt: 'Vue écran du contexte du service',
     contextTitle: 'Contexte et enjeu',
-    contextText: `La plupart des services existants autour du cinéma proposent beaucoup d'informations, mais rarement de manière directe. L'utilisateur doit souvent naviguer entre plusieurs écrans avant d'avoir les projections proches de lui. Certaines plateformes ne tiennent pas compte de la position de l'utilisateur, même lorsqu'il l'a autorisée.
+    contextText: `Les services cinéma existants proposent beaucoup d'informations, mais rarement sous une forme exploitable immédiatement. L'utilisateur doit naviguer entre plusieurs écrans avant de voir les séances autour de lui, parfois même sans prise en compte fiable de sa position.
 
-L'enjeu était de créer un service plus fluide qui répond vraiment au besoin central : voir rapidement ce qui se joue autour de soi et choisir une séance sans perdre de temps.
+Le problème n'était pas un manque de contenu, mais un manque de hiérarchie et de vitesse d'accès à l'information. L'objectif produit était donc clair : permettre à un utilisateur de comprendre ce qui se joue autour de lui en quelques secondes et choisir une séance sans friction.
 
-Le service a fonctionné jusqu'à la restriction d'accès à l'API tierce utilisée pour les données de séances. Le projet reste dans ce portfolio car il représente un cycle complet, de la recherche au lancement.`,
+Le service a été conçu et lancé comme un produit complet, de la recherche à la mise en ligne. Il s'est arrêté suite à une restriction d'accès à l'API de données, mais reste un cas représentatif d'un cycle produit complet, avec contraintes techniques réelles.`,
     geoAlt: 'Géolocalisation ou recherche manuelle',
     geoTitle: 'Géolocalisation ou recherche manuelle',
-    geoText:
-      "L'accueil propose soit d'activer la géolocalisation, soit de rechercher manuellement une ville, un cinéma ou un film. La géolocalisation affiche les cinémas à proximité (périmètre modifiable). La recherche est rapide, tolérante aux fautes et dotée d'autocomplétion.",
+    geoText: `Deux points d'entrée ont été conçus : géolocalisation ou recherche manuelle. L'enjeu n'était pas d'ajouter des options, mais de réduire le temps d'accès à une première réponse pertinente.
+
+La géolocalisation permet d'afficher immédiatement les cinémas proches avec un rayon ajustable. La recherche manuelle couvre les cas où l'utilisateur pense en termes de lieu précis, de film ou de salle.
+
+Les deux modes convergent vers le même objectif : afficher des résultats exploitables en un minimum d'interactions.`,
     filtersTitle: 'Filtres de recherche',
     listAlt: 'Liste des projections autour',
     listTitle: 'Liste des projections autour',
-    listText:
-      "Une fois la géolocalisation acceptée, la liste des films projetés dans le périmètre apparaît. Les salles sont triées par proximité, avec un accès rapide aux séances du jour. La présentation est pensée pour le mobile : lisible, simple et compacte.",
+    listText: `Une fois la zone définie, les séances apparaissent immédiatement. Les cinémas sont triés par proximité, avec un accès direct aux séances du jour.
+
+La présentation est volontairement compacte et mobile-first : chaque élément doit être scannable en quelques secondes. L'objectif n'est pas d'exposer toute la donnée, mais de permettre une décision rapide.
+
+Chaque écran est pensé comme une réduction de l'incertitude : où, quand, et quoi regarder.`,
     productDecisionsTitle: 'Décisions produit et arbitrages',
-    productDecisionsText: `Le premier écran, c'est une barre de recherche, rien d'autre. Une ligne explique le principe : trouver des séances près de chez soi. Les utilisateurs arrivent avec une intention. Ils veulent savoir ce qui passe ce soir.
+    productDecisionsText: `Le premier écran est une barre de recherche, sans distraction. Les utilisateurs arrivent avec une intention claire : savoir ce qui passe maintenant ou ce soir.
 
-Les résultats s'affichent en grille d'affiches. Chaque carte montre le titre, la durée, le réalisateur, les formats (VO, VF, 3D). Les filtres de genre, décennie et format d'un côté. Les filtres de localisation de l'autre : rayon en kilomètres, dates, cartes d'abonnement (Pathé, UGC). Si rien ne remonte, l'état vide suggère d'élargir le rayon.
+Les résultats sont organisés pour maximiser la lisibilité : affiches en grille, informations essentielles visibles immédiatement, filtres séparés entre contenu et localisation.
 
-Une feature n'est pas passée en production : l'intégration Letterboxd. L'idée était de remonter les films de la watchlist d'un utilisateur qui passaient près de chez lui, et de signaler quand un ami avait le même film en attente. Coupé tôt. La feature avait du sens surtout à Paris, où le catalogue est assez large pour qu'un titre obscur ait une chance de passer quelque part. Pour une nouvelle sortie, savoir qu'un ami a le film dans sa liste ne résolvait pas le bon problème.
+Plusieurs arbitrages ont structuré le produit :
 
-Les prix des billets ont été évoqués. L'API ne les exposait pas, mais il y avait un contournement pour les récupérer indirectement. Le problème, c'était le volume : 2 300 cinémas, plusieurs séances par jour, sur sept jours. À cette échelle, les trous étaient assez fréquents pour qu'afficher un prix soit moins utile que de ne rien afficher. Feature abandonnée.
+- L'intégration Letterboxd a été abandonnée. Pertinente dans certains contextes (catalogue large), elle n'améliorait pas la décision dans les cas majoritaires.
+- L'affichage des prix a été écarté. Bien que techniquement possible, la donnée était trop incomplète à grande échelle (2 300 cinémas, multiples séances). Une information partielle aurait dégradé la confiance.
 
-React et Tailwind côté front. Figma pour le design, Heroicons pour les icônes.`,
+Ces choix illustrent une logique produit simple : privilégier la fiabilité et la rapidité de décision plutôt que la richesse fonctionnelle.
+
+Stack : React, Tailwind, Figma, Heroicons.`,
     futureTitle: 'Futures améliorations',
-    futureText: `Lors des tests, plusieurs utilisateurs ont tapé le nom de leur cinéma plutôt que d'activer la géolocalisation. Ils cherchaient le programme de la salle sur la semaine. Cela a conduit à deux décisions : recherche par cinéma avec autocomplétion, et vue salle sur plusieurs jours.
+    futureText: `Les tests ont montré un comportement inattendu : plusieurs utilisateurs recherchaient directement un cinéma, plutôt que d'utiliser la géolocalisation. Leur besoin était différent : voir un programme complet sur plusieurs jours.
 
-Parmi les évolutions prévues : affichage des prix, mise en avant de la prochaine séance, alertes mobiles personnalisées, détails de séance (3D, avant-première), notes/avis, distinctions, compteur de résultats en temps réel dans la bottom sheet, bouton de réinitialisation des filtres, et connexion Letterboxd/Trakt.`,
+Cela a conduit à deux évolutions prioritaires : recherche par cinéma avec autocomplétion, et pages cinéma multi-jours.
+
+Les prochaines itérations visaient à enrichir l'expérience sans compromettre la simplicité : mise en avant de la prochaine séance, alertes personnalisées, métadonnées utiles (formats, avant-premières), et amélioration des filtres (compteurs, reset, feedback temps réel).
+
+Chaque amélioration est évaluée selon un critère : réduit-elle le temps nécessaire pour prendre une décision ?`,
     filtersDescription:
       'Pour accompagner la recherche, des filtres ont été ajoutés afin de permettre un tri plus précis selon les situations.',
     filtersOne:
@@ -119,32 +132,47 @@ Parmi les évolutions prévues : affichage des prix, mise en avant de la prochai
     backToHome: '← Back to home',
     contextAlt: 'Service context overview',
     contextTitle: 'Context and challenge',
-    contextText: `Most existing cinema services provide a lot of information, but rarely in a direct way. Users often have to navigate multiple screens before seeing nearby showtimes. Some platforms still ignore user location even when permission is granted.
+    contextText: `Existing cinema services provide a lot of information, but rarely in a way that is immediately usable. Users often navigate across multiple screens before seeing relevant showtimes, sometimes without reliable use of their location.
 
-The challenge was to create a more fluid service focused on the core need: quickly see what is playing nearby and pick a session without friction.
+The problem was not lack of content, but lack of hierarchy and speed. The product goal was clear: allow users to understand what is playing nearby within seconds and pick a session without friction.
 
-The service ran until access to the third-party showtimes API was restricted. It remains in this portfolio because it represents a full cycle, from research to launch.`,
+The product was designed and launched end-to-end, from research to production. It was later stopped due to API access restrictions, but remains a strong example of a full product cycle with real technical constraints.`,
     geoAlt: 'Geolocation or manual search',
     geoTitle: 'Geolocation or manual search',
-    geoText:
-      'Home offers two options : enable geolocation, or manually search by city, cinema, or movie. Geolocation instantly shows nearby cinemas (with adjustable radius). Search is fast, typo-tolerant, and includes autocomplete.',
+    geoText: `Two entry points were designed: geolocation or manual search. The goal was not to add options, but to reduce time to first relevant result.
+
+Geolocation instantly displays nearby cinemas with an adjustable radius. Manual search covers cases where users think in terms of a specific place, movie, or theater.
+
+Both paths converge toward the same objective: delivering usable results with minimal interaction.`,
     filtersTitle: 'Search filters',
     listAlt: 'Nearby showtimes list',
     listTitle: 'Nearby showtimes list',
-    listText:
-      'Once geolocation is enabled, projected movies in the selected area appear. Cinemas are sorted by distance with quick access to same-day sessions. The layout is mobile-first: readable, simple, and compact for rapid scanning.',
+    listText: `Once the area is defined, showtimes appear immediately. Cinemas are sorted by distance with direct access to same-day sessions.
+
+The layout is intentionally compact and mobile-first: every element must be scannable within seconds. The goal is not to expose all data, but to enable fast decisions.
+
+Each screen reduces uncertainty: where, when, and what to watch.`,
     productDecisionsTitle: 'Product decisions and trade-offs',
-    productDecisionsText: `The first screen is a search bar, nothing else. A short line explains the mechanic : find screenings near you. Users arrive with intent. They want to know what's on tonight.
+    productDecisionsText: `The first screen is a search bar, nothing else. Users arrive with a clear intent: what is playing now or tonight.
 
-Results load as a grid of film posters. Each card shows title, runtime, director, formats (Original, French, 3D...). Genre, decade, format filters on one side. Location filters on the other : radius in kilometers, specific dates, subscription cards (Pathé, UGC). If nothing comes back, the empty state suggests widening the radius.
+Results are structured for readability: posters in a grid, essential information immediately visible, filters split between content and location.
 
-One thing that didn't make it to production: Letterboxd integration. The plan was to surface films from a user's watchlist that were screening nearby, and flag when a friend had the same film queued. It was cut early. The feature made most sense in Paris, where the catalogue is wide enough that an obscure title might actually be showing somewhere. For a standard new release, knowing a friend's watchlist status felt like solving the wrong problem.
+Key product trade-offs:
 
-Ticket prices came up. The API didn't expose them, but there was a workaround to retrieve them indirectly. The issue was the scale of that workaround : 2,300 cinemas, multiple screenings a day, . At that volume, the gaps were frequent enough that showing a price felt less useful than showing nothing. The feature was dropped.`,
+- Letterboxd integration was dropped. Relevant in specific contexts, but did not improve decision-making in most cases.
+- Ticket pricing was removed. Although technically possible, the data was too incomplete at scale (2,300 cinemas, multiple screenings). Partial information would reduce trust.
+
+These decisions reflect a simple principle: prioritize reliability and speed of decision over feature richness.
+
+Stack: React, Tailwind, Figma, Heroicons.`,
     futureTitle: 'Future improvements',
-    futureText: `User tests showed that several people searched by cinema name instead of enabling geolocation. They wanted a weekly theater schedule, not only a single session view. This led to two roadmap decisions : cinema-name search with autocomplete, and multi-day cinema pages.
+    futureText: `User testing revealed an unexpected behavior: several users searched directly by cinema name instead of using geolocation. Their need was different: viewing a full weekly schedule.
 
-Planned improvements include prices, highlighting the next session directly in results, personalized mobile alerts, specific metadatas (3D, premieres), ratings/reviews, distinctions, real-time result counts in mobile filter sheets, reset filters action, and Letterboxd/Trakt integrations.`,
+This led to two key roadmap decisions: cinema search with autocomplete, and multi-day cinema pages.
+
+Future iterations focused on enriching the experience without compromising simplicity: highlighting next sessions, personalized alerts, useful metadata (formats, premieres), and improved filtering (real-time counts, reset actions, feedback).
+
+Each improvement is evaluated against a single question: does it reduce the time needed to make a decision?`,
     filtersDescription:
       'To support search, filters were added to enable more precise and useful sorting across different user contexts.',
     filtersOne:

@@ -154,6 +154,7 @@ const previousStyles = ref({
   }
 })
 const scrollPosition = ref(0)
+const isScrollLocked = ref(false)
 
 const mediaItems = computed(() => {
   if (!selectedItem.value) {
@@ -260,6 +261,7 @@ const getScrollValue = () => {
 
 const lockScroll = () => {
   if (typeof window === 'undefined' || typeof document === 'undefined') return
+  if (isScrollLocked.value) return
   const lenis = getLenisInstance()
   const body = document.body
   const html = document.documentElement
@@ -283,10 +285,11 @@ const lockScroll = () => {
   body.style.top = `-${scrollPosition.value}px`
   body.style.width = '100%'
   html.style.overflow = 'hidden'
+  isScrollLocked.value = true
 }
 
 const unlockScroll = () => {
-  if (typeof document === 'undefined') return
+  if (!isScrollLocked.value || typeof document === 'undefined') return
   const lenis = getLenisInstance()
   const body = document.body
   const html = document.documentElement
@@ -306,6 +309,8 @@ const unlockScroll = () => {
     }
     lenis?.start?.()
   }
+
+  isScrollLocked.value = false
 }
 
 watch(
@@ -329,7 +334,9 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown)
-  unlockScroll()
+  if (isScrollLocked.value) {
+    unlockScroll()
+  }
 })
 </script>
 
