@@ -98,6 +98,7 @@ const handleSelect = () => {
 .playground__item {
   position: relative;
   overflow: hidden;
+  border-radius: 4px;
   height: 260px;
   width: 100%;
   cursor: pointer;

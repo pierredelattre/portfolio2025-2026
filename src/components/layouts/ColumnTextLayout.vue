@@ -80,6 +80,7 @@ const resolvedPoster = computed(() => {
   &>.image {
     grid-column: 1 / 9;
     height: 540px;
+    border-radius: 4px;
     overflow: hidden;
 
     & :deep(.layout__column-text-image) {

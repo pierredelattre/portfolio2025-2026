@@ -36,6 +36,7 @@ const style = computed(() => {
 <style scoped>
 .tag {
   padding: 0.25rem;
+  border-radius: 4px;
   background-color: var(--primary);
   color: var(--surface);
   font-size: 0.75rem;

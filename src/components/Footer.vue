@@ -207,11 +207,13 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
           left: 0;
           height: 100%;
           width: 100%;
+          border-radius: 0;
         }
 
         & :deep(.project-image__media) {
           width: 100%;
           height: 100%;
+          border-radius: 0;
           object-fit: cover;
           transition: transform .4s ease;
         }

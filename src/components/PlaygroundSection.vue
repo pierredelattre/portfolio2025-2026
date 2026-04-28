@@ -446,7 +446,7 @@ onBeforeUnmount(() => {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  /* border-radius: 1rem; */
+  border-radius: 4px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
 }

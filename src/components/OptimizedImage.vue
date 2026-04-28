@@ -204,6 +204,7 @@ watch(
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-radius: 4px;
 }
 
 .optimized-image__picture,
@@ -211,12 +212,15 @@ watch(
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
 }
 
 .optimized-image__img {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: inherit;
 }
 
 .optimized-image__skeleton {
