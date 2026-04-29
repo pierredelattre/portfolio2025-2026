@@ -71,55 +71,32 @@ const PAGE_CONTENT = {
     backToHome: '← Retour à l’accueil',
     contextAlt: 'Vue écran du contexte du service',
     contextTitle: 'Contexte et enjeu',
-    contextText: `Les services cinéma existants proposent beaucoup d'informations, mais rarement sous une forme exploitable immédiatement. L'utilisateur doit naviguer entre plusieurs écrans avant de voir les séances autour de lui, parfois même sans prise en compte fiable de sa position.
+    contextText: `Les services cinéma donnent beaucoup d'informations, mais rarement dans un format exploitable immédiatement. L'objectif était de réduire le temps entre l'entrée et le choix d'une séance.
 
-Le problème n'était pas un manque de contenu, mais un manque de hiérarchie et de vitesse d'accès à l'information. L'objectif produit était donc clair : permettre à un utilisateur de comprendre ce qui se joue autour de lui en quelques secondes et choisir une séance sans friction.
-
-Le service a été conçu et lancé comme un produit complet, de la recherche à la mise en ligne. Il s'est arrêté suite à une restriction d'accès à l'API de données, mais reste un cas représentatif d'un cycle produit complet, avec contraintes techniques réelles.`,
+Le produit a été conçu et lancé de bout en bout. Il s'est arrêté après une restriction d'accès à l'API, mais reste un cas concret de cycle produit complet sous contrainte technique.`,
     geoAlt: 'Géolocalisation ou recherche manuelle',
     geoTitle: 'Géolocalisation ou recherche manuelle',
-    geoText: `Deux points d'entrée ont été conçus : géolocalisation ou recherche manuelle. L'enjeu n'était pas d'ajouter des options, mais de réduire le temps d'accès à une première réponse pertinente.
+    geoText: `Deux entrées : géolocalisation ou recherche manuelle. Le but était d'obtenir une première réponse utile en quelques interactions.
 
-La géolocalisation permet d'afficher immédiatement les cinémas proches avec un rayon ajustable. La recherche manuelle couvre les cas où l'utilisateur pense en termes de lieu précis, de film ou de salle.
-
-Les deux modes convergent vers le même objectif : afficher des résultats exploitables en un minimum d'interactions.`,
+La géolocalisation affiche les cinémas proches avec rayon ajustable. La recherche manuelle couvre les cas orientés lieu, film ou salle.`,
     filtersTitle: 'Filtres de recherche',
     listAlt: 'Liste des projections autour',
     listTitle: 'Liste des projections autour',
-    listText: `Une fois la zone définie, les séances apparaissent immédiatement. Les cinémas sont triés par proximité, avec un accès direct aux séances du jour.
+    listText: `Dès que la zone est définie, les séances s'affichent et les cinémas sont triés par proximité.
 
-La présentation est volontairement compacte et mobile-first : chaque élément doit être scannable en quelques secondes. L'objectif n'est pas d'exposer toute la donnée, mais de permettre une décision rapide.
+La liste est compacte et mobile-first pour permettre une lecture rapide et une décision immédiate.
 
-Chaque écran est pensé comme une réduction de l'incertitude : où, quand, et quoi regarder.`,
+La compacité sert un objectif simple: moins de scan, donc une décision plus rapide.`,
     productDecisionsTitle: 'Décisions produit et arbitrages',
-    productDecisionsText: `Le premier écran est une barre de recherche, sans distraction. Les utilisateurs arrivent avec une intention claire : savoir ce qui passe maintenant ou ce soir.
+    productDecisionsText: `Le produit est centré sur une intention immédiate : trouver quoi voir maintenant ou ce soir.
 
-Les résultats sont organisés pour maximiser la lisibilité : affiches en grille, informations essentielles visibles immédiatement, filtres séparés entre contenu et localisation.
-
-Plusieurs arbitrages ont structuré le produit :
-
-- L'intégration Letterboxd a été abandonnée. Pertinente dans certains contextes (catalogue large), elle n'améliorait pas la décision dans les cas majoritaires.
-- L'affichage des prix a été écarté. Bien que techniquement possible, la donnée était trop incomplète à grande échelle (2 300 cinémas, multiples séances). Une information partielle aurait dégradé la confiance.
-
-Ces choix illustrent une logique produit simple : privilégier la fiabilité et la rapidité de décision plutôt que la richesse fonctionnelle.
-
-Stack : React, Tailwind, Figma, Heroicons.`,
+Deux arbitrages ont guidé la version : abandon de l'intégration Letterboxd et retrait des prix, car la donnée restait trop incomplète à l'échelle et nuisait à la confiance.`,
     futureTitle: 'Futures améliorations',
-    futureText: `Les tests ont montré un comportement inattendu : plusieurs utilisateurs recherchaient directement un cinéma, plutôt que d'utiliser la géolocalisation. Leur besoin était différent : voir un programme complet sur plusieurs jours.
+    futureText: `Les tests ont révélé un besoin complémentaire : rechercher directement un cinéma pour voir son programme sur plusieurs jours.
 
-Cela a conduit à deux évolutions prioritaires : recherche par cinéma avec autocomplétion, et pages cinéma multi-jours.
-
-Les prochaines itérations visaient à enrichir l'expérience sans compromettre la simplicité : mise en avant de la prochaine séance, alertes personnalisées, métadonnées utiles (formats, avant-premières), et amélioration des filtres (compteurs, reset, feedback temps réel).
-
-Chaque amélioration est évaluée selon un critère : réduit-elle le temps nécessaire pour prendre une décision ?`,
+Priorités retenues : recherche cinéma avec autocomplétion et pages cinéma multi-jours, puis enrichissements ciblés (prochaine séance, alertes, métadonnées utiles, filtres améliorés) sans alourdir le parcours.`,
     filtersDescription:
-      'Pour accompagner la recherche, des filtres ont été ajoutés afin de permettre un tri plus précis selon les situations.',
-    filtersOne:
-      'Certains filtres affinent les résultats : genre, année, durée et option films récents vs films cultes encore projetés. Les utilisateurs peuvent aussi filtrer par abonnements acceptés (UGC, Pathé...).',
-    filtersTwo:
-      "L'utilisateur peut définir la distance autour du point géolocalisé ou autour de la ville/cinéma choisi manuellement. Il peut aussi choisir la date souhaitée pour voir les projections correspondantes.",
-    filtersThree:
-      "La gestion des langues et sous-titres fait aussi partie des options. L'idée est de laisser chacun adapter l'affichage selon ses contraintes.",
+      'Les filtres servent à transformer une liste large en sélection exploitable rapidement. Ils couvrent le contenu (genre, année, durée, récents/cultes), le contexte (distance, date, abonnements) et les contraintes de séance (langues, sous-titres).',
     altFilters1: 'Filtrer les films',
     altFilters2: 'Périmètre de recherche et date',
     altFilters3: 'Choix des langues et sous-titres',
@@ -132,55 +109,32 @@ Chaque amélioration est évaluée selon un critère : réduit-elle le temps né
     backToHome: '← Back to home',
     contextAlt: 'Service context overview',
     contextTitle: 'Context and challenge',
-    contextText: `Existing cinema services provide a lot of information, but rarely in a way that is immediately usable. Users often navigate across multiple screens before seeing relevant showtimes, sometimes without reliable use of their location.
+    contextText: `Cinema services provide plenty of information, but rarely in a format you can use right away. The goal was to shorten the time between entry and choosing a showtime.
 
-The problem was not lack of content, but lack of hierarchy and speed. The product goal was clear: allow users to understand what is playing nearby within seconds and pick a session without friction.
-
-The product was designed and launched end-to-end, from research to production. It was later stopped due to API access restrictions, but remains a strong example of a full product cycle with real technical constraints.`,
+The product was designed and launched end to end. It stopped after API access restrictions, but it remains a concrete example of a full product cycle under technical constraints.`,
     geoAlt: 'Geolocation or manual search',
     geoTitle: 'Geolocation or manual search',
-    geoText: `Two entry points were designed: geolocation or manual search. The goal was not to add options, but to reduce time to first relevant result.
+    geoText: `Two entry points: geolocation or manual search. The goal was to get a first useful answer in just a few interactions.
 
-Geolocation instantly displays nearby cinemas with an adjustable radius. Manual search covers cases where users think in terms of a specific place, movie, or theater.
-
-Both paths converge toward the same objective: delivering usable results with minimal interaction.`,
+Geolocation shows nearby cinemas with an adjustable radius. Manual search covers place-driven, movie-driven, or cinema-driven queries.`,
     filtersTitle: 'Search filters',
     listAlt: 'Nearby showtimes list',
     listTitle: 'Nearby showtimes list',
-    listText: `Once the area is defined, showtimes appear immediately. Cinemas are sorted by distance with direct access to same-day sessions.
+    listText: `As soon as the area is set, showtimes appear and cinemas are sorted by proximity.
 
-The layout is intentionally compact and mobile-first: every element must be scannable within seconds. The goal is not to expose all data, but to enable fast decisions.
+The list is compact and mobile-first to support fast scanning and immediate decisions.
 
-Each screen reduces uncertainty: where, when, and what to watch.`,
+Compactness serves a simple goal: less scan time, faster decisions.`,
     productDecisionsTitle: 'Product decisions and trade-offs',
-    productDecisionsText: `The first screen is a search bar, nothing else. Users arrive with a clear intent: what is playing now or tonight.
+    productDecisionsText: `The product is centered on an immediate intent: find what to watch now or tonight.
 
-Results are structured for readability: posters in a grid, essential information immediately visible, filters split between content and location.
-
-Key product trade-offs:
-
-- Letterboxd integration was dropped. Relevant in specific contexts, but did not improve decision-making in most cases.
-- Ticket pricing was removed. Although technically possible, the data was too incomplete at scale (2,300 cinemas, multiple screenings). Partial information would reduce trust.
-
-These decisions reflect a simple principle: prioritize reliability and speed of decision over feature richness.
-
-Stack: React, Tailwind, Figma, Heroicons.`,
+Two trade-offs shaped this version: dropping Letterboxd integration and removing prices, because data stayed too incomplete at scale and hurt trust.`,
     futureTitle: 'Future improvements',
-    futureText: `User testing revealed an unexpected behavior: several users searched directly by cinema name instead of using geolocation. Their need was different: viewing a full weekly schedule.
+    futureText: `Testing revealed a complementary need: searching directly for a cinema to view its multi-day schedule.
 
-This led to two key roadmap decisions: cinema search with autocomplete, and multi-day cinema pages.
-
-Future iterations focused on enriching the experience without compromising simplicity: highlighting next sessions, personalized alerts, useful metadata (formats, premieres), and improved filtering (real-time counts, reset actions, feedback).
-
-Each improvement is evaluated against a single question: does it reduce the time needed to make a decision?`,
+Priorities selected: cinema search with autocomplete and multi-day cinema pages, followed by targeted enrichments (next session, alerts, useful metadata, improved filters) without adding friction to the journey.`,
     filtersDescription:
-      'To support search, filters were added to enable more precise and useful sorting across different user contexts.',
-    filtersOne:
-      'Some filters refine results by genre, year, duration, and by distinguishing recent movies from cult classics still being screened. Users can also filter by accepted subscriptions (UGC, Pathe...).',
-    filtersTwo:
-      'Users can define distance around the detected location or around a manually selected city/cinema. They can also set a desired date to view matching showtimes.',
-    filtersThree:
-      'Language and subtitle preferences are also available. The goal is to let users tailor the experience to their constraints.',
+      'Filters turn a broad list into a selection users can act on quickly. They cover content (genre, year, duration, recent/cult), context (distance, date, subscriptions), and session constraints (languages, subtitles).',
     altFilters1: 'Filter movies',
     altFilters2: 'Search radius and date',
     altFilters3: 'Language and subtitle preferences',
@@ -215,14 +169,7 @@ const productDecisionsImages = computed(() => [
   { src: filterResultsImage, mobileSrc: filterResultsMobileImage, alt: 'Filter results state' }
 ])
 
-const gridScrollFiltersText = computed(() => [
-  {
-    description: pageContent.value.filtersDescription,
-    1: pageContent.value.filtersOne,
-    2: pageContent.value.filtersTwo,
-    3: pageContent.value.filtersThree,
-  }
-])
+const gridScrollFiltersText = computed(() => pageContent.value.filtersDescription)
 
 const hasProject = computed(() => Boolean(projectData.value))
 const projectLabel = computed(() =>

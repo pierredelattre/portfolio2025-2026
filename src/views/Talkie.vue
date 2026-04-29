@@ -68,46 +68,35 @@ const PAGE_CONTENT = {
     backToHome: '← Retour à l’accueil',
     contextAlt: 'Contexte et enjeux',
     contextTitle: 'Contexte et enjeux',
-    contextText: "Les apps d’apprentissage des langues fonctionnent bien pour créer une habitude, mais la progression ressentie n’est pas toujours au rendez-vous. Les utilisateurs reviennent chaque jour, sans forcément avoir le sentiment d’apprendre efficacement.\n\nLes entretiens ont confirmé cette tension entre engagement et progression. Plutôt que d’optimiser la rétention, on a voulu explorer une autre direction : comment rendre la progression plus visible, et proposer des situations d’apprentissage plus proches du réel.",
+    contextText:
+      "Les apps de langue installent une habitude, mais la progression perçue reste souvent floue. Les utilisateurs reviennent, sans toujours sentir qu'ils avancent.\n\nLe projet est parti de ce point : rendre la progression visible et proposer des situations d'apprentissage plus proches de l'usage réel.",
     researchTitle: 'Recherche utilisateur',
-    researchText: `Trois entretiens semi-directifs de 30 minutes avec des utilisateurs actifs d’apps concurrentes.
+    researchText: `Trois entretiens de 30 minutes avec des utilisateurs actifs d'apps concurrentes.
 
-Le premier utilise Duolingo pour préparer un voyage. Il se sent bloqué : il ne peut pas sauter les notions déjà acquises et confond régulièrement des mots proches.
+Les mêmes points reviennent : difficulté à passer les acquis, exercices répétitifs, contenu trop généraliste, et manque de visibilité sur la progression.
 
-Le second utilise MemRise dans un cadre professionnel. Il a arrêté car les exercices étaient trop simples, répétitifs, et ne lui donnaient pas de vision claire de sa progression.
-
-Le troisième cherche à apprendre du vocabulaire spécifique à son métier. Il ne trouve que du contenu généraliste, peu adapté à ses besoins.
-
-Point commun : tous étaient motivés au départ. Le problème n’était pas l’engagement, mais l’absence de progression perçue.`,
+Le constat est simple : la motivation était là, mais la progression ne se voyait pas assez.`,
     archAlt: 'Architecture et parcours',
     archTitle: 'Architecture et parcours',
     archText:
-      "L'expérience est structurée autour de cinq zones : Accueil, Apprendre, Quiz, Quêtes et Profil. Nous avons conçu des parcours fluides pour le duel, les quiz thématiques et l'apprentissage guidé, en garantissant une navigation claire.",
+      "L'expérience s'organise en cinq zones : Accueil, Apprendre, Quiz, Quêtes et Profil.\n\nLes parcours duel, quiz thématique et apprentissage guidé suivent la même logique de navigation pour garder une prise en main rapide.",
     uiTitle: 'Conception UI',
-    uiText: `L’interface a été conçue pour gérer plusieurs formats (cours, quiz, duels, quêtes) sans complexifier l’expérience.
+    uiText: `L'interface gère plusieurs formats sans alourdir l'expérience.
 
-Plutôt que multiplier les patterns, on s’est appuyé sur des briques communes : cartes de contenu, blocs de progression, modules de quiz et header partagé.
+On a utilisé des briques communes (cartes, progression, modules de quiz, header) pour garder des repères stables d'un écran à l'autre.
 
-Chaque écran suit la même logique : une action principale claire, des informations hiérarchisées, et des feedbacks visibles pour aider l’utilisateur à comprendre ce qu’il vient de faire.
-
-L’objectif était de rendre l’expérience prévisible, pour réduire la charge mentale et laisser plus de place à l’apprentissage.`,
+Chaque écran met en avant une action principale, des infos hiérarchisées et un feedback clair, pour réduire la charge mentale.`,
     dsAlt: 'Design system',
     dsTitle: 'Design system',
     dsText:
-      "Le projet couvre cinq sections (Accueil, Apprendre, Quiz, Quêtes, Profil) développées en parallèle par deux designers. Sans référentiel commun, les sections auraient divergé. On a construit un design system complet : tokens, fondations, composants documentés par usage, templates et documentation publiée sur Zeroheight, synchronisée depuis Figma.",
+      'Le projet avançait en parallèle sur cinq sections et deux designers, avec un risque clair de divergence.\n\nOn a donc construit un design system complet : tokens, fondations, composants documentés par usage, templates, et documentation Zeroheight synchronisée depuis Figma.',
     testsAlt: 'Tests utilisateurs',
     testsTitle: 'Tests utilisateurs',
-    testsText: `Tests réalisés avec 3 participants sur deux parcours.
+    testsText: `Tests menés avec 3 participants sur deux parcours. Les scénarios ont été complétés sans blocage majeur.
 
-Les scénarios ont été complétés sans blocage majeur. La navigation était globalement comprise et fluide.
+Les frictions principales concernaient l'entrée quiz, l'invitation d'amis, certains titres manquants, et la reprise de cours.
 
-Plusieurs points d’amélioration sont ressortis :
-- confusion sur l’écran initial du quiz (réponses visibles trop tôt)
-- impossibilité d’inviter plusieurs amis
-- absence de titre sur certaines pages
-- difficulté à quitter puis reprendre un cours
-
-Les itérations ont porté sur ces éléments : clarification des entrées de quiz, amélioration des écrans de fin, et ajout des états manquants.`,
+Les itérations ont ciblé ces points : clarifier l'entrée quiz, améliorer les fins de parcours, et ajouter les états manquants.`,
     uiAlt1: 'Lessons',
     uiAlt2: 'Solo quizzes',
     uiAlt3: 'Player duels',
@@ -119,46 +108,35 @@ Les itérations ont porté sur ces éléments : clarification des entrées de qu
     backToHome: '← Back to home',
     contextAlt: 'Context and challenges',
     contextTitle: 'Context and challenges',
-    contextText: "Language-learning apps are effective at building habits, but perceived progress is not always there. Users come back daily without necessarily feeling that they are improving.\n\nInterviews highlighted this tension between engagement and learning. Instead of focusing on retention, we explored a different direction: how to make progress more visible, and design learning situations that feel closer to real use.",
+    contextText:
+      'Language apps build habit well, but perceived progress often stays unclear. Users come back, without always feeling they are moving forward.\n\nThe project started from that point: make progress visible and design learning situations closer to real use.',
     researchTitle: 'User research',
-    researchText: `Three 30-minute semi-structured interviews with active users of competing apps.
+    researchText: `Three 30-minute interviews with active users of competing apps.
 
-The first uses Duolingo to prepare for travel. He feels blocked: no way to skip mastered concepts and frequent confusion between similar words.
+The same issues kept coming back: hard to skip what is already mastered, repetitive exercises, overly generic content, and poor visibility on progress.
 
-The second uses MemRise for work. He dropped off because exercises were too easy, repetitive, and did not give a clear sense of progress.
-
-The third looks for job-specific vocabulary but only finds generic content.
-
-All three started motivated. The issue was not engagement, but lack of perceived progress.`,
+The takeaway is simple: motivation was there, but progress did not feel visible enough.`,
     archAlt: 'Architecture and flows',
     archTitle: 'Architecture and flows',
     archText:
-      'The experience is structured around five areas: Home, Learn, Quiz, Quests, and Profile. We designed fluid paths for duels, themed quizzes, and guided learning while keeping navigation clear.',
+      'The experience is organized into five areas: Home, Learn, Quiz, Quests, and Profile.\n\nDuel, themed quiz, and guided learning flows follow the same navigation logic to keep onboarding fast.',
     uiTitle: 'UI design',
-    uiText: `The interface was designed to support multiple formats (lessons, quizzes, duels, quests) without increasing complexity.
+    uiText: `The interface supports multiple formats without adding friction.
 
-Instead of multiplying patterns, we relied on shared building blocks: content cards, progress blocks, quiz modules, and a consistent header.
+We used shared building blocks (cards, progress, quiz modules, header) to keep stable landmarks from one screen to another.
 
-Each screen follows the same logic: a clear primary action, structured information, and visible feedback to help users understand what just happened.
-
-The goal was to make the experience predictable, reducing cognitive load and leaving more room for learning.`,
+Each screen highlights one primary action, structured information, and clear feedback to reduce cognitive load.`,
     dsAlt: 'Design system',
     dsTitle: 'Design system',
     dsText:
-      'The project covered five sections (Home, Learn, Quiz, Quests, Profile) designed in parallel by us two. Without a shared foundation, sections would diverge. We built a complete design system: tokens, foundations, documented components by usage, templates, and documentation published on Zeroheight and synced from Figma.',
+      'The project moved in parallel across five sections and two designers, with a clear risk of divergence.\n\nSo we built a complete design system: tokens, foundations, usage-documented components, templates, and Zeroheight documentation synced from Figma.',
     testsAlt: 'User testing',
     testsTitle: 'User testing',
-    testsText: `Tests were conducted with 3 participants across two flows.
+    testsText: `Tests were run with 3 participants across two flows. Scenarios were completed without major blockers.
 
-Both scenarios were completed without major issues. Navigation was generally clear and understandable.
+Main frictions were quiz entry, friend invitations, missing titles on some pages, and lesson resume flow.
 
-Several improvements were identified:
-- confusion on the initial quiz screen (answers visible too early)
-- inability to invite multiple friends
-- missing page titles
-- no clear way to exit and resume a lesson
-
-Iterations focused on these points: clarifying quiz entry, improving end-of-flow screens, and adding missing states.`,
+Iterations targeted those points: clarify quiz entry, improve end-of-flow screens, and add missing states.`,
     uiAlt1: 'Lessons',
     uiAlt2: 'Solo quizzes',
     uiAlt3: 'Player duels',
