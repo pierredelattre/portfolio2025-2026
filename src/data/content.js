@@ -9,7 +9,7 @@ export const works = [
     id: 'lira',
     title: 'Lira',
     intro:
-      'Lira aide les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.',
+      'Aider les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.',
     description:
       'Lira aide les apprenants à lire du contenu réel, sauvegarder les mots utiles en contexte, puis les mémoriser grâce à des révisions personnalisées.',
     services: ['Product Design', 'UX Research', 'UI Design'],
@@ -43,7 +43,7 @@ export const works = [
     intro:
       'Plateforme en ligne permettant de consulter rapidement les séances de cinéma autour de soi et de parcourir les films actuellement à l’affiche.',
     description:
-      'Septième Séance est une plateforme qui permet de trouver rapidement les séances de cinéma autour de soi et d’explorer les films à l’affiche. L’objectif est de proposer une expérience simple, rapide et adaptée au mobile, loin de la complexité des services existants.',
+      'Trouver rapidement les séances de cinéma autour de soi et d’explorer les films à l’affiche.',
     services: ['Product Design', 'Recherche utilisateur', 'UI Design'],
     team: [{ label: 'Mathieu Lefebvre', href: 'https://matlfb.com/', external: true }],
     links: [{ label: 'septiemeseance.fr', href: 'https://septiemeseance.fr', secondary: true, external: true }],
@@ -56,7 +56,7 @@ export const works = [
     id: 'talkie',
     title: 'Talkie',
     intro:
-      'Talkie est une application d’apprentissage des langues pensée pour rendre la progression plus ludique, personnalisée et immersive grâce à des cours interactifs, des quêtes, du multijoueur et un design system complet.',
+      'Application d’apprentissage des langues pensée pour rendre la progression plus ludique, personnalisée et immersive grâce à des cours interactifs, des quêtes, du multijoueur et un design system complet.',
     description:
       'Nous avons imaginé Talkie comme une alternative moderne aux applications classiques de langue : plus vivante, plus flexible et ancrée dans des scénarios réels, avec une dimension sociale forte. Le projet inclut l’UX research complète, l’architecture produit, les maquettes, ainsi que la création d’un design system documenté.',
     services: ['Recherche utilisateur', 'UI Design', 'Design system'],
@@ -368,7 +368,7 @@ export const playgroundItems = [
 const WORKS_EN_TRANSLATIONS = {
   lira: {
     intro:
-      'Lira helps learners read real content, save useful words in context, and memorize them through personalized review.',
+      'Help learners read real content, save useful words in context, and memorize them through personalized review.',
     description:
       'Lira helps learners read real content, save useful words in context, and memorize them through personalized review.',
     tags: ['Product Design', 'Live product']
@@ -377,13 +377,13 @@ const WORKS_EN_TRANSLATIONS = {
     intro:
       'Online platform designed to quickly browse nearby cinema showtimes and discover movies currently in theaters.',
     description:
-      'Septieme Seance is a platform designed to quickly find nearby cinema showtimes and discover movies currently in theaters. The goal was to provide a simple, fast, mobile-first experience, far from the complexity of existing services.',
+      'Septieme Seance is a platform designed to quickly find nearby cinema showtimes and discover movies currently in theaters.',
     services: ['Product Design', 'User Research', 'UI Design'],
     tags: ['Product Design']
   },
   talkie: {
     intro:
-      'Talkie is a language-learning app designed to make progress more playful, personalized, and immersive through interactive lessons, quests, multiplayer, and a complete design system.',
+      'Language-learning app designed to make progress more playful, personalized, and immersive through interactive lessons, quests, multiplayer, and a complete design system.',
     description:
       'We designed Talkie as a modern alternative to traditional language-learning apps : more dynamic, more flexible, and rooted in real-world scenarios, with a strong social layer. The project includes end-to-end UX research, product architecture, UI mockups, and a documented design system.',
     services: ['User Research', 'UI Design', 'Design System'],

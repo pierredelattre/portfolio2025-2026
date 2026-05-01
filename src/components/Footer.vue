@@ -11,8 +11,9 @@
             :source="previousProject.thumbnail || previousProject.cover"
             :alt="footerProjectAlt(previousProject.title)"
           />
-          <p>{{ footerText.previousProject }}</p>
+          <p class="project--label">{{ footerText.previousProject }}</p>
           <h3>{{ previousProject.title }}</h3>
+          <p class="project--description">{{ previousProject.intro }}</p>
         </div>
       </RouterLink>
       <RouterLink v-if="nextProject" :to="nextProject.route">
@@ -25,8 +26,9 @@
             :source="nextProject.thumbnail || nextProject.cover"
             :alt="footerProjectAlt(nextProject.title)"
           />
-          <p>{{ footerText.nextProject }}</p>
+          <p class="project--label">{{ footerText.nextProject }}</p>
           <h3>{{ nextProject.title }}</h3>
+          <p class="project--description">{{ nextProject.intro }}</p>
         </div>
       </RouterLink>
     </div>
@@ -179,14 +181,37 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
         gap: .5rem;
         height: 440px;
         overflow: hidden;
+        padding: 2rem;
 
         @media screen and (max-width: 768px) {
           height: 280px;
+          padding: 1rem;
+          justify-content: center;
+        }
+
+        &>h3 {
+          color: #FFF;
+          font-size: 1rem;
+        }
+
+        &>.project--description {
+          line-height: 1.5;
+          width: 65%;
+
+          @media screen and (max-width: 768px) {
+            width: 100%;
+          }
+        }
+
+        &>.project--label {
+          text-transform: uppercase;
+          font-size: .75rem;
+          color: oklch(81.719% 0.00009 271.152);
         }
 
         & .overlay {
@@ -208,6 +233,7 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
           height: 100%;
           width: 100%;
           border-radius: 0;
+          filter: brightness(.68);
         }
 
         & :deep(.project-image__media) {
