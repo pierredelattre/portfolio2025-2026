@@ -191,7 +191,6 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
         @media screen and (max-width: 768px) {
           height: 280px;
           padding: 1rem;
-          justify-content: center;
         }
 
         &>h3 {
@@ -222,7 +221,8 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
           left: 0;
           height: 100%;
           width: 100%;
-          background: linear-gradient(0turn, #090909, #05050500);
+          background: linear-gradient(180deg, #171717, #17171700);
+          height: 280px;
         }
 
         & :deep(.project-image) {
@@ -233,7 +233,7 @@ const showProjectNavigation = computed(() => Boolean(previousProject.value && ne
           height: 100%;
           width: 100%;
           border-radius: 0;
-          filter: brightness(.68);
+          /* filter: brightness(.68); */
         }
 
         & :deep(.project-image__media) {
