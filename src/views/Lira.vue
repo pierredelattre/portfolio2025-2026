@@ -28,6 +28,9 @@
 
     <GridScrollLayout :images="reader" :title="pageContent.readerTitle" :text="pageContent.readerText" />
 
+    <ColumnTextLayout :video-src="onboardingVideo" :image-alt="pageContent.onboardingAlt" :title="pageContent.onboardingTitle"
+      :text="pageContent.onboardingText" />
+
     <ImageFullWidthLayout :image-src=biblio :image-mobile-src=biblioMobile secondary :image-alt="pageContent.libraryAlt"
       :title="pageContent.libraryTitle" :text="pageContent.libraryText" />
 
@@ -75,6 +78,7 @@ import reader2Fr from '@/assets/lira/reader-definitions.jpg?optimized'
 import reader2En from '@/assets/lira/reader-définitions-EN.jpg?optimized'
 import reader3Fr from '@/assets/lira/reader-mobile.jpg?optimized'
 import reader3En from '@/assets/lira/reader-mobile-EN.jpg?optimized'
+import onboardingVideo from '@/assets/lira/lira-onboarding.mp4'
 import entretiensMobile from '@/assets/talkie/mobile-entr.jpg?optimized'
 import fonctionsMobile from '@/assets/talkie/mobile-fonctions.jpg?optimized'
 import crossFr from '@/assets/lira/crossword.jpg?optimized'
@@ -123,6 +127,11 @@ Deux points reviennent : le plateau au niveau intermédiaire sans passage nature
 Le panneau s'ouvre sans remplacer la page. Un clic ouvre le panneau, un deuxième enregistre le mot avec sa phrase d'origine. En bas sur mobile, sur le côté sur desktop : la colonne de lecture ne bouge pas.`,
     readerTitle: 'Le reader',
     readerText: `Un clic ouvre le panneau : traduction, définition, phonétique, audio via PiperTTS (local). Le mot se sauvegarde en un clic de plus, avec la phrase d'origine comme contexte.`,
+    onboardingAlt: 'Onboarding Lira',
+    onboardingTitle: 'Onboarding',
+    onboardingText: `Lira s'ouvre sur trois étapes : choix de la langue cible, niveau déclaré, et premier import de contenu.
+
+L'objectif est d'arriver au reader avec quelque chose à lire dès la première session, sans passer par une configuration longue.`,
     libraryAlt: 'Bibliothèque',
     libraryTitle: 'Bibliothèque et import',
     libraryText: `Import : URL, EPUB, PDF, HTML ou texte brut. Project Gutenberg est intégré directement, avec des livres du domaine public en espagnol, allemand, anglais et italien.`,
@@ -160,6 +169,11 @@ Two patterns kept coming up: the plateau at intermediate level with no natural m
 The panel opens without replacing the page. One tap opens it, a second tap saves the word with its original sentence. Bottom on mobile, side on desktop: the reading column stays put.`,
     readerTitle: 'Reader',
     readerText: `Tapping a word opens the panel: translation, definition, phonetics, audio via PiperTTS (local). A second tap saves the word with its original sentence as context.`,
+    onboardingAlt: 'Lira onboarding',
+    onboardingTitle: 'Onboarding',
+    onboardingText: `Lira opens on three steps: target language, declared level, and first content import.
+
+The goal is to reach the reader with something to read in the first session, without going through a long setup.`,
     libraryAlt: 'Library',
     libraryTitle: 'Library and import',
     libraryText: `Import: URL, EPUB, PDF, HTML or plain text. Project Gutenberg is built in, with public-domain books in Spanish, German, English and Italian.`,
