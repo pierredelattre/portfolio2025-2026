@@ -129,9 +129,9 @@ Le panneau s'ouvre sans remplacer la page. Un clic ouvre le panneau, un deuxièm
     readerText: `Un clic ouvre le panneau : traduction, définition, phonétique, audio via PiperTTS (local). Le mot se sauvegarde en un clic de plus, avec la phrase d'origine comme contexte.`,
     onboardingAlt: 'Onboarding Lira',
     onboardingTitle: 'Onboarding',
-    onboardingText: `Lira s'ouvre sur trois étapes : choix de la langue cible, niveau déclaré, et premier import de contenu.
+    onboardingText: `L'onboarding se déroule en quatre étapes avant inscription : choix de la langue cible, sélection d'un extrait de livre, première interaction de lecture (traduire puis sauvegarder un mot), puis création de compte.
 
-L'objectif est d'arriver au reader avec quelque chose à lire dès la première session, sans passer par une configuration longue.`,
+L'objectif est d'arriver dans le reader avec un texte déjà prêt, puis de montrer immédiatement la boucle complète lecture → vocabulaire → révision.`,
     libraryAlt: 'Bibliothèque',
     libraryTitle: 'Bibliothèque et import',
     libraryText: `Import : URL, EPUB, PDF, HTML ou texte brut. Project Gutenberg est intégré directement, avec des livres du domaine public en espagnol, allemand, anglais et italien.`,
@@ -171,9 +171,9 @@ The panel opens without replacing the page. One tap opens it, a second tap saves
     readerText: `Tapping a word opens the panel: translation, definition, phonetics, audio via PiperTTS (local). A second tap saves the word with its original sentence as context.`,
     onboardingAlt: 'Lira onboarding',
     onboardingTitle: 'Onboarding',
-    onboardingText: `Lira opens on three steps: target language, declared level, and first content import.
+    onboardingText: `Onboarding runs in four steps before signup: choose a target language, pick a book excerpt, complete a first reading interaction (translate then save a word), then create an account.
 
-The goal is to reach the reader with something to read in the first session, without going through a long setup.`,
+The goal is to enter the reader with a text already ready, then immediately show the full loop: reading -> vocabulary -> review.`,
     libraryAlt: 'Library',
     libraryTitle: 'Library and import',
     libraryText: `Import: URL, EPUB, PDF, HTML or plain text. Project Gutenberg is built in, with public-domain books in Spanish, German, English and Italian.`,
