@@ -1,5 +1,4 @@
 import septiemeCover from '@/assets/septiemeseance/002.jpg?optimized&w=1600;1920;2560;3200&quality=96&lossless=true'
-// import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
 import liraBanner from '@/assets/lira/lira-banner.jpg?optimized'
 import talkiePlaceholder from '@/assets/talkie/banner.jpg?optimized'
 import mbaBanner from '@/assets/mba/mba-banner.jpg?optimized'
@@ -114,14 +113,14 @@ import photo2Mobile from '@/assets/playground/mobile-photo2.jpg?optimized'
 // import flimMobile from '@/assets/playground/mobile-flim.jpg?optimized'
 // import flimLive from '@/assets/playground/flim-live.jpg?optimized'
 
-// import baron from '@/assets/playground/baron-1.jpg?optimized'
-// import baronDesk from '@/assets/playground/desk-baron-1.jpg?optimized'
-// import baron2 from '@/assets/playground/baron-2.jpg?optimized'
-// import baron2Desk from '@/assets/playground/desk-baron-2.jpg?optimized'
-// import baron3 from '@/assets/playground/baron-3.jpg?optimized'
-// import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
-// import baron4 from '@/assets/playground/baron-4.jpg?optimized'
-// import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
+import baron from '@/assets/playground/baron-1.jpg?optimized'
+import baronDesk from '@/assets/playground/desk-baron-1.jpg?optimized'
+import baron2 from '@/assets/playground/baron-2.jpg?optimized'
+import baron2Desk from '@/assets/playground/desk-baron-2.jpg?optimized'
+import baron3 from '@/assets/playground/baron-3.jpg?optimized'
+import baron3Mobile from '@/assets/playground/mobile-baron-3.jpg?optimized'
+import baron4 from '@/assets/playground/baron-4.jpg?optimized'
+import baron4Mobile from '@/assets/playground/mobile-baron-4.jpg?optimized'
 
 // import rvrs from '@/assets/playground/rvrs.jpg?optimized'
 // import rvrsMobile from '@/assets/playground/mobile-rvrs.jpg?optimized'
@@ -132,6 +131,7 @@ import photo2Mobile from '@/assets/playground/mobile-photo2.jpg?optimized'
 // import mag2Mobile from '@/assets/playground/mobile-magazine-2.jpg?optimized'
 
 import alpineDash from '@/assets/playground/alpine-dash.jpg?optimized'
+import alpinePlaceholder from '@/assets/alpine/visu-alpine.jpg?optimized'
 import alpineDashMobile from '@/assets/playground/mobile-alpine-dash.jpg?optimized'
 import alpineGps from '@/assets/playground/alpine-gps.jpg?optimized'
 import alpineGpsMobile from '@/assets/playground/mobile-alpine-gps.jpg?optimized'
@@ -194,57 +194,57 @@ export const playgroundItems = [
       },
     ]
   },
-  {
-    title: 'Camera App',
-    image: photo,
-    color: 'dark',
-    media: [
-      {
-        type: 'image',
-        src: photo,
-        mobileSrc: photoMobile,
-        alt: 'Camera app & Bibliothèque'
-      },
-      {
-        type: 'image',
-        src: photo2,
-        mobileSrc: photo2Mobile,
-        alt: 'Landscape'
-      }
-    ]
-  },
   // {
-  //   title: 'Au Baron',
-  //   image: baron2,
+  //   title: 'Camera App',
+  //   image: photo,
   //   color: 'dark',
-  //   modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
   //   media: [
   //     {
   //       type: 'image',
-  //       src: baron2Desk,
-  //       mobileSrc: baron2,
-  //       alt: 'Sommaire de la page produit'
+  //       src: photo,
+  //       mobileSrc: photoMobile,
+  //       alt: 'Camera app & Bibliothèque'
   //     },
   //     {
   //       type: 'image',
-  //       src: baron4,
-  //       mobileSrc: baron4Mobile,
-  //       alt: 'Page produit mobile'
-  //     },
-  //     {
-  //       type: 'image',
-  //       src: baronDesk,
-  //       mobileSrc: baron,
-  //       alt: 'Cross-sells'
-  //     },
-  //     {
-  //       type: 'image',
-  //       src: baron3,
-  //       mobileSrc: baron3Mobile,
-  //       alt: 'Up-sells & questionnaire des préférences'
+  //       src: photo2,
+  //       mobileSrc: photo2Mobile,
+  //       alt: 'Landscape'
   //     }
   //   ]
   // },
+  {
+    title: 'Au Baron',
+    image: baron2,
+    color: 'dark',
+    modalText: 'Proposition d\'une solution e-commerce pour la brasserie Au Baron. Page produit, cross-sells, upsells, préférences gustatives...',
+    media: [
+      {
+        type: 'image',
+        src: baron2Desk,
+        mobileSrc: baron2,
+        alt: 'Sommaire de la page produit'
+      },
+      {
+        type: 'image',
+        src: baron4,
+        mobileSrc: baron4Mobile,
+        alt: 'Page produit mobile'
+      },
+      {
+        type: 'image',
+        src: baronDesk,
+        mobileSrc: baron,
+        alt: 'Cross-sells'
+      },
+      {
+        type: 'image',
+        src: baron3,
+        mobileSrc: baron3Mobile,
+        alt: 'Up-sells & questionnaire des préférences'
+      }
+    ]
+  },
   // {
   //   title: 'Magazine',
   //   image: mag,
@@ -327,6 +327,11 @@ export const playgroundItems = [
         type: 'image',
         src: alpineDash,
         mobileSrc: alpineDashMobile,
+        alt: 'Alpine infotainment - dashboard'
+      },
+      {
+        type: 'image',
+        src: alpinePlaceholder,
         alt: 'Alpine infotainment - dashboard'
       },
       {
